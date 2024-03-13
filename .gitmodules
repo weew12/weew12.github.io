@@ -1,0 +1,3 @@
+[submodule "themes/hugo-paper-mod"]
+	path = themes/hugo-paper-mod
+	url = git@github.com:weew12/hugo-paper-mod.git
