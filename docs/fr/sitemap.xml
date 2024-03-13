@@ -2,112 +2,112 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/fr/posts/markdown-syntax/</loc>
+    <loc>https://weew12.github.io/fr/posts/markdown-syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/posts/markdown-syntax/"
+                href="https://weew12.github.io/posts/markdown-syntax/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="http://localhost:1313/fa/posts/markdown-syntax/"
+                href="https://weew12.github.io/fa/posts/markdown-syntax/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/posts/markdown-syntax/"
+                href="https://weew12.github.io/fr/posts/markdown-syntax/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fr/frtags/css/</loc>
+    <loc>https://weew12.github.io/fr/frtags/css/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/fr/frcategories/</loc>
+    <loc>https://weew12.github.io/fr/frcategories/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/fr/frseries/</loc>
+    <loc>https://weew12.github.io/fr/frseries/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/fr/frtags/</loc>
+    <loc>https://weew12.github.io/fr/frtags/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/fr/frtags/html/</loc>
+    <loc>https://weew12.github.io/fr/frtags/html/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/fr/frtags/markdown/</loc>
+    <loc>https://weew12.github.io/fr/frtags/markdown/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/fr/</loc>
+    <loc>https://weew12.github.io/fr/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/"
+                href="https://weew12.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="http://localhost:1313/fa/"
+                href="https://weew12.github.io/fa/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/"
+                href="https://weew12.github.io/fr/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fr/posts/</loc>
+    <loc>https://weew12.github.io/fr/posts/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/posts/"
+                href="https://weew12.github.io/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fa"
-                href="http://localhost:1313/fa/posts/"
+                href="https://weew12.github.io/fa/posts/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/posts/"
+                href="https://weew12.github.io/fr/posts/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fr/frcategories/syntax/</loc>
+    <loc>https://weew12.github.io/fr/frcategories/syntax/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/fr/frtags/themes/</loc>
+    <loc>https://weew12.github.io/fr/frtags/themes/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/fr/frcategories/themes/</loc>
+    <loc>https://weew12.github.io/fr/frcategories/themes/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/fr/frseries/themes-guide/</loc>
+    <loc>https://weew12.github.io/fr/frseries/themes-guide/</loc>
     <lastmod>2019-03-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/fr/archives/</loc>
+    <loc>https://weew12.github.io/fr/archives/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/archives/"
+                href="https://weew12.github.io/archives/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/archives/"
+                href="https://weew12.github.io/fr/archives/"
                 />
   </url><url>
-    <loc>http://localhost:1313/fr/search/</loc>
+    <loc>https://weew12.github.io/fr/search/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/search/"
+                href="https://weew12.github.io/search/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
-                href="http://localhost:1313/fr/search/"
+                href="https://weew12.github.io/fr/search/"
                 />
   </url>
 </urlset>
