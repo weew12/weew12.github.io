@@ -23,7 +23,7 @@ This is pre text
 
 ### Code block with backticks
 
-```{hl_lines=[2,8]}
+```{hl_lines=[2,8], lineos=true}
 <!DOCTYPE html>
 <html lang="en">
   <head>
