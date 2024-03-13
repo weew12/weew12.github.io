@@ -50,15 +50,15 @@ languages:
       main:
         - name: Archive
           url: archives
-          weight: 5
+          weight: 2
         - name: Search
           url: search/
-          weight: 10
+          weight: 1
         - name: Tags
           url: tags/
-          weight: 10
-        - name: WiKi
-          url: https://github.com/adityatelange/hugo-PaperMod/wiki/
+          weight: 3
+        # - name: WiKi
+        #   url: https://github.com/adityatelange/hugo-PaperMod/wiki/
 
   fr:
     languageName: ":fr:"
