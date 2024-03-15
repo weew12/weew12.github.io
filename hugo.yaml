@@ -48,13 +48,13 @@ languages:
       series: series
     menu:
       main:
-        - name: Archive
+        - name: ARCHIVES
           url: archives
           weight: 2
-        - name: Search
+        - name: SEARCH
           url: search/
           weight: 1
-        - name: Tags
+        - name: TAGS
           url: tags/
           weight: 3
         # - name: WiKi
