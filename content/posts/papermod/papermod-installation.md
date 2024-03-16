@@ -8,7 +8,7 @@ aliases: ["/papermod-installation"]
 tags: ["PaperMod", "Docs"]
 author: ["Aditya Telange"]
 cover:
-  image: images/papermod-cover.png
+  image: papermod-cover.png
   hiddenInList: false
 ShowToc: true
 TocOpen: true
