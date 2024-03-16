@@ -10,6 +10,7 @@ aliases: ["migrate-from-jekyl"]
 cover:
   image: msg.png
   caption: "Generated using [OG Image Playground by Vercel](https://og-playground.vercel.app/)"
+  hiddenInList: false
 ShowToc: true
 TocOpen: true
 ---
