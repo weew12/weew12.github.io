@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="auto">
+<html lang="zh" dir="auto">
 
 <head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://weew12.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://weew12.github.io/posts/emoji-support/">
+<link rel="alternate" hreflang="zh" href="https://weew12.github.io/posts/emoji-support/">
 <noscript>
     <style>
         #theme-toggle,
@@ -103,7 +103,7 @@
   ],
   "articleBody": "Emoji can be enabled in a Hugo project in a number of ways.\nThe emojify function can be called directly in templates or Inline Shortcodes.\nTo enable emoji globally, set enableEmoji to true in your site’s configuration and then you can type emoji shorthand codes directly in content files; e.g.\n🙈 :see_no_evil: 🙉 :hear_no_evil: 🙊 :speak_no_evil:\nThe Emoji cheat sheet is a useful reference for emoji shorthand codes.\nN.B. The above steps enable Unicode Standard emoji characters and sequences in Hugo, however the rendering of these glyphs depends on the browser and the platform. To style the emoji you can either use a third party emoji font or a font stack; e.g.\n.emoji { font-family: Apple Color Emoji, Segoe UI Emoji, NotoColorEmoji, Segoe UI Symbol, Android Emoji, EmojiSymbols; } ",
   "wordCount" : "129",
-  "inLanguage": "en",
+  "inLanguage": "zh",
   "image": "https://weew12.github.io/images/papermod-cover.png""datePublished": "2019-03-05T00:00:00Z",
   "dateModified": "2019-03-05T00:00:00Z",
   "author":{
@@ -163,32 +163,22 @@
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://weew12.github.io/fr/" title="French"
-                            aria-label=":fr:">🇫🇷</a>
-                    </li>
-                    <li>
-                        <a href="https://weew12.github.io/fa/" title="Fa"
-                            aria-label="Fa">Fa</a>
-                    </li>
-                </ul>
             </div>
         </div>
         <ul id="menu">
             <li>
-                <a href="https://weew12.github.io/search/" title="SEARCH (Alt &#43; /)" accesskey=/>
-                    <span>SEARCH</span>
+                <a href="https://weew12.github.io/search/" title="搜索">
+                    <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="https://weew12.github.io/archives" title="ARCHIVES">
-                    <span>ARCHIVES</span>
+                <a href="https://weew12.github.io/archives" title="归档">
+                    <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="https://weew12.github.io/tags/" title="TAGS">
-                    <span>TAGS</span>
+                <a href="https://weew12.github.io/tags/" title="标签">
+                    <span>标签</span>
                 </a>
             </li>
         </ul>
@@ -205,7 +195,7 @@
     <div class="post-description">
       Guide to emoji usage in Hugo
     </div>
-    <div class="post-meta"><span title='2019-03-05 00:00:00 +0000 UTC'>March 5, 2019</span>&nbsp;·&nbsp;1 min&nbsp;·&nbsp;Hugo Authors&nbsp;|&nbsp;<a href="https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content/posts/emoji-support.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+    <div class="post-meta"><span title='2019-03-05 00:00:00 +0000 UTC'>三月 5, 2019</span>&nbsp;·&nbsp;1 分钟&nbsp;·&nbsp;Hugo Authors&nbsp;|&nbsp;<a href="https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content/posts/emoji-support.md" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
 
 </div>
   </header> 
@@ -244,9 +234,14 @@
     </ul>
 <nav class="paginav">
   <a class="prev" href="https://weew12.github.io/posts/math-typesetting/">
-    <span class="title">« Prev</span>
+    <span class="title">« 上一页</span>
     <br>
     <span>Math Typesetting</span>
+  </a>
+  <a class="next" href="https://weew12.github.io/posts/__index/">
+    <span class="title">下一页 »</span>
+    <br>
+    <span>文章</span>
   </a>
 </nav>
 
@@ -396,12 +391,12 @@
 
         const copybutton = document.createElement('button');
         copybutton.classList.add('copy-code');
-        copybutton.innerHTML = 'copy';
+        copybutton.innerHTML = '复制';
 
         function copyingDone() {
-            copybutton.innerHTML = 'copied!';
+            copybutton.innerHTML = '已复制！';
             setTimeout(() => {
-                copybutton.innerHTML = 'copy';
+                copybutton.innerHTML = '复制';
             }, 2000);
         }
 
