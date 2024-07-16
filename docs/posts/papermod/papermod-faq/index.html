@@ -9,16 +9,16 @@
 <meta name="keywords" content="PaperMod, Docs">
 <meta name="description" content="We&rsquo;ll try to answer frequently asked qestions by users.">
 <meta name="author" content="PaperMod Contributors">
-<link rel="canonical" href="http://weew12.github.io/posts/papermod/papermod-faq/">
-<link crossorigin="anonymous" href="http://weew12.github.io/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
+<link rel="canonical" href="https://weew12.github.io/posts/papermod/papermod-faq/">
+<link crossorigin="anonymous" href="https://weew12.github.io/assets/css/stylesheet.css" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://weew12.github.io/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://weew12.github.io/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://weew12.github.io/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://weew12.github.io/apple-touch-icon.png">
-<link rel="mask-icon" href="http://weew12.github.io/safari-pinned-tab.svg">
+<link rel="apple-touch-icon" href="https://weew12.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://weew12.github.io/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="zh" href="http://weew12.github.io/posts/papermod/papermod-faq/">
+<link rel="alternate" hreflang="zh" href="https://weew12.github.io/posts/papermod/papermod-faq/">
 <noscript>
     <style>
         #theme-toggle,
@@ -58,15 +58,15 @@
 </noscript><meta property="og:title" content="FAQs / How To&#39;s Guide" />
 <meta property="og:description" content="We&rsquo;ll try to answer frequently asked qestions by users." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://weew12.github.io/posts/papermod/papermod-faq/" />
-<meta property="og:image" content="http://weew12.github.io/images/papermod-cover.png" />
+<meta property="og:url" content="https://weew12.github.io/posts/papermod/papermod-faq/" />
+<meta property="og:image" content="https://weew12.github.io/images/papermod-cover.png" />
 <meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-01-20T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-01-20T00:00:00+00:00" />
 
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="http://weew12.github.io/images/papermod-cover.png" />
+<meta name="twitter:image" content="https://weew12.github.io/images/papermod-cover.png" />
 <meta name="twitter:title" content="FAQs / How To&#39;s Guide"/>
 <meta name="twitter:description" content="We&rsquo;ll try to answer frequently asked qestions by users."/>
 
@@ -80,13 +80,13 @@
       "@type": "ListItem",
       "position":  1 ,
       "name": "Posts",
-      "item": "http://weew12.github.io/posts/"
+      "item": "https://weew12.github.io/posts/"
     }, 
     {
       "@type": "ListItem",
       "position":  2 ,
       "name": "FAQs / How To's Guide",
-      "item": "http://weew12.github.io/posts/papermod/papermod-faq/"
+      "item": "https://weew12.github.io/posts/papermod/papermod-faq/"
     }
   ]
 }
@@ -104,7 +104,7 @@
   "articleBody": " We’ll be using yml/yaml format for all examples down below, I recommend using yml over toml as it is easier to read.\nYou can find any YML to TOML converters if necessary.\nOverride theme template By Hugo’s Lookup Order, you can override any part of a theme that you want. The following is a quick example.\nLet’s say you wish the list was different. All you have to do is copy the list template:\nyour-site/themes/papermod/layouts/_defaults/list.html And paste it under your own layouts folder:\nyour-site/layouts/_defaults/list.html Then you’re free to make any changes you want to the list. When Hugo builds your site, your copy of list.html will be used instead of the theme’s list.html.\nEnable Social-Metadata and SEO These include OpenGraph, Twitter Cards and Schema.\n1 2 params: env: production or set HUGO_ENV as “production” in system env-vars\nFailed to find a valid digest in the ‘integrity’ attribute for resource … ? Read about How Subresource Integrity helps: Subresource_Integrity\nWhy was the asset not loading ? : How_browsers_handle_Subresource_Integrity\nSolution:\nSet the following in config.yml\n1 2 3 params: assets: disableFingerprinting: true Linked Issues:\nhttps://stackoverflow.com/questions/65056585/hugo-theme-not-loading https://stackoverflow.com/questions/65040931/hugo-failed-to-find-a-valid-digest-in-the-integrity-attribute-for-resource https://blog.gerardbeckerleg.com/posts/hugo-failed-to-find-a-valid-digest-in-the-integrity-attribute-for-resource/ Bundling Custom css with theme’s assets For adding custom css to be bundled inside one minimized css Create folder in yout project directory as\n.(site root) ├── config.yml ├── content/ ├── theme/hugo-PaperMod/ └── assets/ └── css/ └── extended/ \u003c--- ├── custom_css1.css \u003c--- └── any_name.css \u003c--- All css files inside assets/css/extended will be bundled !\nNote: blank.css is just the placeholder so that it doesn’t break the theme when no files are present under assets/css/extended\nLinked Issues:\nPapermod Theme: How to add custom CSS? Custom Head / Footer Custom css/js can be added by way mentioned below.\n.(site root) ├── config.yml ├── content/ ├── theme/hugo-PaperMod/ └── layouts ├── partials │ ├── comments.html │ ├── extend_footer.html \u003c--- │ └── extend_head.html \u003c--- └── robots.txt Create a html page in directory structure as shown above.\nContents of extend_head.html will be added to head of page.\nand contents of extend_footer.html will be added to bottom of page.\nAdd menu to site You can add menu entries which will appear in the header of every page.\nTo do so, add a menu section to your site’s config.yml:\n1 2 3 4 5 6 7 8 9 10 11 12 13 14 menu: main: - identifier: categories name: categories url: /categories/ weight: 10 - identifier: tags name: tags url: /tags/ weight: 20 - identifier: example name: example.org url: https://example.org weight: 30 name controls what will be displayed for the menu entry. url sets the URL that the entry points to. weight is used to control the positioning of entries.\nFor more information on menus, see the Hugo wiki page.\nPin a Post Post can be pinned/ displayed top on the list by adding a weight= var to page-variables\nexample:\n1 2 3 4 5 --- title: \"My Important post\" date: 2020-09-15T11:30:03+00:00 weight: 1 --- 1 2 3 4 5 --- title: \"My 2nd Important post\" date: 2020-09-15T11:30:03+00:00 weight: 2 --- Adding Custom Favicon(s) We support the following paths under /static directory and can be added accordingly.\nfavicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png safari-pinned-tab.svg Favicon(s) can be generated by Favicon.io and can be simply put in /static folder.\nOther way is to add favicon(s) NOT located in /static folder.\nIn site config add the following:\n1 2 3 4 5 6 7 params: assets: favicon: \"\" favicon16x16: \"\" favicon32x32: \"\" apple_touch_icon: \"\" safari_pinned_tab: \"\" Note: absolute url means direct links to external resource: ex. https://web.site/someimage.png\n1 2 3 4 5 6 7 params: assets: favicon: \"/favicon.ico\" favicon16x16: \"/favicon-16x16.png\" favicon32x32: \"/favicon-32x32.png\" apple_touch_icon: \"/apple-touch-icon.png\" safari_pinned_tab: \"/safari-pinned-tab.svg\" Centering image in markdown Add #center after image to center align an image\n1 ![name](path/to/image.png#center) When using figure shortcode\nuse align=center to center image with captions\n1 {{\u003c figure align=center src=\"image.jpg\" \u003e}} Using Hugo’s Syntax highlighter “chroma” Disable Highlight.js in site config.yml\n1 2 3 params: assets: disableHLJS: true Set hugo’s markdown styling in site config.yml\n1 2 3 4 5 6 7 8 markup: highlight: # anchorLineNos: true codeFences: true guessSyntax: true lineNos: true # noClasses: false style: monokai If you want lineNos: true, the background won’t be proper. This will only work with noClasses: false or pygmentsUseClasses: true. Read Generate Syntax Highlighter CSS\nAdd the following to assets/css/extended/custom.css\n1 2 3 .chroma { background-color: unset; } More Info : Configure Markup - Highlight\nSearch not working ? If you are using a CDN to server assets from a different domain, search would break\nWhy? Take a look at fastsearch.js#L35.\nWe fetch the index.json (where the search function looks for the keywords typed) one level up of the website search.min.js is hosted on.\nWe have used this insted of assigning baseURL so as to work with multilingual websites ex. example.com/fr/ and websites being placed under a subdirectory ex. example.com/blog/.\nTo fix for single language websites hosting assets from CDN, this you may override fastsearch.js#L35 and placing appropriate URL as in\n1 xhr.open(\"GET\", \"https://example.com/index.json\"); References Override a Hugo theme ",
   "wordCount" : "843",
   "inLanguage": "zh",
-  "image": "http://weew12.github.io/images/papermod-cover.png""datePublished": "2021-01-20T00:00:00Z",
+  "image": "https://weew12.github.io/images/papermod-cover.png""datePublished": "2021-01-20T00:00:00Z",
   "dateModified": "2021-01-20T00:00:00Z",
   "author":[{
     "@type": "Person",
@@ -112,7 +112,7 @@
   }],
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "http://weew12.github.io/posts/papermod/papermod-faq/"
+    "@id": "https://weew12.github.io/posts/papermod/papermod-faq/"
   },
   "publisher": {
     "@type": "Organization",
@@ -141,7 +141,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://weew12.github.io/" accesskey="h" title="WEEW12 SITE (Alt + H)">WEEW12 SITE</a>
+            <a href="https://weew12.github.io/" accesskey="h" title="WEEW12 SITE (Alt + H)">WEEW12 SITE</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24"
@@ -167,17 +167,17 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://weew12.github.io/search/" title="搜索">
+                <a href="https://weew12.github.io/search/" title="搜索">
                     <span>搜索</span>
                 </a>
             </li>
             <li>
-                <a href="http://weew12.github.io/archives" title="归档">
+                <a href="https://weew12.github.io/archives" title="归档">
                     <span>归档</span>
                 </a>
             </li>
             <li>
-                <a href="http://weew12.github.io/tags/" title="标签">
+                <a href="https://weew12.github.io/tags/" title="标签">
                     <span>标签</span>
                 </a>
             </li>
@@ -188,7 +188,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="http://weew12.github.io/">主页</a>&nbsp;»&nbsp;<a href="http://weew12.github.io/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://weew12.github.io/">主页</a>&nbsp;»&nbsp;<a href="https://weew12.github.io/posts/">Posts</a></div>
     <h1 class="post-title entry-hint-parent">
       FAQs / How To&#39;s Guide
       <span class="entry-hint" title="Draft">
@@ -561,7 +561,7 @@ Read <a href="https://gohugo.io/content-management/syntax-highlighting/#generate
 <p>Why? Take a look at <a href="https://github.com/adityatelange/hugo-PaperMod/blob/fb4988cfb6d0d6e4e489f17d89f0fa618def3396/assets/js/fastsearch.js#L35">fastsearch.js#L35</a>.</p>
 <p>We fetch the <code>index.json</code> (where the search function looks for the keywords typed) one level up of the website <code>search.min.js</code> is hosted on.</p>
 <p>We have used this insted of assigning <code>baseURL</code> so as to work with multilingual websites ex. <code>example.com/fr/</code> and websites being placed under a subdirectory ex. <code>example.com/blog/</code>.</p>
-<p>To fix for <em>single</em> language websites hosting assets from CDN, this you may <a href="http://weew12.github.io/posts/papermod/papermod-faq/#override-theme-template">override</a> <a href="https://github.com/adityatelange/hugo-PaperMod/blob/fb4988cfb6d0d6e4e489f17d89f0fa618def3396/assets/js/fastsearch.js#L35">fastsearch.js#L35</a> and placing appropriate URL as in</p>
+<p>To fix for <em>single</em> language websites hosting assets from CDN, this you may <a href="https://weew12.github.io/posts/papermod/papermod-faq/#override-theme-template">override</a> <a href="https://github.com/adityatelange/hugo-PaperMod/blob/fb4988cfb6d0d6e4e489f17d89f0fa618def3396/assets/js/fastsearch.js#L35">fastsearch.js#L35</a> and placing appropriate URL as in</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -581,16 +581,16 @@ Read <a href="https://gohugo.io/content-management/syntax-highlighting/#generate
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://weew12.github.io/tags/papermod/">PaperMod</a></li>
-      <li><a href="http://weew12.github.io/tags/docs/">Docs</a></li>
+      <li><a href="https://weew12.github.io/tags/papermod/">PaperMod</a></li>
+      <li><a href="https://weew12.github.io/tags/docs/">Docs</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="http://weew12.github.io/posts/papermod/papermod-features/">
+  <a class="prev" href="https://weew12.github.io/posts/papermod/papermod-features/">
     <span class="title">« 上一页</span>
     <br>
     <span>Features / Mods</span>
   </a>
-  <a class="next" href="http://weew12.github.io/posts/papermod/papermod-icons/">
+  <a class="next" href="https://weew12.github.io/posts/papermod/papermod-icons/">
     <span class="title">下一页 »</span>
     <br>
     <span>Social-Icons / Share-Icons</span>
@@ -670,7 +670,7 @@ Read <a href="https://gohugo.io/content-management/syntax-highlighting/#generate
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://weew12.github.io/">WEEW12 SITE</a></span>
+    <span>&copy; 2024 <a href="https://weew12.github.io/">WEEW12 SITE</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
