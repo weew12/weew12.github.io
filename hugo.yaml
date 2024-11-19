@@ -7,7 +7,7 @@ title: WEEW12 SITE
 # 分页
 paginate: 5
 # 设置编译后输出html文件的目录
-publishDir: public
+publishDir: docs
 # https://gohugo.io/getting-started/configuration/#canonifyurls
 canonifyurls: true
 # 主题
