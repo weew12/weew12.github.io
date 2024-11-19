@@ -167,8 +167,8 @@ params:
 
   assets:
     # 解决部署到gitPages后css的Subresource Integrity问题
-    # disableFingerprinting: true
-    # disableHLJS: true
+    disableFingerprinting: true
+    disableHLJS: true
     favicon: "https://weew12.github.io/favicon.ico"
     favicon16x16: "https://weew12.github.io/favicon-16x16.png"
     favicon32x32: "https://weew12.github.io/favicon-32x32.png"
