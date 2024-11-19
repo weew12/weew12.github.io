@@ -11,8 +11,15 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Wed, 20 Jan 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 19 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://weew12.github.io/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>宋红康Java语法回顾</title>
+      <link>https://weew12.github.io/series/%E5%AE%8B%E7%BA%A2%E5%BA%B7java%E8%AF%AD%E6%B3%95%E5%9B%9E%E9%A1%BE/</link>
+      <pubDate>Tue, 19 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://weew12.github.io/series/%E5%AE%8B%E7%BA%A2%E5%BA%B7java%E8%AF%AD%E6%B3%95%E5%9B%9E%E9%A1%BE/</guid>
+      <description></description>
+    </item>
     <item>
       <title>PaperMod</title>
       <link>https://weew12.github.io/series/papermod/</link>
