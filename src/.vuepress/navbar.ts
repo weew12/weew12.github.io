@@ -1,52 +1,38 @@
 import { navbar } from "vuepress-theme-hope";
 
 export default navbar([
-  "/",
-  "/demo/",
   {
-    text: "博文",
-    icon: "pen-to-square",
-    prefix: "/posts/",
+    text: "语言基础",
+    prefix: "/语言基础",
+    icon: "/assets/icon/java.svg",
     children: [
       {
-        text: "苹果",
-        icon: "pen-to-square",
-        prefix: "apple/",
+        text: "宋红康java基础",
+        icon: "",
+        prefix: "宋红康java基础/",
         children: [
-          { text: "苹果1", icon: "pen-to-square", link: "1" },
-          { text: "苹果2", icon: "pen-to-square", link: "2" },
-          "3",
-          "4",
-        ],
+          // { text: "苹果1", icon: "pen-to-square", link: "1" },
+          "1.Java语言基础",
+        ]
       },
       {
-        text: "香蕉",
-        icon: "pen-to-square",
-        prefix: "banana/",
+        text: "其他",
+        icon: "",
+        prefix: "其他/",
         children: [
-          {
-            text: "香蕉 1",
-            icon: "pen-to-square",
-            link: "1",
-          },
-          {
-            text: "香蕉 2",
-            icon: "pen-to-square",
-            link: "2",
-          },
-          "3",
-          "4",
-        ],
-      },
-      { text: "樱桃", icon: "pen-to-square", link: "cherry" },
-      { text: "火龙果", icon: "pen-to-square", link: "dragonfruit" },
-      "tomato",
-      "strawberry",
-    ],
+          // { text: "苹果1", icon: "pen-to-square", link: "1" },
+          "其他1",
+          "其他2",
+        ]
+      }
+    ]
   },
   {
-    text: "V2 文档",
-    icon: "book",
-    link: "https://theme-hope.vuejs.press/zh/",
+    text: "ssm学习",
+    link: "/ssm学习/1.md",
   },
+  {
+    text: "其他",
+    link: "/其他/",
+  }
 ]);
