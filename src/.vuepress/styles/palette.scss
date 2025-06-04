@@ -1,1 +1,8 @@
 // you can change colors here
+// font
+// 正常文本的字体系列
+$vp-font: '"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"' !default;
+// 标题元素的字体系列
+$vp-font-heading: $vp-font !default;
+// 代码块的字体系列
+$vp-font-mono: 'ui-monospace, "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", monospace' !default;
