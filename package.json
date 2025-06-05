@@ -13,7 +13,10 @@
     "docs:dev-clean": "vuepress dev docs --clean-cache --clean-temp",
     "docs:build": "vuepress build docs --clean-cache --clean-temp",
     "docs:preview": "http-server docs/.vuepress/dist",
-    "vp-update": "npx vp-update"
+    "vp-update": "npx vp-update",
+    "elog:init": "elog init",
+    "elog:sync-note": "elog sync",
+    "elog:clean": "elog clean"
   },
   "devDependencies": {
     "@vuepress/bundler-webpack": "2.0.0-rc.23",

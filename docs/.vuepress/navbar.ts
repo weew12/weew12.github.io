@@ -7,9 +7,63 @@
 import { defineNavbarConfig } from 'vuepress-theme-plume'
 
 export default defineNavbarConfig([
-  { text: '首页', link: '/' },
+  { text: "首页", link: "/", icon: "simple-icons:homepage" },
+  { text: "博客", link: "/blog/", icon: "fa6-solid:blog" },
   {
-    text: '笔记',
-    items: [{ text: '示例', link: '/notes/demo/README.md' }]
+    text: "分类",
+    link: "/blog/archives/",
+    icon: "material-symbols:category",
   },
-])
+  {
+    text: "标签",
+    link: "/blog/tags/",
+    icon: "mdi:tags",
+  },
+  {
+    text: "笔记",
+    icon: "garden:notes-fill-12",
+    items: [
+      {
+        text: "后端",
+        icon: "ri:send-to-back",
+        items: [
+          {
+            text: "java语言基础",
+            link: "/后端/java语言基础/",
+            icon: "logos:java",
+          },
+          // {
+          //   text: "",
+          //   link: "",
+          //   icon: "mdi:paper-airplane",
+          //   badge: "徽章",
+          // },
+        ],
+      },
+      // {
+      //   text: "前端",
+      //   icon: "icon-park-solid:theme",
+      //   items: [
+      //     {
+      //       text: "",
+      //       link: "",
+      //       icon: "mdi:paper-airplane",
+      //       badge: "徽章",
+      //     },
+      //   ],
+      // },
+      // {
+      //   text: "AI",
+      //   icon: "icon-park-solid:theme",
+      //   items: [
+      //     {
+      //       text: "",
+      //       link: "",
+      //       icon: "mdi:paper-airplane",
+      //       badge: "徽章",
+      //     },
+      //   ],
+      // },
+    ],
+  },
+]);
