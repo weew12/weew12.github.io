@@ -1,22 +1,28 @@
 {
-  "name": "weew12-blog",
-  "description": "weew12-blog",
-  "version": "1.0.0",
-  "license": "MIT",
+  "name": "weew-12-blog",
   "type": "module",
+  "version": "1.0.0",
+  "description": "WEEW12 BLOG",
+  "author": "weew12 <2528566339@qq.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "^20.6.0 || >=22.0.0"
+  },
   "scripts": {
-    "docs:build": "vuepress-webpack build src",
-    "docs:clean-dev": "vuepress-webpack dev src --clean-cache",
-    "docs:dev": "vuepress-webpack dev src",
-    "docs:update-package": "npx vp-update"
+    "docs:dev": "vuepress dev docs",
+    "docs:dev-clean": "vuepress dev docs --clean-cache --clean-temp",
+    "docs:build": "vuepress build docs --clean-cache --clean-temp",
+    "docs:preview": "http-server docs/.vuepress/dist",
+    "vp-update": "npx vp-update"
   },
   "devDependencies": {
     "@vuepress/bundler-webpack": "2.0.0-rc.23",
-    "@vuepress/plugin-slimsearch": "^2.0.0-rc.106",
+    "http-server": "^14.1.1",
     "sass-embedded": "^1.89.0",
     "sass-loader": "^16.0.5",
-    "vue": "^3.5.15",
+    "typescript": "^5.8.3",
+    "vue": "^3.5.16",
     "vuepress": "2.0.0-rc.23",
-    "vuepress-theme-hope": "2.0.0-rc.89"
+    "vuepress-theme-plume": "1.0.0-rc.152"
   }
 }
