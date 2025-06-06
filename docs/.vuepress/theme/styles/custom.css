@@ -92,8 +92,11 @@
   /* 侧边栏背景 */
   --vp-code-block-bg: rgba(246, 248, 250, 1);
   /* 代码块背景 */
+  
 }
-
+.pager-link {
+  border-radius: 0 !important;
+}
 [data-theme="dark"] {
 
   /**
