@@ -15,6 +15,7 @@
     "@vuepress-plume/plugin-fonts": "1.0.0-rc.161",
     "@vuepress-plume/plugin-search": "1.0.0-rc.161",
     "@vuepress/bundler-vite": "^2.0.0-rc.24",
+    "@vuepress/client": "2.0.0-rc.24",
     "@vuepress/helper": "2.0.0-rc.112",
     "@vuepress/plugin-cache": "2.0.0-rc.112",
     "@vuepress/plugin-comment": "2.0.0-rc.112",

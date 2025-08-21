@@ -3958,6 +3958,7 @@ __metadata:
     "@vuepress-plume/plugin-fonts": "npm:1.0.0-rc.161"
     "@vuepress-plume/plugin-search": "npm:1.0.0-rc.161"
     "@vuepress/bundler-vite": "npm:^2.0.0-rc.24"
+    "@vuepress/client": "npm:2.0.0-rc.24"
     "@vuepress/helper": "npm:2.0.0-rc.112"
     "@vuepress/plugin-cache": "npm:2.0.0-rc.112"
     "@vuepress/plugin-comment": "npm:2.0.0-rc.112"
