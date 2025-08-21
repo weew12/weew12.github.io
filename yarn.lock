@@ -3978,6 +3978,7 @@ __metadata:
     "@vuepress/plugin-sitemap": "npm:2.0.0-rc.112"
     "@vuepress/plugin-watermark": "npm:2.0.0-rc.112"
     "@vuepress/shared": "npm:2.0.0-rc.24"
+    "@vuepress/utils": "npm:2.0.0-rc.24"
     "@vueuse/core": "npm:^13.7.0"
     bcrypt-ts: "npm:^7.1.0"
     chokidar: "npm:4.0.3"
