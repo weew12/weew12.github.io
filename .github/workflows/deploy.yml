@@ -25,10 +25,14 @@ jobs:
         with:
           # 选择要使用的 node 版本
           node-version: 22
-          
-      # 安装指定版本的 Yarn
-      - name: Install correct Yarn version
-        run: npm install -g yarn@4.2.2
+
+      # 添加以下步骤
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Prepare Yarn
+        # run: yarn set version stable  # 或 yarn set version 4.2.2 指定确切版本
+        run: yarn set version 4.2.2  # 或 yarn set version 4.2.2 指定确切版本
 
       # 安装依赖
       # Install dependencies
