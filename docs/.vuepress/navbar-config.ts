@@ -3,23 +3,37 @@ import { defineNavbarConfig } from '../../vuepress-theme-plume/lib/node'
 
 export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
   {
-    text: '配置',
-    icon: 'icon-park-outline:setting-two',
-    link: '/notes/theme/config/intro.md',
-    activeMatch: '^/config/',
-  },
-  {
     text: '博客',
     link: '/blog/',
-    icon: 'material-symbols:article-outline',
-    activeMatch: '^/(blog|article)/',
-  },
+    icon: 'mdi:blog-outline',
+    activeMatch: '^/(?:blog(?!(?:\/tags\/|\/categories\/|\/archives\/))|article)\/.*',
+  },  
   {
-    text: '更多',
-    icon: 'icon-park-outline:more-three',
+    text: '标签',
+    link: '/blog/tags/',
+    icon: 'mdi:tags',
+  },  
+  {
+    text: '分类',
+    link: '/blog/categories/',
+    icon: 'mdi:format-list-bulleted-type',
+  },  
+  {
+    text: '归档',
+    link: '/blog/archives/',
+    icon: 'mdi:archive',
+  },
+  // {
+  //   text: '配置',
+  //   icon: 'material-symbols:edit-note-outline-sharp',
+  //   link: '/notes/config/intro.md',
+  //   activeMatch: '^/config/',
+  // },
+  {
+    text: '笔记',
+    icon: 'mdi:notes-outline',
     badge: '新',
     items: [
-      { text: '常见问题', link: '/faq/', icon: 'wpf:faq' },
       {
         text: 'Vuepress',
         icon: 'logos:vue',

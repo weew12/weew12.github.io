@@ -1,13 +1,11 @@
 import type { ThemeNoteListOptions } from '../../../vuepress-theme-plume/lib/node'
 import { defineNotesConfig } from '../../../vuepress-theme-plume/lib/node'
-import { themeConfig } from './theme-config'
-import { themeGuide } from './theme-guide'
+// import { themeConfig } from './demo-theme-config'
 
 export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
   dir: 'notes',
   link: '/',
   notes: [
-    themeGuide,
-    themeConfig,
+    // themeConfig,
   ],
 })
