@@ -1,18 +1,17 @@
 import type { ThemeNote } from '../../../vuepress-theme-plume/lib/node'
 import { defineNoteConfig } from '../../../vuepress-theme-plume/lib/node'
 
-export const backendConfig: ThemeNote = defineNoteConfig({
-  dir: 'backend',
-  link: '/backend/',
+export const backendLanguageConfig: ThemeNote = defineNoteConfig({
+  dir: 'backend/language',
+  link: '/language/',
   sidebar: [
     {
       // 侧边栏title
-      text: '后端',
+      text: 'Java语言基础',
       // 折叠侧边栏
       collapsed: false,
-      // 补充路径
-      // prefix: 'configs',
-      items: [],
+      prefix: 'java',
+      items: 'auto',
     },
   ],
 })

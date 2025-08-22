@@ -38,8 +38,7 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         text: '后端',
         icon: 'icon-park:send-to-back',
         items: [
-          // { text: '语言基础', link: '/backend/language/intro.md', icon: 'logos:vue' },
-          { text: '语言基础', link: '/backend/language/index/' },
+          { text: '语言基础', link: '/language/java/' },
         ],
       },
     ],
