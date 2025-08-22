@@ -739,7 +739,7 @@ const zhLocale = {
   appearanceText: "外观",
   lightModeSwitchTitle: "切换为浅色主题",
   darkModeSwitchTitle: "切换为深色主题",
-  outlineLabel: "此页内容",
+  outlineLabel: "目录",
   returnToTopLabel: "返回顶部",
   editLinkText: "编辑此页",
   contributorsText: "贡献者",

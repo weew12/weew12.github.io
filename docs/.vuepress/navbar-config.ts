@@ -7,17 +7,17 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
     link: '/blog/',
     icon: 'mdi:blog-outline',
     activeMatch: '^/(?:blog(?!(?:\/tags\/|\/categories\/|\/archives\/))|article)\/.*',
-  },  
+  },
   {
     text: '标签',
     link: '/blog/tags/',
     icon: 'mdi:tags',
-  },  
+  },
   {
     text: '分类',
     link: '/blog/categories/',
     icon: 'mdi:format-list-bulleted-type',
-  },  
+  },
   {
     text: '归档',
     link: '/blog/archives/',
@@ -35,10 +35,11 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
     badge: '新',
     items: [
       {
-        text: 'Vuepress',
-        icon: 'logos:vue',
+        text: '后端',
+        icon: 'icon-park:send-to-back',
         items: [
-          { text: '官方文档', link: 'https://v2.vuepress.vuejs.org', icon: 'logos:vue' },
+          // { text: '语言基础', link: '/backend/language/intro.md', icon: 'logos:vue' },
+          { text: '语言基础', link: '/backend/language/index/' },
         ],
       },
     ],
