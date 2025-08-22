@@ -1,3 +1,0 @@
-Sitemap: https://weew12.github.io/sitemap.xml
-User-agent:*
-Disallow:
