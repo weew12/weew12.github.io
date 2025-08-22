@@ -1,3 +1,4 @@
+// vuepress 配置文件
 /**
  * 查看以下文档了解主题配置
  * - @see https://theme-plume.vuejs.press/config/intro/ 配置说明
@@ -14,22 +15,43 @@ import {defineUserConfig} from "vuepress";
 import {plumeTheme} from "../../vuepress-theme-plume/lib/node";
 
 export default defineUserConfig({
+
+    // 部署站点的基础路径
+    // ref https://v2.vuepress.vuejs.org/zh/reference/config.html#base
     base: "/",
+
+    // 站点的语言
+    // ref https://v2.vuepress.vuejs.org/zh/reference/config.html#lang
     lang: "zh-CN",
+
+    // 站点的标题
+    // ref https://v2.vuepress.vuejs.org/zh/reference/config.html#title
     title: "WEEW12 BLOG",
+
+    // 站点的描述
+    // ref https://v2.vuepress.vuejs.org/zh/reference/config.html#description
     description: "WEEW12 BLOG",
 
+    // 在最终渲染出的 HTML 的 <head> 标签内加入的额外标签
+    // ref https://v2.vuepress.vuejs.org/zh/reference/config.html#head
     head: [
         // 配置站点图标
-        // ['link', { rel: 'icon', type: 'image/png', href: 'https://theme-plume.vuejs.press/favicon-32x32.png' }],
         ["link", {rel: "icon", type: "image/png", href: "/favicon.ico"}],
     ],
 
+    // 设置站点要使用的打包工具
+    // ref https://v2.vuepress.vuejs.org/zh/reference/config.html#bundler
     bundler: viteBundler(),
-    shouldPrefetch: false, // 站点较大，页面数量较多时，不建议启用
+ 
+    // 站点较大，页面数量较多时，不建议启用
+    // 如果你将它设置为 true ，所有其它页面所需的文件都会被预拉取
+    // ref https://v2.vuepress.vuejs.org/zh/reference/config.html#shouldprefetch
+    shouldPrefetch: false, 
 
+    // 设置站点要使用的主题
+    // ref https://v2.vuepress.vuejs.org/zh/reference/config.html#theme
     theme: plumeTheme({
-        /* 添加您的部署域名, 有助于 SEO, 生成 sitemap */
+        // 当 hostname 配置为有效域名时，主题将会生成 sitemap 和 seo 相关的内容。
         hostname: 'https://weew12.github.io',
 
         /* 文档仓库配置，用于 editLink */
@@ -65,16 +87,6 @@ export default defineUserConfig({
          * @see https://theme-plume.vuejs.press/config/basic/#cache
          */
         cache: "filesystem",
-
-        /**
-         * 为 markdown 文件自动添加 frontmatter 配置
-         * @see https://theme-plume.vuejs.press/config/basic/#autofrontmatter
-         */
-        // autoFrontmatter: {
-        //   permalink: true,  // 是否生成永久链接
-        //   createTime: true, // 是否生成创建时间
-        //   title: true,      // 是否生成标题
-        // },
 
         /* 本地搜索, 默认启用 */
         search: {provider: "local"},
@@ -163,41 +175,22 @@ export default defineUserConfig({
          * 评论 comments
          * @see https://theme-plume.vuejs.press/guide/features/comments/
          */
-        // comment: {
-        //   provider: '', // "Artalk" | "Giscus" | "Twikoo" | "Waline"
-        //   comment: true,
-        //   repo: '',
-        //   repoId: '',
-        //   category: '',
-        //   categoryId: '',
-        //   mapping: 'pathname',
-        //   reactionsEnabled: true,
-        //   inputPosition: 'top',
-        // },
+        comment: {
+          provider: 'Giscus', // "Artalk" | "Giscus" | "Twikoo" | "Waline"
+          comment: true,
+          repo: 'weew12/weew12.github.io',
+          repoId: 'R_kgDOO1vhMw',
+          category: 'General',
+          categoryId: 'DIC_kwDOO1vhM84CudmI',
+          mapping: 'pathname',
+          reactionsEnabled: true,
+          inputPosition: 'top',
+        },
 
         /**
          * 资源链接替换
          * @see https://theme-plume.vuejs.press/guide/features/replace-assets/
          */
         // replaceAssets: 'https://cdn.example.com',
-
-        /**
-         * 加密功能
-         * @see https://theme-plume.vuejs.press/guide/features/encryption/
-         */
-        encrypt: {
-            rules: {
-                // 可以是 md 文件的相对路径，对该文件加密
-                '/article/enx7c9s/': '123456',
-                // 可以是 文件夹的路径，对该目录下所有文章加密
-                // '/notes/vuepress-theme-plume/': '123456',
-                // 可以是 访问地址的请求路径，对该访问路径下所有文章加密
-                // '/vuepress-theme-plume/': '123456',
-                // 可以是 具体的某个页面的请求路径，对该页面加密
-                // '/article/f8dnci3/': '123456',
-                // 如果是 `^` 开头，则匹配该正则表达式的页面也会加密
-                // '^/(a|b)/': '123456',
-            }
-        },
     }),
 });

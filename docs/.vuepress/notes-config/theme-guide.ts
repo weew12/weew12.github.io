@@ -1,5 +1,5 @@
-import type { ThemeNote } from '../../../../vuepress-theme-plume/lib/node'
-import { defineNoteConfig } from '../../../../vuepress-theme-plume/lib/node'
+import type { ThemeNote } from '../../../vuepress-theme-plume/lib/node'
+import { defineNoteConfig } from '../../../vuepress-theme-plume/lib/node'
 
 export const themeGuide: ThemeNote = defineNoteConfig({
   dir: 'theme/guide',
