@@ -37,6 +37,8 @@ export default defineUserConfig({
     head: [
         // 配置站点图标
         ["link", {rel: "icon", type: "image/png", href: "/favicon.ico"}],
+        // 解决语雀防盗链 绕过
+        ["meta", {name: "referrer", content: "no-referrer"}],
     ],
 
     // 设置站点要使用的打包工具
