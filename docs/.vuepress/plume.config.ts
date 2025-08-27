@@ -47,7 +47,7 @@ export default defineThemeConfig({
     aside: true, 
 
     // 页内大纲， 默认显示 h2, h3
-    outline: [2, 3], 
+    outline: [2, 4], 
 
     /**
      * 文章版权信息
