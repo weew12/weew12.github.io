@@ -4,7 +4,8 @@ config:
   -
     type: banner
     full: true
-    banner: /cover.jpg
+    # banner: /cover.jpg
+    banner: /pexels-mahima-518693-1250260.jpg
     bannerMask:
       light: 0
       dark: 0.3
@@ -24,3 +25,4 @@ config:
   -
     type: blog
 ---
+890
