@@ -25,4 +25,3 @@ config:
   -
     type: blog
 ---
-890

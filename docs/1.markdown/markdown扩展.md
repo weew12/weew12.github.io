@@ -4,7 +4,6 @@ createTime: 2024/03/05 22:49:39
 permalink: /article/mcgayb5w/
 tags:
   - markdown
-  - 教程
 ---
 
 ## 标题锚点

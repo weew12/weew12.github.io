@@ -36,14 +36,14 @@ const actions = computed(() => props.hero?.actions ?? matter.value.hero?.actions
 
 <template>
   <div class="vp-home-banner" :style="bannerStyle">
-    <div class="banner-mask" :style="{ opacity: mask }"/>
+    <div class="banner-mask" :style="{ opacity: mask }" />
     <div class="container">
       <div class="content">
         <h2 v-if="name" class="hero-name">
           {{ name }}
         </h2>
         <p v-if="tagline" class="hero-tagline">
-          <span class="line"/> <span>{{ tagline }}</span>
+          <span class="line" /> <span>{{ tagline }}</span>
         </p>
         <p v-if="text" class="hero-text">
           {{ text }}
@@ -51,13 +51,7 @@ const actions = computed(() => props.hero?.actions ?? matter.value.hero?.actions
 
         <div v-if="actions.length" class="actions">
           <div v-for="action in actions" :key="action.link" class="action">
-            <VPButton
-                tag="a"
-                size="medium"
-                :theme="action.theme"
-                :text="action.text"
-                :href="action.link"
-            />
+            <VPButton tag="a" size="medium" :theme="action.theme" :text="action.text" :href="action.link" />
           </div>
         </div>
       </div>
@@ -66,6 +60,10 @@ const actions = computed(() => props.hero?.actions ?? matter.value.hero?.actions
 </template>
 
 <style scoped>
+.calendar {
+  border: 1px solid red;
+}
+
 .vp-home-banner {
   display: flex;
   justify-content: center;
