@@ -23,22 +23,22 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
     link: '/blog/archives/',
     icon: 'mdi:archive',
   },
-  // {
-  //   text: '配置',
-  //   icon: 'material-symbols:edit-note-outline-sharp',
-  //   link: '/notes/config/intro.md',
-  //   activeMatch: '^/config/',
-  // },
   {
     text: '笔记',
     icon: 'mdi:notes-outline',
-    badge: '新',
     items: [
       {
         text: '后端',
         icon: 'icon-park:send-to-back',
         items: [
           { text: '语言基础', link: '/language/java/1pj4wq5u/', icon: 'streamline-freehand:programming-language-script-lock'},
+        ],
+      },
+      {
+        text: '数据库',
+        icon: 'streamline-plump-color:database',
+        items: [
+          { text: 'MYSQL', link: '/mysql/q449w0j5/', icon: 'logos:mysql', badge: 'new'},
         ],
       },
     ],
