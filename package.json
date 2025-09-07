@@ -17,7 +17,6 @@
     "@vuepress/bundler-vite": "^2.0.0-rc.24",
     "@vuepress/client": "2.0.0-rc.24",
     "@vuepress/helper": "2.0.0-rc.112",
-    "@vuepress/plugin-baidu-analytics": "^2.0.0-rc.112",
     "@vuepress/plugin-cache": "2.0.0-rc.112",
     "@vuepress/plugin-comment": "2.0.0-rc.112",
     "@vuepress/plugin-copy-code": "2.0.0-rc.112",
