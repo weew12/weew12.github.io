@@ -1745,6 +1745,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vuepress/plugin-baidu-analytics@npm:^2.0.0-rc.112":
+  version: 2.0.0-rc.112
+  resolution: "@vuepress/plugin-baidu-analytics@npm:2.0.0-rc.112"
+  dependencies:
+    "@vuepress/helper": "npm:2.0.0-rc.112"
+    vue: "npm:^3.5.17"
+  peerDependencies:
+    vuepress: 2.0.0-rc.24
+  checksum: 10c0/69e20e7251c602a2821bf1a490220f6279ac31e27b00df7d103f5dbaabaf19576a82a85f991ddf8d13da75f48e669946ba632f5aa49a6150fe1bb9c565a15ef7
+  languageName: node
+  linkType: hard
+
 "@vuepress/plugin-cache@npm:2.0.0-rc.112":
   version: 2.0.0-rc.112
   resolution: "@vuepress/plugin-cache@npm:2.0.0-rc.112"
@@ -3860,6 +3872,7 @@ __metadata:
     "@vuepress/bundler-vite": "npm:^2.0.0-rc.24"
     "@vuepress/client": "npm:2.0.0-rc.24"
     "@vuepress/helper": "npm:2.0.0-rc.112"
+    "@vuepress/plugin-baidu-analytics": "npm:^2.0.0-rc.112"
     "@vuepress/plugin-cache": "npm:2.0.0-rc.112"
     "@vuepress/plugin-comment": "npm:2.0.0-rc.112"
     "@vuepress/plugin-copy-code": "npm:2.0.0-rc.112"

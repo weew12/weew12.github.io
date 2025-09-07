@@ -13,6 +13,7 @@
 import {viteBundler} from '@vuepress/bundler-vite'
 import {defineUserConfig} from "vuepress";
 import {plumeTheme} from "../../vuepress-theme-plume/lib/node";
+import { baiduAnalyticsPlugin } from '@vuepress/plugin-baidu-analytics';
 
 export default defineUserConfig({
 
@@ -39,6 +40,20 @@ export default defineUserConfig({
         ["link", {rel: "icon", type: "image/png", href: "/favicon.ico"}],
         // 解决语雀防盗链 绕过
         ["meta", {name: "referrer", content: "no-referrer"}],
+        // 百度统计
+        [
+            "script",
+            {},
+            `
+                var _hmt = _hmt || [];
+                (function() {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?9eca10ff85cb3c6610db3f1095fc4844";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+                })();
+            `
+        ]
     ],
 
     // 设置站点要使用的打包工具
@@ -195,4 +210,12 @@ export default defineUserConfig({
          */
         // replaceAssets: 'https://cdn.example.com',
     }),
+
+    // vuepress plugins 配置
+    plugins: [
+        // 百度统计 ref: https://ecosystem.vuejs.press/zh/plugins/analytics/baidu-analytics.html
+        baiduAnalyticsPlugin({
+            id: '9eca10ff85cb3c6610db3f1095fc4844'
+        }),
+    ]
 });
