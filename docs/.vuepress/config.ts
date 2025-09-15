@@ -117,7 +117,7 @@ export default defineUserConfig({
                     dark: "material-theme-ocean",
                 },
                 lineNumbers: false,
-            },
+            }
         },
 
         /* 文章字数统计、阅读时间，设置为 false 则禁用 */
