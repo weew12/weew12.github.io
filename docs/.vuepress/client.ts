@@ -1,4 +1,4 @@
-import {defineClientConfig} from '@vuepress/client'
+import { defineClientConfig } from '@vuepress/client'
 // import RepoCard from 'vuepress-theme-plume/features/RepoCard.vue'
 // import NpmBadge from 'vuepress-theme-plume/features/NpmBadge.vue'
 // import NpmBadgeGroup from 'vuepress-theme-plume/features/NpmBadgeGroup.vue'
@@ -9,7 +9,7 @@ import {defineClientConfig} from '@vuepress/client'
 import './theme/styles/custom.css'
 
 export default defineClientConfig({
-    enhance({app, router}) {
+    enhance({ app, router }) {
         // built-in components
         // app.component('RepoCard', RepoCard)
         // app.component('NpmBadge', NpmBadge)
@@ -20,3 +20,10 @@ export default defineClientConfig({
         // app.component('CustomComponent', CustomComponent)
     },
 })
+
+// // mermaid 配置
+// import mermaid from 'mermaid'
+
+// mermaid.initialize({
+
+// })

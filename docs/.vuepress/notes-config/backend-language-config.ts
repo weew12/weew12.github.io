@@ -13,5 +13,11 @@ export const backendLanguageConfig: ThemeNote = defineNoteConfig({
       prefix: 'java',
       items: 'auto',
     },
+    {
+      text: 'Java集合专栏',
+      collapsed: false,
+      prefix: 'java-collection',
+      items: 'auto',
+    }
   ],
 })
