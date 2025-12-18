@@ -32,13 +32,14 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         icon: 'icon-park:send-to-back',
         items: [
           { text: '语言基础', link: '/language/java/1pj4wq5u/', icon: 'streamline-freehand:programming-language-script-lock'},
+          { text: '框架相关', link: '/framework/heima_ssm_book/r3rcs5o0/', icon: 'simple-icons:framework', badge: 'new'},
         ],
       },
       {
         text: '数据库',
         icon: 'streamline-plump-color:database',
         items: [
-          { text: 'MYSQL', link: '/mysql/q449w0j5/', icon: 'logos:mysql', badge: 'new'},
+          { text: 'MYSQL', link: '/mysql/q449w0j5/', icon: 'logos:mysql'},
         ],
       },
     ],

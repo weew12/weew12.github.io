@@ -2,6 +2,7 @@ import type { ThemeNoteListOptions } from '../../../vuepress-theme-plume/lib/nod
 import { defineNotesConfig } from '../../../vuepress-theme-plume/lib/node'
 import { backendLanguageConfig } from './backend-language-config'
 import { databaseMysqlConfig } from './database-mysql-config'
+import { backendFrameworkConfig } from './backend-framework-config'
 
 export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
   dir: 'notes',
@@ -9,6 +10,7 @@ export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
   notes: [
     backendLanguageConfig,
     databaseMysqlConfig,
+    backendFrameworkConfig,
   ],
 
 })

@@ -9,14 +9,14 @@ export const backendLanguageConfig: ThemeNote = defineNoteConfig({
       // 侧边栏title
       text: 'Java语言基础',
       // 折叠侧边栏
-      collapsed: false,
+      collapsed: true,
       prefix: 'java',
       items: 'auto',
     },
     {
       text: 'Java集合专栏',
-      collapsed: false,
-      prefix: 'java-collection',
+      collapsed: true,
+      prefix: 'java_collection',
       items: 'auto',
     }
   ],
