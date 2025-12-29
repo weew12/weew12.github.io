@@ -32,8 +32,10 @@ const routeLocale = useRouteLocale()
   align-items: center;
   width: 100%;
   height: var(--vp-nav-height);
-  font-size: 16px;
-  font-weight: 600;
+  /* font-size: 16px; */
+  font-size: 20px;
+  /* font-weight: 600; */
+  font-weight: 900;
   color: var(--vp-c-text-1);
   border-bottom: 1px solid transparent;
   transition: opacity var(--vp-t-color), color var(--vp-t-color), border-bottom var(--vp-t-color);

@@ -70,7 +70,8 @@ function onBlur() {
 .text {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: 17px;
   font-weight: 500;
   line-height: normal;
   color: var(--vp-c-text-1);

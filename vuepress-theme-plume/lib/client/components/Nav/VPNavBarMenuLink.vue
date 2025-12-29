@@ -44,7 +44,8 @@ const {page} = useData()
   display: flex;
   align-items: center;
   padding: 0 10px;
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: 17px;
   font-weight: 500;
   line-height: var(--vp-nav-height);
   color: var(--vp-c-text-1);

@@ -46,7 +46,8 @@ const {page} = useData()
 .link {
   display: block;
   padding: 0 12px;
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: 17px;
   font-weight: 500;
   line-height: 32px;
   color: var(--vp-c-text-1);
