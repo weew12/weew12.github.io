@@ -7,8 +7,8 @@ import VPDocFooter from './VPDocFooter.vue'
 import VPDocMeta from './VPDocMeta.vue'
 import VPEncryptPage from './VPEncryptPage.vue'
 import VPTransitionFadeSlideY from './VPTransitionFadeSlideY.vue'
-import {computed, nextTick, ref, watch} from 'vue'
-import {useRoute} from '@vuepress/client'
+import { computed, nextTick, ref, watch } from 'vue'
+import { useRoute } from '@vuepress/client'
 import {
   useBlogPageData,
   useContributors,
@@ -18,14 +18,14 @@ import {
   useSidebar,
 } from '../composables'
 
-const {page, theme, frontmatter} = useData()
+const { page, theme, frontmatter } = useData()
 const route = useRoute()
 
-const {hasSidebar, hasAside, leftAside} = useSidebar()
-const {isBlogPost} = useBlogPageData()
+const { hasSidebar, hasAside, leftAside } = useSidebar()
+const { isBlogPost } = useBlogPageData()
 const headers = useHeaders()
-const {isPageDecrypted} = useEncrypt()
-const {mode: contributorsMode} = useContributors()
+const { isPageDecrypted } = useEncrypt()
+const { mode: contributorsMode } = useContributors()
 
 const enableAside = computed(() => {
   if (!hasAside.value)
@@ -38,75 +38,73 @@ const enableAside = computed(() => {
 })
 
 const pageName = computed(() =>
-    route.path.replace(/[./]+/g, '_').replace(/_html$/, ''),
+  route.path.replace(/[./]+/g, '_').replace(/_html$/, ''),
 )
 const enabledExternalLinkIcon = computed(
-    () =>
-        theme.value.externalLinkIcon
-        && frontmatter.value.externalLinkIcon !== false,
+  () =>
+    theme.value.externalLinkIcon
+    && frontmatter.value.externalLinkIcon !== false,
 )
 
 const asideEl = ref<HTMLElement>()
 watch(
-    () => route.hash,
-    hash =>
-        nextTick(() => {
-          if (!asideEl.value)
-            return
-          const activeItem = asideEl.value.querySelector(
-              `.outline-link[href="${hash}"]`,
-          )
-          if (!activeItem || !hash) {
-            asideEl.value.scrollTop = 0
-            return
-          }
+  () => route.hash,
+  hash =>
+    nextTick(() => {
+      if (!asideEl.value)
+        return
+      const activeItem = asideEl.value.querySelector(
+        `.outline-link[href="${hash}"]`,
+      )
+      if (!activeItem || !hash) {
+        asideEl.value.scrollTop = 0
+        return
+      }
 
-          const {top: navTop, height: navHeight}
-              = asideEl.value.getBoundingClientRect()
-          const {top: activeTop, height: activeHeight}
-              = activeItem.getBoundingClientRect()
+      const { top: navTop, height: navHeight }
+        = asideEl.value.getBoundingClientRect()
+      const { top: activeTop, height: activeHeight }
+        = activeItem.getBoundingClientRect()
 
-          if (activeTop < navTop || activeTop + activeHeight > navTop + navHeight)
-            activeItem.scrollIntoView({block: 'center'})
-        }),
-    {immediate: true},
+      if (activeTop < navTop || activeTop + activeHeight > navTop + navHeight)
+        activeItem.scrollIntoView({ block: 'center' })
+    }),
+  { immediate: true },
 )
 </script>
 
 <template>
-  <div
-      class="vp-doc-container" :class="{
-      'has-sidebar': hasSidebar,
-      'has-aside': enableAside,
-      'is-blog': isBlogPost,
-      'with-encrypt': !isPageDecrypted,
-    }"
-  >
-    <slot name="doc-top"/>
+  <div class="vp-doc-container" :class="{
+    'has-sidebar': hasSidebar,
+    'has-aside': enableAside,
+    'is-blog': isBlogPost,
+    'with-encrypt': !isPageDecrypted,
+  }">
+    <slot name="doc-top" />
     <div class="container">
       <div v-if="enableAside" class="aside" :class="{ 'left-aside': leftAside }" vp-outline>
-        <div class="aside-curtain"/>
+        <div class="aside-curtain" />
         <VPTransitionFadeSlideY>
           <div ref="asideEl" :key="page.path" class="aside-container">
             <div class="aside-content">
               <VPDocAside>
                 <template #aside-top>
-                  <slot name="aside-top"/>
+                  <slot name="aside-top" />
                 </template>
                 <template #aside-bottom>
-                  <slot name="aside-bottom"/>
+                  <slot name="aside-bottom" />
                 </template>
                 <template #aside-outline-before>
-                  <slot name="aside-outline-before"/>
+                  <slot name="aside-outline-before" />
                 </template>
                 <template #aside-outline-after>
-                  <slot name="aside-outline-after"/>
+                  <slot name="aside-outline-after" />
                 </template>
                 <template #aside-ads-before>
-                  <slot name="aside-ads-before"/>
+                  <slot name="aside-ads-before" />
                 </template>
                 <template #aside-ads-after>
-                  <slot name="aside-ads-after"/>
+                  <slot name="aside-ads-after" />
                 </template>
               </VPDocAside>
             </div>
@@ -116,49 +114,47 @@ watch(
       <VPTransitionFadeSlideY>
         <div :key="page.path" class="content">
           <div class="content-container">
-            <slot name="doc-before"/>
+            <slot name="doc-before" />
             <main class="main">
-              <VPDocBreadcrumbs/>
+              <VPDocBreadcrumbs />
 
-              <slot name="doc-meta-top"/>
+              <slot name="doc-meta-top" />
               <VPDocMeta>
                 <template #doc-meta-before>
-                  <slot name="doc-meta-before"/>
+                  <slot name="doc-meta-before" />
                 </template>
                 <template #doc-meta-after>
-                  <slot name="doc-meta-after"/>
+                  <slot name="doc-meta-after" />
                 </template>
               </VPDocMeta>
-              <slot name="doc-meta-bottom"/>
+              <slot name="doc-meta-bottom" />
 
-              <VPEncryptPage v-if="!isPageDecrypted"/>
-              <div
-                  v-else class="vp-doc plume-content"
-                  :class="[pageName, enabledExternalLinkIcon && 'external-link-icon-enabled']" vp-content
-              >
-                <slot name="doc-content-before"/>
+              <VPEncryptPage v-if="!isPageDecrypted" />
+              <div v-else class="vp-doc plume-content"
+                :class="[pageName, enabledExternalLinkIcon && 'external-link-icon-enabled']" vp-content>
+                <slot name="doc-content-before" />
 
-                <Content/>
+                <Content />
 
-                <DocGitContributors v-if="contributorsMode === 'block'"/>
-                <DocGitChangelog/>
-                <VPDocCopyright/>
+                <DocGitContributors v-if="contributorsMode === 'block'" />
+                <DocGitChangelog />
+                <VPDocCopyright />
               </div>
             </main>
             <VPDocFooter v-if="isPageDecrypted">
               <template #doc-footer-before>
-                <slot name="doc-footer-before"/>
+                <slot name="doc-footer-before" />
               </template>
             </VPDocFooter>
 
-            <VPComment/>
+            <VPComment />
 
-            <slot name="doc-after"/>
+            <slot name="doc-after" />
           </div>
         </div>
       </VPTransitionFadeSlideY>
     </div>
-    <slot name="doc-bottom"/>
+    <slot name="doc-bottom" />
   </div>
 </template>
 
@@ -167,10 +163,10 @@ watch(
   width: 100%;
   padding: 32px 24px 96px;
   /* 加个背景 */
-    --vp-doc-blog-bg: rgba(100, 190, 190, .12);
-    background-image: linear-gradient(90deg, var(--vp-doc-blog-bg) 3%, transparent 0), linear-gradient(1turn, var(--vp-doc-blog-bg) 3%, transparent 0);
-    background-position: 50%;
-    background-size: 20px 20px;
+  --vp-doc-blog-bg: rgba(100, 190, 190, .12);
+  background-image: linear-gradient(90deg, var(--vp-doc-blog-bg) 3%, transparent 0), linear-gradient(1turn, var(--vp-doc-blog-bg) 3%, transparent 0);
+  background-position: 50%;
+  background-size: 20px 20px;
 }
 
 /* 加个背景 暗黑模式 */

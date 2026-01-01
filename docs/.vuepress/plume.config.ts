@@ -69,7 +69,7 @@ export default defineThemeConfig({
         message:
         // 'Power by <a target="_blank" href="https://v2.vuepress.vuejs.org/">VuePress</a> & <a target="_blank" href="https://theme-plume.vuejs.press">vuepress-theme-plume</a>',
             '',
-        copyright: "Copyright © 2025 weew12",
+        copyright: "Copyright © " + new Date().getFullYear() + " weew12",
     },
 
     /**
