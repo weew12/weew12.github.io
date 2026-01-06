@@ -7,7 +7,7 @@ import VPBlogNav from './VPBlogNav.vue'
 import VPBlogTags from './VPBlogTags.vue'
 import VPPostList from './VPPostList.vue'
 import VPTransitionFadeSlideY from '../VPTransitionFadeSlideY.vue'
-import {useData} from '../../composables'
+import { useData } from '../../composables'
 
 defineProps<{
   homeBlog?: boolean
@@ -15,85 +15,82 @@ defineProps<{
   onlyOnce?: boolean
 }>()
 
-const {theme, page} = useData()
+const { theme, page } = useData()
 </script>
 
 <template>
   <div class="vp-blog" :class="{ 'home-blog': homeBlog }" vp-blog>
-    <slot name="blog-top"/>
+    <slot name="blog-top" />
 
-    <div
-        class="blog-container"
-        :class="{ 'no-profile': !theme.profile, 'left': theme.profile?.layout === 'left' }"
-    >
-      <VPBlogNav v-if="!theme.profile" is-local/>
+    <div class="blog-container" :class="{ 'no-profile': !theme.profile, 'left': theme.profile?.layout === 'left' }">
+      <VPBlogNav v-if="!theme.profile" is-local />
 
       <VPTransitionFadeSlideY>
         <VPBlogArchives v-if="page.type === 'blog-archives'">
           <template #blog-archives-before>
-            <slot name="blog-archives-before"/>
+            <slot name="blog-archives-before" />
           </template>
           <template #blog-archives-after>
-            <slot name="blog-archives-after"/>
+            <slot name="blog-archives-after" />
           </template>
         </VPBlogArchives>
         <VPBlogTags v-else-if="page.type === 'blog-tags'">
           <template #blog-tags-before>
-            <slot name="blog-tags-before"/>
+            <slot name="blog-tags-before" />
           </template>
           <template #blog-tags-after>
-            <slot name="blog-tags-after"/>
+            <slot name="blog-tags-after" />
           </template>
           <template #blog-tags-title-after>
-            <slot name="blog-tags-title-after"/>
+            <slot name="blog-tags-title-after" />
           </template>
           <template #blog-tags-content-before>
-            <slot name="blog-tags-content-before"/>
+            <slot name="blog-tags-content-before" />
           </template>
         </VPBlogTags>
         <VPBlogCategories v-else-if="page.type === 'blog-categories'">
           <template #blog-categories-before>
-            <slot name="blog-categories-before"/>
+            <slot name="blog-categories-before" />
           </template>
           <template #blog-categories-after>
-            <slot name="blog-categories-after"/>
+            <slot name="blog-categories-after" />
           </template>
           <template #blog-categories-content-before>
-            <slot name="blog-categories-content-before"/>
+            <slot name="blog-categories-content-before" />
           </template>
         </VPBlogCategories>
         <VPPostList v-else :home-blog="homeBlog">
           <template #blog-post-list-before>
-            <slot name="blog-post-list-before"/>
+            <slot name="blog-post-list-before" />
           </template>
           <template #blog-post-list-after>
-            <slot name="blog-post-list-after"/>
+            <slot name="blog-post-list-after" />
           </template>
           <template #blog-post-list-pagination-after>
-            <slot name="blog-post-list-pagination-after"/>
+            <slot name="blog-post-list-pagination-after" />
           </template>
         </VPPostList>
       </VPTransitionFadeSlideY>
 
       <VPBlogAside>
         <template #blog-aside-top>
-          <slot name="blog-aside-top"/>
+          <slot name="blog-aside-top" />
         </template>
         <template #blog-aside-bottom>
-          <slot name="blog-aside-bottom"/>
+          <slot name="blog-aside-bottom" />
         </template>
       </VPBlogAside>
       <VPBlogExtract>
         <template #blog-extract-before>
-          <slot name="blog-extract-before"/>
+          <slot name="blog-extract-before" />
         </template>
         <template #blog-extract-after>
-          <slot name="blog-extract-after"/>
+          <slot name="blog-extract-after" />
         </template>
       </VPBlogExtract>
     </div>
 
-    <slot name="blog-bottom"/>
+    <slot name="blog-bottom" />
   </div>
 </template>
 
@@ -103,6 +100,11 @@ const {theme, page} = useData()
   min-height: calc(100vh - var(--vp-footer-height, 0px));
   padding: calc(var(--vp-nav-height) + 32px) 16px 32px;
   transition: background-color var(--vp-t-color);
+  /** 首页博客添加背景 */
+  --vp-doc-blog-bg: rgba(100, 190, 190, .12);
+  background-image: linear-gradient(90deg, var(--vp-doc-blog-bg) 3%, transparent 0), linear-gradient(1turn, var(--vp-doc-blog-bg) 3%, transparent 0);
+  background-position: 50%;
+  background-size: 20px 20px;
 }
 
 .vp-blog.home-blog {

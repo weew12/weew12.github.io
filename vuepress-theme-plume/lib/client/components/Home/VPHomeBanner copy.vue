@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import type { ThemeHomeBanner } from '../../../shared'
+import type {ThemeHomeBanner} from '../../../shared'
 import VPButton from '../VPButton.vue'
-import { computed } from 'vue'
-import { withBase } from '@vuepress/client'
-import { isLinkHttp } from '@vuepress/shared'
-import { useData } from '../../composables'
+import {computed} from 'vue'
+import {withBase} from '@vuepress/client'
+import {isLinkHttp} from '@vuepress/shared'
+import {useData} from '../../composables'
 
 const props = defineProps<ThemeHomeBanner>()
 
 const DEFAULT_BANNER = 'https://api.pengzhanbo.cn/wallpaper/bing'
 
-const { isDark, frontmatter: matter } = useData<'home'>()
+const {isDark, frontmatter: matter} = useData<'home'>()
 
 const mask = computed(() => {
   const mask = props.bannerMask ?? matter.value.bannerMask
@@ -32,14 +32,6 @@ const name = computed(() => props.hero?.name ?? matter.value.hero?.name ?? 'Plum
 const tagline = computed(() => props.hero?.tagline ?? matter.value.hero?.tagline ?? 'A VuePress Theme')
 const text = computed(() => props.hero?.text ?? matter.value.hero?.text)
 const actions = computed(() => props.hero?.actions ?? matter.value.hero?.actions ?? [])
-
-// 点击箭头滚动到下一页
-const scrollToNextSection = () => {
-  window.scrollTo({
-    top: window.innerHeight, // 滚动到视口高度位置（Banner 下方）
-    behavior: 'smooth' // 平滑滚动
-  })
-}
 </script>
 
 <template>
@@ -64,17 +56,11 @@ const scrollToNextSection = () => {
         </div>
       </div>
     </div>
-    <!-- 新增：向下翻页指引箭头 -->
-    <div class="scroll-down-arrow" @click="scrollToNextSection">
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 5v14M5 12l7 7 7-7" />
-      </svg>
-    </div>
   </div>
 </template>
 
 <style scoped>
+
 .vp-home-banner {
   display: flex;
   justify-content: center;
@@ -152,45 +138,6 @@ const scrollToNextSection = () => {
   border-radius: 5px;
 }
 
-/* 新增：向下翻页箭头样式 */
-.scroll-down-arrow {
-  position: absolute;
-  bottom: 2rem;
-  /* 箭头距离底部的距离 */
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--vp-c-text-hero-tagline);
-  /* 复用现有文字颜色，适配明暗主题 */
-  animation: bounce 2s infinite ease-in-out;
-  /* 上下浮动动画 */
-  cursor: pointer;
-  /* 提示用户可点击/滚动 */
-  z-index: 2;
-  /* 确保箭头在遮罩层之上 */
-  transition: color 0.3s ease;
-  /* 颜色过渡动画 */
-}
-
-/* 新增：箭头浮动动画 */
-@keyframes bounce {
-
-  0%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-
-  50% {
-    transform: translateX(-50%) translateY(10px);
-  }
-}
-
-/* 新增：箭头hover效果 */
-.scroll-down-arrow:hover {
-  /* color: var(--vp-c-primary); */
-  /* 复用主题主色，增强交互反馈 */
-}
-
-/* 原有响应式样式 */
 @media (min-width: 960px) {
   .vp-home-banner .container {
     max-width: 768px;
@@ -210,15 +157,6 @@ const scrollToNextSection = () => {
 
   .vp-home-banner .content .hero-tagline {
     font-size: 32px;
-  }
-}
-
-/* 新增：移动端箭头适配 */
-@media (max-width: 768px) {
-  .scroll-down-arrow {
-    bottom: 1rem;
-    width: 24px;
-    height: 24px;
   }
 }
 
