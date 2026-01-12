@@ -3,7 +3,7 @@
   <button class="vp-switch" type="button" role="switch">
     <span class="check">
       <span v-if="$slots.default" class="icon">
-        <slot/>
+        <slot />
       </span>
     </span>
   </button>
@@ -14,49 +14,55 @@
   position: relative;
   display: block;
   flex-shrink: 0;
-  width: 40px;
-  height: 22px;
+  width: 44px;
+  height: 24px;
   background-color: var(--vp-input-switch-bg-color);
-  border: 1px solid var(--vp-input-border-color);
-  border-radius: 5px;
-  transition: border-color 0.25s ease,
-  background-color 0.25s ease;
+  border: none;
+  border-radius: 12px;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  outline: none;
 }
 
 .vp-switch:hover {
-  border-color: var(--vp-c-brand-1);
+  background-color: var(--vp-input-switch-bg-color);
+}
+
+.vp-switch:focus-visible {
+  box-shadow: 0 0 0 2px var(--vp-c-brand-1);
 }
 
 .check {
   position: absolute;
-  top: 1px;
+  top: 2px;
 
   /* rtl:ignore */
-  left: 1px;
-  width: 18px;
-  height: 18px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
   background-color: var(--vp-c-neutral-inverse);
   border-radius: 50%;
-  box-shadow: var(--vp-shadow-1);
-  transition: transform 0.25s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon {
   position: relative;
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   overflow: hidden;
   border-radius: 50%;
 }
 
 .icon :deep([class^="vpi-"]) {
   position: absolute;
-  top: 3px;
-  left: 3px;
+  top: 4px;
+  left: 4px;
   width: 12px;
   height: 12px;
   color: var(--vp-c-text-2);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="dark"] .icon :deep([class^="vpi-"]) {

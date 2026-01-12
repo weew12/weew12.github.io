@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import VPSwitch from './VPSwitch.vue'
-import {computed, inject, nextTick, ref, watchPostEffect} from 'vue'
-import {enableTransitions, useData} from '../composables'
+import { computed, inject, nextTick, ref, watchPostEffect } from 'vue'
+import { enableTransitions, useData } from '../composables'
 
 const checked = ref(false)
-const {theme, isDark} = useData()
+const { theme, isDark } = useData()
 
 const transitionMode = computed(() => {
   const transition = theme.value.transition
@@ -15,7 +15,7 @@ const transitionMode = computed(() => {
   return typeof options.appearance === 'string' ? options.appearance : 'fade'
 })
 
-const toggleAppearance = inject('toggle-appearance', async ({clientX: x, clientY: y}: MouseEvent) => {
+const toggleAppearance = inject('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
   if (!enableTransitions() || transitionMode.value === false) {
     isDark.value = !isDark.value
     return
@@ -34,8 +34,8 @@ const toggleAppearance = inject('toggle-appearance', async ({clientX: x, clientY
     const clipPath = [
       `circle(0px at ${x}px ${y}px)`,
       `circle(${Math.hypot(
-          Math.max(x, innerWidth - x),
-          Math.max(y, innerHeight - y),
+        Math.max(x, innerWidth - x),
+        Math.max(y, innerHeight - y),
       )}px at ${x}px ${y}px)`,
     ]
     keyframes.clipPath = isDark.value ? clipPath.reverse() : clipPath
@@ -63,36 +63,44 @@ const toggleAppearance = inject('toggle-appearance', async ({clientX: x, clientY
   }
 
   document.documentElement.animate(
-      keyframes,
-      {
-        duration,
-        easing: 'ease-in',
-        pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`,
-      },
+    keyframes,
+    {
+      duration,
+      easing: 'ease-in',
+      pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`,
+    },
   )
 })
 
 const switchTitle = ref('')
 watchPostEffect(() => {
   switchTitle.value = isDark.value
-      ? theme.value.lightModeSwitchTitle || 'Switch to light theme'
-      : theme.value.darkModeSwitchTitle || 'Switch to dark theme'
+    ? theme.value.lightModeSwitchTitle || 'Switch to light theme'
+    : theme.value.darkModeSwitchTitle || 'Switch to dark theme'
 })
 </script>
 
 <template>
-  <VPSwitch
-      class="vp-switch-appearance"
-      :title="switchTitle"
-      :aria-checked="checked"
-      @click="toggleAppearance"
-  >
-    <span class="vpi-sun sun"/>
-    <span class="vpi-moon moon"/>
+  <VPSwitch class="vp-switch-appearance" :title="switchTitle" :aria-checked="checked" @click="toggleAppearance">
+    <span class="vpi-sun sun" />
+    <span class="vpi-moon moon" />
   </VPSwitch>
 </template>
 
 <style scoped>
+.sun,
+.moon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .sun {
   opacity: 1;
 }
@@ -111,7 +119,24 @@ watchPostEffect(() => {
 
 [data-theme="dark"] .vp-switch-appearance :deep(.check) {
   /* rtl:ignore */
-  transform: translateX(18px);
+  transform: translateX(20px);
+}
+
+[data-theme="dark"] .vp-switch-appearance :deep(.vp-switch) {
+  background-color: var(--vp-c-brand-1);
+}
+
+.vp-switch-appearance :deep(.vp-switch) {
+  background-color: var(--vp-input-switch-bg-color);
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vp-switch-appearance:hover :deep(.vp-switch) {
+  background-color: var(--vp-c-brand-1);
+}
+
+[data-theme="dark"] .vp-switch-appearance:hover :deep(.vp-switch) {
+  background-color: var(--vp-c-brand-2);
 }
 </style>
 
