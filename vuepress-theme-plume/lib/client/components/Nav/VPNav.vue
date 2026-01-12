@@ -84,7 +84,7 @@ watchEffect(() => {
   position: fixed;
 }
 
-.vp-nav.fixed :deep(.vp-navbar) {
+.vp-nav.fixed :deep(.vp-navbar) {    
   background-color: var(--vp-nav-bg-color);
   border-bottom-color: var(--vp-c-gutter);
 }
