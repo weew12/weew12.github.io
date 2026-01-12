@@ -24,7 +24,8 @@
 [data-theme="dark"] {
   --vp-c-brand-1: rgba(57, 255, 20, 1);
   /* 链接颜色、强调色 - 荧光绿 #39FF14 */
-  --vp-c-brand-2: rgba(0, 255, 159, 1);
+  /* --vp-c-brand-2: rgba(0, 255, 159, 1); */
+  --vp-c-brand-2: rgb(71, 194, 49);
   /* 链接、按钮 hover 颜色 - 荧光绿变体 #00FF9F */
   --vp-c-brand-3: rgba(64, 255, 0, 1);
   /* 背景色、边框色 - 荧光绿变体 #40FF00 */
