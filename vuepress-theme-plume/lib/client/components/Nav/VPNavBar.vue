@@ -96,7 +96,8 @@ watchPostEffect(() => {
 
 @media (min-width: 960px) {
   .vp-navbar:not(.home) {
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: var(--vp-nav-bg-color);
   }
 
   .vp-navbar:not(.has-sidebar, .home.top) {
@@ -208,7 +209,8 @@ watchPostEffect(() => {
   }
 
   .vp-navbar:not(.has-sidebar, .home.top) .content-body {
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: var(--vp-nav-bg-color);
   }
 }
 
