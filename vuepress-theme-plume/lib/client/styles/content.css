@@ -19,16 +19,16 @@
 }
 
 .vp-doc h1 {
-  font-size: 28px;
-  line-height: 40px;
+  font-size: 32px;
+  line-height: 44px;
   letter-spacing: -0.02em;
 }
 
 .vp-doc h2 {
   padding-top: 24px;
   margin: 48px 0 16px;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 28px;
+  line-height: 36px;
   letter-spacing: -0.02em;
   border-top: 1px solid var(--vp-c-divider);
   transition: border-top var(--vp-t-color), color var(--vp-t-color);
@@ -42,23 +42,23 @@
 
 .vp-doc h3 {
   margin: 32px 0 16px;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 24px;
+  line-height: 32px;
   letter-spacing: -0.01em;
 }
 
 .vp-doc h4 {
   margin: 24px 0 16px;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 20px;
+  line-height: 28px;
   letter-spacing: -0.01em;
 }
 
 .vp-doc h5,
 .vp-doc h6 {
   margin: 24px 0 16px;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 18px;
+  line-height: 26px;
   letter-spacing: -0.01em;
 }
 
@@ -122,12 +122,13 @@
 .vp-doc p,
 .vp-doc summary {
   margin: 16px 0;
+  font-size: 18px;
   color: var(--vp-c-text-1);
   transition: color var(--vp-t-color);
 }
 
 .vp-doc p {
-  line-height: 28px;
+  line-height: 32px;
 }
 
 .vp-doc blockquote {
@@ -234,7 +235,7 @@
 }
 
 .vp-doc th {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--vp-c-text-2);
   text-align: left;
@@ -244,7 +245,7 @@
 }
 
 .vp-doc td {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /**
