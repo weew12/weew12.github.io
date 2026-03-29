@@ -1,18 +1,18 @@
 <script lang="ts" setup>
 import VPSidebarGroup from './VPSidebarGroup.vue'
 import VPTransitionFadeSlideY from './VPTransitionFadeSlideY.vue'
-import {useScrollLock} from '@vueuse/core'
-import {nextTick, onMounted, ref, watch} from 'vue'
-import {useRoutePath} from '@vuepress/client'
-import {useData, useSidebar} from '../composables'
-import {inBrowser} from '../utils'
+import { useScrollLock } from '@vueuse/core'
+import { nextTick, onMounted, ref, watch } from 'vue'
+import { useRoutePath } from '@vuepress/client'
+import { useData, useSidebar } from '../composables'
+import { inBrowser } from '../utils'
 
 const props = defineProps<{
   open: boolean
 }>()
 
-const {theme} = useData()
-const {sidebarGroups, hasSidebar, sidebarKey} = useSidebar()
+const { theme } = useData()
+const { sidebarGroups, hasSidebar, sidebarKey } = useSidebar()
 const routePath = useRoutePath()
 
 // a11y: focus Nav element when menu has opened
@@ -20,16 +20,16 @@ const navEl = ref<HTMLElement | null>(null)
 const isLocked = useScrollLock(inBrowser ? document.body : null)
 
 watch(
-    [() => props.open, navEl],
-    () => {
-      if (props.open) {
-        isLocked.value = true
-        navEl.value?.focus()
-      } else {
-        isLocked.value = false
-      }
-    },
-    {immediate: true, flush: 'post'},
+  [() => props.open, navEl],
+  () => {
+    if (props.open) {
+      isLocked.value = true
+      navEl.value?.focus()
+    } else {
+      isLocked.value = false
+    }
+  },
+  { immediate: true, flush: 'post' },
 )
 
 /**
@@ -39,7 +39,7 @@ onMounted(() => {
   watch(sidebarKey, async () => {
     await nextTick()
     const activeItem = document.querySelector(
-        `.vp-sidebar .vp-link[href*="${routePath.value}"]`,
+      `.vp-sidebar .vp-link[href*="${routePath.value}"]`,
     )
     if (!navEl.value)
       return
@@ -50,45 +50,33 @@ onMounted(() => {
       return
     }
 
-    const {top: navTop, height: navHeight} = navEl.value.getBoundingClientRect()
-    const {top: activeTop, height: activeHeight}
-        = activeItem.getBoundingClientRect()
+    const { top: navTop, height: navHeight } = navEl.value.getBoundingClientRect()
+    const { top: activeTop, height: activeHeight }
+      = activeItem.getBoundingClientRect()
 
     if (activeTop < navTop || activeTop + activeHeight > navTop + navHeight)
-      activeItem.scrollIntoView({block: 'center'})
-  }, {immediate: true, flush: 'post'})
+      activeItem.scrollIntoView({ block: 'center' })
+  }, { immediate: true, flush: 'post' })
 })
 </script>
 
 <template>
   <Transition name="fade-slide-x" mode="out-in">
-    <aside
-        v-if="hasSidebar"
-        ref="navEl"
-        class="vp-sidebar"
-        :class="{ open, 'hide-scrollbar': !(theme.sidebarScrollbar ?? true) }"
-        vp-sidebar
-        @click.stop
-    >
-      <div class="curtain"/>
+    <aside v-if="hasSidebar" ref="navEl" class="vp-sidebar"
+      :class="{ open, 'hide-scrollbar': !(theme.sidebarScrollbar ?? true) }" vp-sidebar @click.stop>
+      <div class="curtain" />
 
       <VPTransitionFadeSlideY>
-        <nav
-            id="SidebarNav"
-            :key="sidebarKey"
-            class="nav"
-            aria-labelledby="sidebar-aria-label"
-            tabindex="-1"
-        >
+        <nav id="SidebarNav" :key="sidebarKey" class="nav" aria-labelledby="sidebar-aria-label" tabindex="-1">
           <span id="sidebar-aria-label" class="visually-hidden">
             Sidebar Navigation
           </span>
 
-          <slot name="sidebar-nav-before"/>
+          <slot name="sidebar-nav-before" />
 
-          <VPSidebarGroup :items="sidebarGroups"/>
+          <VPSidebarGroup :items="sidebarGroups" />
 
-          <slot name="sidebar-nav-after"/>
+          <slot name="sidebar-nav-after" />
         </nav>
       </VPTransitionFadeSlideY>
     </aside>
@@ -104,25 +92,47 @@ onMounted(() => {
   z-index: var(--vp-z-index-sidebar);
   width: calc(100vw - 64px);
   max-width: 320px;
-  padding: 32px 32px 96px;
-  overflow: hidden auto;
+  padding: 24px 24px 96px;
+  overflow-y: auto;
+  overflow-x: hidden;
   background-color: var(--vp-sidebar-bg-color);
   box-shadow: var(--vp-c-shadow-3);
   opacity: 0;
   transition: opacity var(--vp-t-color),
-  background-color var(--vp-t-color),
-  box-shadow var(--vp-t-color),
-  transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    background-color var(--vp-t-color),
+    box-shadow var(--vp-t-color),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(-100%);
 
   scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-divider) transparent;
+
+  /* border: 1px solid red; */
+}
+
+.vp-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vp-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.vp-sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--vp-c-divider);
+  border-radius: 3px;
+  transition: background-color var(--vp-t-color);
+}
+
+.vp-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--vp-c-text-3);
 }
 
 .vp-sidebar.open {
   visibility: visible;
   opacity: 1;
-  transition: opacity 0.25s,
-  transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: opacity 0.2s,
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: translateX(0);
 }
 
@@ -137,6 +147,15 @@ onMounted(() => {
 
 [data-theme="dark"] .vp-sidebar {
   box-shadow: var(--vp-shadow-1);
+  scrollbar-color: var(--vp-c-divider) transparent;
+}
+
+[data-theme="dark"] .vp-sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--vp-c-divider);
+}
+
+[data-theme="dark"] .vp-sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: var(--vp-c-text-3);
 }
 
 @media (min-width: 960px) {
@@ -145,6 +164,8 @@ onMounted(() => {
     width: var(--vp-sidebar-width);
     max-width: 100%;
     padding-top: var(--vp-nav-height);
+    padding-left: 24px;
+    padding-right: 20px;
     visibility: visible;
     background-color: var(--vp-sidebar-bg-color);
     box-shadow: none;
@@ -155,14 +176,9 @@ onMounted(() => {
 
 @media (min-width: 1440px) {
   .vp-sidebar {
-    width: calc(
-        (100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) -
-        32px
-    );
-    padding-left: max(
-        32px,
-        calc((100% - (var(--vp-layout-max-width) - 64px)) / 2)
-    );
+    width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 24px);
+    padding-left: max(24px,
+        calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
   }
 }
 
@@ -174,8 +190,8 @@ onMounted(() => {
     z-index: 1;
     height: var(--vp-nav-height);
     margin-top: calc(var(--vp-nav-height) * -1);
-    margin-right: -32px;
-    margin-left: -32px;
+    margin-right: -20px;
+    margin-left: -24px;
     background-color: var(--vp-sidebar-bg-color);
     transition: background-color var(--vp-t-color);
   }
@@ -183,5 +199,7 @@ onMounted(() => {
 
 .nav {
   outline: 0;
+  /* border: 1px solid rebeccapurple; */
+  padding: 10px 0;
 }
 </style>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type {ResolvedSidebarItem} from '../../shared/index.js'
+import type { ResolvedSidebarItem } from '../../shared/index.js'
 import VPSidebarItem from './VPSidebarItem.vue'
-import {onBeforeUnmount, onMounted, ref} from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 defineProps<{
   items: ResolvedSidebarItem[]
@@ -26,13 +26,8 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div
-      v-for="item in items"
-      :key="item.text"
-      class="group"
-      :class="{ 'no-transition': disableTransition }"
-  >
-    <VPSidebarItem :item="item" :depth="0"/>
+  <div v-for="item in items" :key="item.text" class="group" :class="{ 'no-transition': disableTransition }">
+    <VPSidebarItem :item="item" :depth="0" />
   </div>
 </template>
 
@@ -41,16 +36,17 @@ onBeforeUnmount(() => {
   transition: none;
 }
 
-.group + .group {
-  padding-top: 10px;
-  border-top: 1px solid var(--vp-c-divider);
+.group+.group {
+  /* margin-top: 24px; */
+  /* padding-top: 20px; */
+  /* border-top: 1px solid var(--vp-c-divider); */
   transition: border var(--vp-t-color);
 }
 
 @media (min-width: 960px) {
   .group {
-    width: calc(var(--vp-sidebar-width) - 64px);
-    padding-top: 10px;
+    width: 100%;
+    /* padding-top: 12px; */
   }
 }
 </style>

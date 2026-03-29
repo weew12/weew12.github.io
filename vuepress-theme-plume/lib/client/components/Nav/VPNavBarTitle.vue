@@ -47,7 +47,7 @@ const routeLocale = useRouteLocale()
   }
 
   .vp-navbar-title.has-sidebar .title {
-    border-bottom-color: var(--vp-c-divider);
+    /* border-bottom-color: var(--vp-c-divider); */
   }
 }
 
