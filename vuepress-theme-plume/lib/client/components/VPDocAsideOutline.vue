@@ -58,12 +58,13 @@ function handlePrint() {
   padding-left: 16px;
   font-size: 13px;
   font-weight: 500;
-  border-left: 1px solid var(--vp-c-divider);
-  transition: border-left var(--vp-t-color);
+  /*border-left: 1px solid var(--vp-c-divider);
+  transition: border-left var(--vp-t-color);*/
+  transition: all var(--vp-t-color);
 }
 
 .outline-marker {
-  position: absolute;
+  /* position: absolute;
   top: 32px;
   left: -1px;
   z-index: 0;
@@ -74,7 +75,8 @@ function handlePrint() {
   opacity: 0;
   transition: top 0.25s cubic-bezier(0, 1, 0.5, 1),
   background-color var(--vp-t-color),
-  opacity var(--vp-t-color);
+  opacity var(--vp-t-color); */
+  display: none;
 }
 
 .outline-title {
