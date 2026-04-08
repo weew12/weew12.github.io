@@ -1,7 +1,7 @@
 ---
 title: other
 createTime: 2026/04/08 19:36:16
-permalink: /article/gr9367jw/
+permalink: /other/
 ---
 
 ::: card title="Go语言标准库 翻译" icon="grommet-icons:golang"

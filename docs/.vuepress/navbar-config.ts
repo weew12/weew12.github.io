@@ -6,6 +6,7 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
     text: '博客',
     link: '/blog/',
     icon: 'mdi:blog-outline',
+    // 匹配博客下的所有页面，除了归档、文章归档、文章页
     activeMatch: '^/(?:blog(?!(?:\/tags\/|\/categories\/|\/archives\/))|article)\/.*',
   },
   {
@@ -46,7 +47,7 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
   },
   {
     text: '其他',
-    link: '/article/gr9367jw/',
+    link: '/other/',
     icon: 'icon-park:other',
   },
 ])
