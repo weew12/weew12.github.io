@@ -43,7 +43,12 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         ],
       },
     ],
-  }
+  },
+  {
+    text: '其他',
+    link: '/article/gr9367jw/',
+    icon: 'icon-park:other',
+  },
 ])
 
 export const enNavbar: ThemeNavItem[] = defineNavbarConfig([
