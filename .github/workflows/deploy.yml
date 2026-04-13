@@ -45,7 +45,9 @@ jobs:
       # Run the build script
       - name: Build VuePress site
         run: yarn run docs:build
-
+        env:
+          # 增加 Node.js 堆内存限制至 8GB（根据 CI 环境可用内存调整）
+          NODE_OPTIONS: --max-old-space-size=8192
 
       # 查看 workflow 的文档来获取更多信息
       # @see https://github.com/crazy-max/ghaction-github-pages
