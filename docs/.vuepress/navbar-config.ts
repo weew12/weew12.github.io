@@ -71,7 +71,24 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
   {
     text: 'JavaScript',
     icon: 'logos:javascript',
-    link: '/blog/archives/',
+    items: [
+      {
+        text: '语言基础',
+        icon: 'logos:javascript',
+        items: [
+          { text: '廖雪峰 JavaScript 全栈教程', link: '/javascript/language/lxf_fullstack_javascript_tutorial/5hcz43fg/', icon: 'bxl:javascript' },
+          { text: '现代 JavaScript 教程', link: '/javascript/language/the_modern_javascript_tutorial/lrbohf6z/', icon: 'bxl:javascript' },
+        ],
+      },
+      {
+        text: '打包与构建',
+        icon: 'devicon:msbuild',
+        items: [
+          { text: 'Webpack 实战', link: '/javascript/build_and_pack/webpack_in_action/u9et4g8u/', icon: 'logos:webpack' },
+          { text: '深入浅出Webpack', link: '/javascript/build_and_pack/webpack_in_depth/uop0xnww/', icon: 'logos:webpack' },
+        ],
+      }
+    ]
   },
   {
     text: 'Rust',
