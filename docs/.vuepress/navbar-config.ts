@@ -48,7 +48,15 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
   {
     text: 'Golang',
     icon: 'skill-icons:golang',
-    link: '/blog/archives/',
+    items: [
+      {
+        text: '云原生',
+        icon: 'skill-icons:kubernetes',
+        items: [
+          { text: 'Helm 学习指南', link: '/golang/cloudnative/helm_study_guide/v3hzjacm/', icon: 'simple-icons:helm' },
+        ],
+      }
+    ]
   },
   {
     text: 'JavaScript',

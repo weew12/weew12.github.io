@@ -7,6 +7,7 @@ import { databaseMysqlShk_mysqlConfig } from './database-mysql-shk_mysql-config'
 import { otherPrometheusPrometheus_techniquesConfig } from './other-prometheus-prometheus_techniques-config'
 import { otherPrometheusPrometheus_monitoring_technology_and_practiceConfig } from './other-prometheus-prometheus_monitoring_technology_and_practice-config'
 import { otherPrometheusMonitoring_with_prometheusConfig } from './other-prometheus-monitoring_with_prometheus-config'
+import { golangCloudnativeHelm_study_guideConfig } from './golang-cloudnative-helm_study_guide-config'
 
 export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
   dir: 'notes',
@@ -17,6 +18,7 @@ export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
     javaLanguageJava_collectionConfig,
     javaSsmHeima_ssm_bookConfig,
     // Golang
+    golangCloudnativeHelm_study_guideConfig,
 
     // JavaScript
 
