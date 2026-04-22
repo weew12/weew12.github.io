@@ -88,6 +88,7 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         items: [
           { text: 'Prometheus 技术秘笈', link: '/other/prometheus/prometheus_techniques/7zh9b2gb/', icon: 'cbi:prometheusio' },
           { text: 'Prometheus监控技术与实践', link: '/other/prometheus/prometheus_monitoring_technology_and_practice/emwgzqkx/', icon: 'cbi:prometheusio' },
+          { text: 'Prometheus监控实战', link: '/other/prometheus/monitoring_with_prometheus/9qlpfz1i/', icon: 'cbi:prometheusio' },
         ]
       }
     ],

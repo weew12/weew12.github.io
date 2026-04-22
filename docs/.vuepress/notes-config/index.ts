@@ -6,6 +6,7 @@ import { javaSsmHeima_ssm_bookConfig } from './java-ssm-heima_ssm_book-config'
 import { databaseMysqlShk_mysqlConfig } from './database-mysql-shk_mysql-config'
 import { otherPrometheusPrometheus_techniquesConfig } from './other-prometheus-prometheus_techniques-config'
 import { otherPrometheusPrometheus_monitoring_technology_and_practiceConfig } from './other-prometheus-prometheus_monitoring_technology_and_practice-config'
+import { otherPrometheusMonitoring_with_prometheusConfig } from './other-prometheus-monitoring_with_prometheus-config'
 
 export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
   dir: 'notes',
@@ -27,6 +28,7 @@ export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
     // 其他
     otherPrometheusPrometheus_techniquesConfig,
     otherPrometheusPrometheus_monitoring_technology_and_practiceConfig,
+    otherPrometheusMonitoring_with_prometheusConfig,
   ],
 
 })
