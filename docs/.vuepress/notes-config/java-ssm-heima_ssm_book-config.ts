@@ -7,7 +7,7 @@ export const javaSsmHeima_ssm_bookConfig: ThemeNote = defineNoteConfig({
   sidebar: [
     {
       // 侧边栏title
-      text: '《JavaEE 企业级应用开发教程（Spring+Spring MVC+MyBatis）（第二版）》',
+      text: 'JavaEE 企业级应用开发教程',
       // 折叠侧边栏
       collapsed: false,
       items: 'auto',

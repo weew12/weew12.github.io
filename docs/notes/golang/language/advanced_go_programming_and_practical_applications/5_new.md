@@ -2,9 +2,6 @@
 title: 05：分布式系统 从原理到Go语言实战
 createTime: 2026/04/02 16:08:48
 permalink: /golang/language/advanced_go_programming_and_practical_applications/rux5tb9q/
-tags:
-  - 《Go语言高级开发与实战》系列
-  - Go语言
 ---
 > 本文基于《Go语言高级开发与实战》第5章内容，系统讲解分布式系统的核心原理、常见算法、负载均衡技术、分布式锁实现，以及Go语言中的分布式应用和框架。涵盖CAP定理、Paxos/Raft共识算法、轮询/随机/一致性哈希负载均衡、基于MySQL/ZooKeeper/Redis/etcd的分布式锁、Snowflake分布式ID、Paxos的Go实现，以及Go Micro和Consul框架。通过大量代码示例，帮助读者掌握分布式系统的设计与实践。
 

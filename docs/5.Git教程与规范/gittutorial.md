@@ -2,13 +2,6 @@
 title: 从零到精通：Git完整指南，告别“只会add/commit/push”的时代
 createTime: 2026/04/19 22:39:13
 permalink: /article/7fwa3sbz/
-cover: https://avatars.githubusercontent.com/u/18133
-coverStyle: 
-  layout: 'left'
-  compact: false
-  cover: true
-  width: 100
-article: false
 ---
 > 你是否也曾经历过这样的场景：团队协作时，别人的分支操作让你眼花缭乱；不小心改坏了代码，却不知道怎么安全恢复；想要整理提交历史，却搞乱了整个仓库？本文将带你从Git小白成长为团队中的Git高手。
 

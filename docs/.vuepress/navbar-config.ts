@@ -32,15 +32,15 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         text: '语言基础',
         icon: 'icon-park:send-to-back',
         items: [
-          { text: '宋红康Java笔记', link: '/java/language/shk_java/gofne3j6/', icon: 'cib:java' },
-          { text: 'Java集合框架（AI辅助整理版）', link: '/java/language/java_collection/nb9o1y1d/', icon: 'cib:java' },
+          { text: '宋红康Java笔记', link: '/java/language/shk_java/gofne3j6/', icon: 'cib:java', badge: 'review' },
+          { text: 'Java集合框架（AI辅助整理版）', link: '/java/language/java_collection/nb9o1y1d/', icon: 'cib:java', badge: 'review' },
         ],
       },
       {
         text: 'SSM',
         icon: 'simple-icons:springboot',
         items: [
-          { text: '《JavaEE 企业级应用开发教程（Spring+Spring MVC+MyBatis）（第二版）》', link: '/java/ssm/heima_ssm_book/r3rcs5o0/', icon: 'skill-icons:spring-light' },
+          { text: 'JavaEE 企业级应用开发教程', link: '/java/ssm/heima_ssm_book/r3rcs5o0/', icon: 'skill-icons:spring-light', badge: 'review' },
         ],
       },
     ],
@@ -53,17 +53,17 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         text: '语言基础',
         icon: 'grommet-icons:golang',
         items: [
-          { text: 'Go语言实战', link: '/golang/language/go_in_action/j45197dh/', icon: 'fa7-brands:golang' },
-          { text: 'Go语言高级开发与实战', link: '/golang/language/advanced_go_programming_and_practical_applications/urg9wn5u/', icon: 'fa7-brands:golang' },
-          { text: 'Go Cookbook 中文版', link: '/golang/language/gocookbook/5urfufzy/', icon: 'fa7-brands:golang' },
-          { text: '学习 Go 语言（第2版）', link: '/golang/language/learninggov2cn/m5zwo03b/', icon: 'fa7-brands:golang' },
+          { text: 'Go语言实战', link: '/golang/language/go_in_action/j45197dh/', icon: 'fa7-brands:golang', badge: 'review' },
+          { text: 'Go语言高级开发与实战', link: '/golang/language/advanced_go_programming_and_practical_applications/urg9wn5u/', icon: 'fa7-brands:golang', badge: 'review' },
+          { text: 'Go Cookbook 中文版', link: '/golang/language/gocookbook/5urfufzy/', icon: 'fa7-brands:golang', badge: 'review' },
+          { text: '学习 Go 语言（第2版）', link: '/golang/language/learninggov2cn/m5zwo03b/', icon: 'fa7-brands:golang', badge: 'review' },
         ],
       },
       {
         text: '云原生',
         icon: 'skill-icons:kubernetes',
         items: [
-          { text: 'Helm 学习指南', link: '/golang/cloudnative/helm_study_guide/v3hzjacm/', icon: 'simple-icons:helm' },
+          { text: 'Helm 学习指南', link: '/golang/cloudnative/helm_study_guide/v3hzjacm/', icon: 'simple-icons:helm', badge: 'review' },
         ],
       }
     ]
@@ -77,15 +77,15 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         icon: 'logos:javascript',
         items: [
           { text: '廖雪峰 JavaScript 全栈教程', link: '/javascript/language/lxf_fullstack_javascript_tutorial/5hcz43fg/', icon: 'bxl:javascript' },
-          { text: '现代 JavaScript 教程', link: '/javascript/language/the_modern_javascript_tutorial/lrbohf6z/', icon: 'bxl:javascript' },
+          { text: '现代 JavaScript 教程', link: '/javascript/language/the_modern_javascript_tutorial/lrbohf6z/', icon: 'bxl:javascript', badge: 'review' },
         ],
       },
       {
         text: '打包与构建',
         icon: 'devicon:msbuild',
         items: [
-          { text: 'Webpack 实战', link: '/javascript/build_and_pack/webpack_in_action/u9et4g8u/', icon: 'logos:webpack' },
-          { text: '深入浅出Webpack', link: '/javascript/build_and_pack/webpack_in_depth/uop0xnww/', icon: 'logos:webpack' },
+          { text: 'Webpack 实战', link: '/javascript/build_and_pack/webpack_in_action/u9et4g8u/', icon: 'logos:webpack', badge: 'review' },
+          { text: '深入浅出Webpack', link: '/javascript/build_and_pack/webpack_in_depth/uop0xnww/', icon: 'logos:webpack', badge: 'review' },
         ],
       }
     ]
@@ -103,7 +103,7 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         text: 'MySQL',
         icon: 'devicon:mysql',
         items: [
-          { text: '宋红康MySQL教程', link: '/database/mysql/shk_mysql/q449w0j5/', icon: 'devicon-plain:mysql-wordmark' },
+          { text: '宋红康MySQL教程', link: '/database/mysql/shk_mysql/q449w0j5/', icon: 'devicon-plain:mysql-wordmark', badge: 'review' },
         ],
       },
     ],
@@ -117,17 +117,17 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         icon: 'mdi:book-outline',
         items: [
           { text: 'Golang 标准库文档', link: 'https://weew12.github.io/golang_source/', icon: 'skill-icons:golang' },
-          { text: 'Git教程', link: '/article/7fwa3sbz/', icon: 'devicon:git' },
-          { text: 'Git约定式提交', link: '/article/n89rlnqe/', icon: 'ion:git-merge' },
+          { text: 'Git教程', link: '/article/7fwa3sbz/', icon: 'devicon:git', badge: 'review' },
+          { text: 'Git约定式提交', link: '/article/n89rlnqe/', icon: 'ion:git-merge', badge: 'review' },
         ],
       },
       {
         text: 'Prometheus',
         icon: 'skill-icons:prometheus',
         items: [
-          { text: 'Prometheus 技术秘笈', link: '/other/prometheus/prometheus_techniques/7zh9b2gb/', icon: 'cbi:prometheusio' },
-          { text: 'Prometheus监控技术与实践', link: '/other/prometheus/prometheus_monitoring_technology_and_practice/emwgzqkx/', icon: 'cbi:prometheusio' },
-          { text: 'Prometheus监控实战', link: '/other/prometheus/monitoring_with_prometheus/9qlpfz1i/', icon: 'cbi:prometheusio' },
+          { text: 'Prometheus 技术秘笈', link: '/other/prometheus/prometheus_techniques/7zh9b2gb/', icon: 'cbi:prometheusio', badge: 'review' },
+          { text: 'Prometheus监控技术与实践', link: '/other/prometheus/prometheus_monitoring_technology_and_practice/emwgzqkx/', icon: 'cbi:prometheusio', badge: 'review' },
+          { text: 'Prometheus监控实战', link: '/other/prometheus/monitoring_with_prometheus/9qlpfz1i/', icon: 'cbi:prometheusio', badge: 'review' },
         ]
       }
     ],

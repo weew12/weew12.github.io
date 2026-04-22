@@ -2,9 +2,6 @@
 title: 01：Go语言的基础语法 从零到一掌握核心数据类型与高级技巧
 createTime: 2026/04/02 15:48:48
 permalink: /golang/language/advanced_go_programming_and_practical_applications/7jjsg6k2/
-tags:
-  - 《Go语言高级开发与实战》系列
-  - Go语言
 ---
 > 本文基于《Go语言高级开发与实战》第1章内容，系统梳理Go语言的基础语法、变量常量、流程控制、字符串实战、数组与切片、map、结构体、接口、模块管理及通道等核心知识点。通过大量可运行代码示例和实战案例，帮助读者建立扎实的Go语言基本功，并掌握实际开发中的常用技巧。
 

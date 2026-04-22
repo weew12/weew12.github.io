@@ -2,9 +2,6 @@
 title: 03：Web编程 从基础到分布式实战
 createTime: 2026/04/02 15:58:48
 permalink: /golang/language/advanced_go_programming_and_practical_applications/tv5dau1k/
-tags:
-  - 《Go语言高级开发与实战》系列
-  - Go语言
 ---
 > 本文基于《Go语言高级开发与实战》第3章内容，系统讲解Go Web编程的核心技术。涵盖HTTP服务器创建、请求处理、HTTP/2和HTTP/3编程、Socket通信（TCP/UDP）、MySQL与Redis使用技巧、gRPC框架应用，以及一个完整的分布式爬虫系统实战。通过大量代码示例，帮助读者掌握Go语言在Web后端开发中的实战能力。
 

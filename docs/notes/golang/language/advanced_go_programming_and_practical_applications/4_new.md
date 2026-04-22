@@ -2,9 +2,6 @@
 title: 04：并发编程 从基础到实战
 createTime: 2026/04/02 15:59:48
 permalink: /golang/language/advanced_go_programming_and_practical_applications/p0hiaha1/
-tags:
-  - 《Go语言高级开发与实战》系列
-  - Go语言
 ---
 > 本文基于《Go语言高级开发与实战》第4章内容，系统讲解Go语言并发编程的核心知识。涵盖并发与并行概念、常见并发模型（线程与锁、Actor、CSP）、Go的GMP模型、六大并发设计模式（屏障、未来、管道、扇出扇入、协程池、发布订阅）、同步原语（Mutex、RWMutex、Once、WaitGroup、sync.Map）、竞态检测，以及goroutine使用技巧和完整的并发任务系统实战。通过大量代码示例，帮助读者掌握Go并发的精髓。
 

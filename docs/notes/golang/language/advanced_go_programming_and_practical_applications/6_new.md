@@ -2,9 +2,6 @@
 title: 06：高并发秒杀系统 从架构到代码的全流程解析
 createTime: 2026/04/02 16:09:48
 permalink: /golang/language/advanced_go_programming_and_practical_applications/o8x88kk6/
-tags:
-  - 《Go语言高级开发与实战》系列
-  - Go语言
 ---
 > 本文基于《Go语言高级开发与实战》第6章内容，完整呈现一个高并发秒杀系统的设计与实现。涵盖高并发系统架构原则、秒杀业务特点与难点、前端静态化与限流、代理层Nginx负载均衡与令牌桶限流、应用层库存扣减与防超卖、Redis预减库存与Lua原子操作、数据库层隔离，以及压力测试全流程。通过可运行的Go代码，帮助读者掌握构建秒杀系统的核心技能。
 
