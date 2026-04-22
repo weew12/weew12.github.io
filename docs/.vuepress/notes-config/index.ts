@@ -16,6 +16,7 @@ import { javascriptLanguageLxf_fullstack_javascript_tutorialConfig } from './jav
 import { javascriptLanguageThe_modern_javascript_tutorialConfig } from './javascript-language-the_modern_javascript_tutorial-config'
 import { javascriptBuild_and_pack_Webpack_in_actionConfig } from './javascript-build_and_pack-webpack_in_action-config'
 import { javascriptBuild_and_pack_Webpack_in_depthConfig } from './javascript-build_and_pack-webpack_in_depth-config'
+import { rustLanguage14dayrustConfig } from './rust-language-14dayrust-config'
 
 export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
   dir: 'notes',
@@ -38,6 +39,7 @@ export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
     javascriptBuild_and_pack_Webpack_in_depthConfig,
 
     // Rust
+    rustLanguage14dayrustConfig,
 
     // 数据库
     databaseMysqlShk_mysqlConfig,

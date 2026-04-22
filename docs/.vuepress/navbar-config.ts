@@ -93,7 +93,15 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
   {
     text: 'Rust',
     icon: 'skill-icons:rust',
-    link: '/blog/archives/',
+    items: [
+      {
+        text: '语言基础',
+        icon: 'skill-icons:rust',
+        items: [
+          { text: 'Rust 14 天特种兵训练', link: '/rust/language/14dayrust/01ze9g47/', icon: 'simple-icons:rust', badge: 'review' },
+        ],
+      },
+    ]
   },
   {
     text: '数据库',
