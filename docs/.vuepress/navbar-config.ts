@@ -57,7 +57,7 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
   },
   {
     text: 'Rust',
-    icon: 'devicon:rust',
+    icon: 'skill-icons:rust',
     link: '/blog/archives/',
   },
   {
@@ -75,8 +75,22 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
   },
   {
     text: '其他',
-    link: '/other/',
     icon: 'icon-park:other',
+    items: [
+      {
+        text: '文档',
+        icon: 'mdi:book-outline',
+        link: '/docs/',
+      },
+      {
+        text: 'Prometheus',
+        icon: 'skill-icons:prometheus',
+        items: [
+          { text: 'Prometheus 技术秘笈', link: '/other/prometheus/prometheus_techniques/7zh9b2gb/', icon: 'cbi:prometheusio' },
+          { text: 'Prometheus监控技术与实践', link: '/other/prometheus/prometheus_monitoring_technology_and_practice/emwgzqkx/', icon: 'cbi:prometheusio' },
+        ]
+      }
+    ],
   },
 ])
 
