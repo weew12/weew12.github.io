@@ -8,7 +8,7 @@ coverStyle:
   compact: false
   cover: true
   width: 100
-draft: true
+article: false
 ---
 > 你是否也曾经历过这样的场景：团队协作时，别人的分支操作让你眼花缭乱；不小心改坏了代码，却不知道怎么安全恢复；想要整理提交历史，却搞乱了整个仓库？本文将带你从Git小白成长为团队中的Git高手。
 

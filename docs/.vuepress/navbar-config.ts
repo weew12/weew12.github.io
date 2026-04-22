@@ -117,6 +117,8 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
         icon: 'mdi:book-outline',
         items: [
           { text: 'Golang 标准库文档', link: 'https://weew12.github.io/golang_source/', icon: 'skill-icons:golang' },
+          { text: 'Git教程', link: '/article/7fwa3sbz/', icon: 'devicon:git' },
+          { text: 'Git约定式提交', link: '/article/n89rlnqe/', icon: 'ion:git-merge' },
         ],
       },
       {

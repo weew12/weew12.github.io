@@ -11,7 +11,7 @@ coverStyle:
   compact: false
   cover: true
   width: 100
-draft: true
+article: false
 ---
 > 你的Git提交历史是否也像这样："修复bug"、"更新一下"、"新增功能"？三个月后，连你自己都看不懂当初到底改了什么。本文将带你彻底告别混乱的Git历史，让每次提交都清晰、可追溯、可自动化。
 
