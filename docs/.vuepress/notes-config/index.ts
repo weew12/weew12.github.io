@@ -1,16 +1,26 @@
 import type { ThemeNoteListOptions } from '../../../vuepress-theme-plume/lib/node'
 import { defineNotesConfig } from '../../../vuepress-theme-plume/lib/node'
-import { backendLanguageConfig } from './backend-language-config'
-import { databaseMysqlConfig } from './database-mysql-config'
-import { backendFrameworkConfig } from './backend-framework-config'
+import { javaLanguageShk_javaConfig } from './java-language-shk_java-config'
+import { javaLanguageJava_collectionConfig } from './java-language-java_collection-config'
+import { javaSsmHeima_ssm_bookConfig } from './java-ssm-heima_ssm_book-config'
+import { databaseMysqlShk_mysqlConfig } from './database-mysql-shk_mysql-config'
 
 export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
   dir: 'notes',
   link: '/',
   notes: [
-    backendLanguageConfig,
-    databaseMysqlConfig,
-    backendFrameworkConfig,
+    // Java
+    javaLanguageShk_javaConfig,
+    javaLanguageJava_collectionConfig,
+    javaSsmHeima_ssm_bookConfig,
+    // Golang
+
+    // JavaScript
+
+    // Rust
+
+    // 数据库
+    databaseMysqlShk_mysqlConfig,
   ],
 
 })
