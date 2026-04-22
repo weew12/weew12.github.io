@@ -50,6 +50,16 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
     icon: 'skill-icons:golang',
     items: [
       {
+        text: '语言基础',
+        icon: 'grommet-icons:golang',
+        items: [
+          { text: 'Go语言实战', link: '/golang/language/go_in_action/j45197dh/', icon: 'fa7-brands:golang' },
+          { text: 'Go语言高级开发与实战', link: '/golang/language/advanced_go_programming_and_practical_applications/urg9wn5u/', icon: 'fa7-brands:golang' },
+          { text: 'Go Cookbook 中文版', link: '/golang/language/gocookbook/5urfufzy/', icon: 'fa7-brands:golang' },
+          { text: '学习 Go 语言（第2版）', link: '/golang/language/learninggov2cn/m5zwo03b/', icon: 'fa7-brands:golang' },
+        ],
+      },
+      {
         text: '云原生',
         icon: 'skill-icons:kubernetes',
         items: [

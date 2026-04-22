@@ -8,6 +8,10 @@ import { otherPrometheusPrometheus_techniquesConfig } from './other-prometheus-p
 import { otherPrometheusPrometheus_monitoring_technology_and_practiceConfig } from './other-prometheus-prometheus_monitoring_technology_and_practice-config'
 import { otherPrometheusMonitoring_with_prometheusConfig } from './other-prometheus-monitoring_with_prometheus-config'
 import { golangCloudnativeHelm_study_guideConfig } from './golang-cloudnative-helm_study_guide-config'
+import { golangLanguageGo_in_actionConfig } from './golang-language-go_in_action-config'
+import { golangLanguageAdvanced_go_programming_and_practical_applicationsConfig } from './golang-language-advanced_go_programming_and_practical_applications-config'
+import { golangLanguageGocookbookConfig } from './golang-language-gocookbook-config'
+import { golangLanguageLearninggov2cnConfig } from './golang-language-learninggov2cn-config'
 
 export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
   dir: 'notes',
@@ -19,7 +23,10 @@ export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
     javaSsmHeima_ssm_bookConfig,
     // Golang
     golangCloudnativeHelm_study_guideConfig,
-
+    golangLanguageGo_in_actionConfig,
+    golangLanguageAdvanced_go_programming_and_practical_applicationsConfig,
+    golangLanguageGocookbookConfig,
+    golangLanguageLearninggov2cnConfig,
     // JavaScript
 
     // Rust
