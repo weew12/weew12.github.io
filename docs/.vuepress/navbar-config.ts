@@ -115,7 +115,9 @@ export const zhNavbar: ThemeNavItem[] = defineNavbarConfig([
       {
         text: '文档',
         icon: 'mdi:book-outline',
-        link: '/docs/',
+        items: [
+          { text: 'Golang 标准库文档', link: 'https://weew12.github.io/golang_source/', icon: 'skill-icons:golang' },
+        ],
       },
       {
         text: 'Prometheus',
