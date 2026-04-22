@@ -2,7 +2,7 @@ import type { ThemeNote } from '../../../vuepress-theme-plume/lib/node'
 import { defineNoteConfig } from '../../../vuepress-theme-plume/lib/node'
 
 // ===================== mysql =====================
-const databaseMysqlShk_mysqlConfig: ThemeNote = defineNoteConfig({
+const databaseMysqlShkConfig: ThemeNote = defineNoteConfig({
     dir: 'database/mysql/shk_mysql',
     link: '/database/mysql/shk_mysql/',
     sidebar: [
@@ -17,4 +17,4 @@ const databaseMysqlShk_mysqlConfig: ThemeNote = defineNoteConfig({
 })
 
 
-export { databaseMysqlShk_mysqlConfig }
+export { databaseMysqlShkConfig }

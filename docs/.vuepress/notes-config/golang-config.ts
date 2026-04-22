@@ -1,8 +1,8 @@
-import type { ThemeNote } from '../../../vuepress-theme-plume/lib/node'
-import { defineNoteConfig } from '../../../vuepress-theme-plume/lib/node'
+import type {ThemeNote} from '../../../vuepress-theme-plume/lib/node'
+import {defineNoteConfig} from '../../../vuepress-theme-plume/lib/node'
 
 // ================== language ==================
-const golangLanguageAdvanced_go_programming_and_practical_applicationsConfig: ThemeNote = defineNoteConfig({
+const golangLanguageAdvancedGoConfig: ThemeNote = defineNoteConfig({
     dir: 'golang/language/advanced_go_programming_and_practical_applications',
     link: '/golang/language/advanced_go_programming_and_practical_applications/',
     sidebar: [
@@ -16,7 +16,7 @@ const golangLanguageAdvanced_go_programming_and_practical_applicationsConfig: Th
     ],
 })
 
-const golangLanguageGo_in_actionConfig: ThemeNote = defineNoteConfig({
+const golangLanguageGoInActionConfig: ThemeNote = defineNoteConfig({
     dir: 'golang/language/go_in_action',
     link: '/golang/language/go_in_action/',
     sidebar: [
@@ -30,7 +30,7 @@ const golangLanguageGo_in_actionConfig: ThemeNote = defineNoteConfig({
     ],
 })
 
-const golangLanguageGocookbookConfig: ThemeNote = defineNoteConfig({
+const golangLanguageGoCookBookConfig: ThemeNote = defineNoteConfig({
     dir: 'golang/language/gocookbook',
     link: '/golang/language/gocookbook/',
     sidebar: [
@@ -44,7 +44,7 @@ const golangLanguageGocookbookConfig: ThemeNote = defineNoteConfig({
     ],
 })
 
-const golangLanguageLearninggov2cnConfig: ThemeNote = defineNoteConfig({
+const golangLanguageLearningGoV2Config: ThemeNote = defineNoteConfig({
     dir: 'golang/language/learninggov2cn',
     link: '/golang/language/learninggov2cn/',
     sidebar: [
@@ -59,7 +59,7 @@ const golangLanguageLearninggov2cnConfig: ThemeNote = defineNoteConfig({
 })
 
 // ================== cloudnative ==================
-const golangCloudnativeHelm_study_guideConfig: ThemeNote = defineNoteConfig({
+const golangCloudNativeHelmGuideConfig: ThemeNote = defineNoteConfig({
     dir: 'golang/cloudnative/helm_study_guide',
     link: '/golang/cloudnative/helm_study_guide/',
     sidebar: [
@@ -74,9 +74,9 @@ const golangCloudnativeHelm_study_guideConfig: ThemeNote = defineNoteConfig({
 })
 
 export {
-    golangCloudnativeHelm_study_guideConfig,
-    golangLanguageAdvanced_go_programming_and_practical_applicationsConfig,
-    golangLanguageGo_in_actionConfig,
-    golangLanguageGocookbookConfig,
-    golangLanguageLearninggov2cnConfig,
+    golangCloudNativeHelmGuideConfig,
+    golangLanguageAdvancedGoConfig,
+    golangLanguageGoInActionConfig,
+    golangLanguageGoCookBookConfig,
+    golangLanguageLearningGoV2Config,
 }

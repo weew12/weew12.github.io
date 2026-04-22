@@ -2,38 +2,38 @@ import type { ThemeNoteListOptions } from '../../../vuepress-theme-plume/lib/nod
 import { defineNotesConfig } from '../../../vuepress-theme-plume/lib/node'
 
 import {
-  javaLanguageShk_javaConfig,
-  javaLanguageJava_collectionConfig,
-  javaSsmHeima_ssm_bookConfig,
+  javaLanguageShkConfig,
+  javaLanguageJavaCollectionConfig,
+  javaSsmHeimaConfig,
 } from './java-config'
 
 import {
-  databaseMysqlShk_mysqlConfig
+  databaseMysqlShkConfig
 } from './database-config'
 
 import {
-  otherPrometheusPrometheus_techniquesConfig,
-  otherPrometheusPrometheus_monitoring_technology_and_practiceConfig,
-  otherPrometheusMonitoring_with_prometheusConfig,
+  otherPrometheusPrometheusTechniquesConfig,
+  otherPrometheusPrometheusMonitoringPracticeConfig,
+  otherPrometheusMonitoringWithPrometheusConfig,
 } from './other-config'
 
 import {
-  golangCloudnativeHelm_study_guideConfig,
-  golangLanguageGo_in_actionConfig,
-  golangLanguageAdvanced_go_programming_and_practical_applicationsConfig,
-  golangLanguageGocookbookConfig,
-  golangLanguageLearninggov2cnConfig
+  golangCloudNativeHelmGuideConfig,
+  golangLanguageGoInActionConfig,
+  golangLanguageAdvancedGoConfig,
+  golangLanguageGoCookBookConfig,
+  golangLanguageLearningGoV2Config
 } from './golang-config'
 
 import {
-  javascriptLanguageLxf_fullstack_javascript_tutorialConfig,
-  javascriptLanguageThe_modern_javascript_tutorialConfig,
-  javascriptBuild_and_pack_Webpack_in_actionConfig,
-  javascriptBuild_and_pack_Webpack_in_depthConfig,
+  javascriptLanguageLxfTutorialConfig,
+  javascriptLanguageModernJavascriptConfig,
+  javascriptBuildPackWebpackInActionConfig,
+  javascriptBuildPackWebpackInDepthConfig,
 } from './javascript-config'
 
 import {
-  rustLanguage14dayrustConfig
+  rustLanguage14dayRustConfig
 } from './rust-config'
 
 export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
@@ -41,33 +41,33 @@ export const zhNotes: ThemeNoteListOptions = defineNotesConfig({
   link: '/',
   notes: [
     // Java
-    javaLanguageShk_javaConfig,
-    javaLanguageJava_collectionConfig,
-    javaSsmHeima_ssm_bookConfig,
+    javaLanguageShkConfig,
+    javaLanguageJavaCollectionConfig,
+    javaSsmHeimaConfig,
 
     // Golang
-    golangCloudnativeHelm_study_guideConfig,
-    golangLanguageGo_in_actionConfig,
-    golangLanguageAdvanced_go_programming_and_practical_applicationsConfig,
-    golangLanguageGocookbookConfig,
-    golangLanguageLearninggov2cnConfig,
+    golangCloudNativeHelmGuideConfig,
+    golangLanguageGoInActionConfig,
+    golangLanguageAdvancedGoConfig,
+    golangLanguageGoCookBookConfig,
+    golangLanguageLearningGoV2Config,
 
     // JavaScript
-    javascriptLanguageLxf_fullstack_javascript_tutorialConfig,
-    javascriptLanguageThe_modern_javascript_tutorialConfig,
-    javascriptBuild_and_pack_Webpack_in_actionConfig,
-    javascriptBuild_and_pack_Webpack_in_depthConfig,
+    javascriptLanguageLxfTutorialConfig,
+    javascriptLanguageModernJavascriptConfig,
+    javascriptBuildPackWebpackInActionConfig,
+    javascriptBuildPackWebpackInDepthConfig,
 
     // Rust
-    rustLanguage14dayrustConfig,
+    rustLanguage14dayRustConfig,
 
     // 数据库
-    databaseMysqlShk_mysqlConfig,
+    databaseMysqlShkConfig,
 
     // 其他
-    otherPrometheusPrometheus_techniquesConfig,
-    otherPrometheusPrometheus_monitoring_technology_and_practiceConfig,
-    otherPrometheusMonitoring_with_prometheusConfig,
+    otherPrometheusPrometheusTechniquesConfig,
+    otherPrometheusPrometheusMonitoringPracticeConfig,
+    otherPrometheusMonitoringWithPrometheusConfig,
   ],
 
 })

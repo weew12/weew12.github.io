@@ -2,7 +2,7 @@ import type { ThemeNote } from '../../../vuepress-theme-plume/lib/node'
 import { defineNoteConfig } from '../../../vuepress-theme-plume/lib/node'
 
 // =================== language ===================
-const rustLanguage14dayrustConfig: ThemeNote = defineNoteConfig({
+const rustLanguage14dayRustConfig: ThemeNote = defineNoteConfig({
     dir: 'rust/language/14dayrust',
     link: '/rust/language/14dayrust/',
     sidebar: [
@@ -17,4 +17,4 @@ const rustLanguage14dayrustConfig: ThemeNote = defineNoteConfig({
 })
 
 
-export { rustLanguage14dayrustConfig }
+export { rustLanguage14dayRustConfig }

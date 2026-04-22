@@ -2,7 +2,7 @@ import type { ThemeNote } from '../../../vuepress-theme-plume/lib/node'
 import { defineNoteConfig } from '../../../vuepress-theme-plume/lib/node'
 
 // ================== build and pack ==================
-const javascriptBuild_and_pack_Webpack_in_actionConfig: ThemeNote = defineNoteConfig({
+const javascriptBuildPackWebpackInActionConfig: ThemeNote = defineNoteConfig({
     dir: 'javascript/build_and_pack/webpack_in_action',
     link: '/javascript/build_and_pack/webpack_in_action/',
     sidebar: [
@@ -16,7 +16,7 @@ const javascriptBuild_and_pack_Webpack_in_actionConfig: ThemeNote = defineNoteCo
     ],
 })
 
-const javascriptBuild_and_pack_Webpack_in_depthConfig: ThemeNote = defineNoteConfig({
+const javascriptBuildPackWebpackInDepthConfig: ThemeNote = defineNoteConfig({
     dir: 'javascript/build_and_pack/webpack_in_depth',
     link: '/javascript/build_and_pack/webpack_in_depth/',
     sidebar: [
@@ -31,7 +31,7 @@ const javascriptBuild_and_pack_Webpack_in_depthConfig: ThemeNote = defineNoteCon
 })
 
 // ================== language ==================
-const javascriptLanguageLxf_fullstack_javascript_tutorialConfig: ThemeNote = defineNoteConfig({
+const javascriptLanguageLxfTutorialConfig: ThemeNote = defineNoteConfig({
     dir: 'javascript/language/lxf_fullstack_javascript_tutorial',
     link: '/javascript/language/lxf_fullstack_javascript_tutorial/',
     sidebar: [
@@ -45,7 +45,7 @@ const javascriptLanguageLxf_fullstack_javascript_tutorialConfig: ThemeNote = def
     ],
 })
 
-const javascriptLanguageThe_modern_javascript_tutorialConfig: ThemeNote = defineNoteConfig({
+const javascriptLanguageModernJavascriptConfig: ThemeNote = defineNoteConfig({
     dir: 'javascript/language/the_modern_javascript_tutorial',
     link: '/javascript/language/the_modern_javascript_tutorial/',
     sidebar: [
@@ -60,8 +60,8 @@ const javascriptLanguageThe_modern_javascript_tutorialConfig: ThemeNote = define
 })
 
 export {
-    javascriptLanguageLxf_fullstack_javascript_tutorialConfig,
-    javascriptLanguageThe_modern_javascript_tutorialConfig,
-    javascriptBuild_and_pack_Webpack_in_actionConfig,
-    javascriptBuild_and_pack_Webpack_in_depthConfig,
+    javascriptLanguageLxfTutorialConfig,
+    javascriptLanguageModernJavascriptConfig,
+    javascriptBuildPackWebpackInActionConfig,
+    javascriptBuildPackWebpackInDepthConfig,
 }

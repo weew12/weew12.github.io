@@ -2,7 +2,7 @@ import type { ThemeNote } from '../../../vuepress-theme-plume/lib/node'
 import { defineNoteConfig } from '../../../vuepress-theme-plume/lib/node'
 
 // =================== prometheus ===================
-const otherPrometheusMonitoring_with_prometheusConfig: ThemeNote = defineNoteConfig({
+const otherPrometheusMonitoringWithPrometheusConfig: ThemeNote = defineNoteConfig({
     dir: 'other/prometheus/monitoring_with_prometheus',
     link: '/other/prometheus/monitoring_with_prometheus/',
     sidebar: [
@@ -16,7 +16,7 @@ const otherPrometheusMonitoring_with_prometheusConfig: ThemeNote = defineNoteCon
     ],
 })
 
-const otherPrometheusPrometheus_monitoring_technology_and_practiceConfig: ThemeNote = defineNoteConfig({
+const otherPrometheusPrometheusMonitoringPracticeConfig: ThemeNote = defineNoteConfig({
     dir: 'other/prometheus/prometheus_monitoring_technology_and_practice',
     link: '/other/prometheus/prometheus_monitoring_technology_and_practice/',
     sidebar: [
@@ -30,7 +30,7 @@ const otherPrometheusPrometheus_monitoring_technology_and_practiceConfig: ThemeN
     ],
 })
 
-const otherPrometheusPrometheus_techniquesConfig: ThemeNote = defineNoteConfig({
+const otherPrometheusPrometheusTechniquesConfig: ThemeNote = defineNoteConfig({
     dir: 'other/prometheus/prometheus_techniques',
     link: '/other/prometheus/prometheus_techniques/',
     sidebar: [
@@ -45,7 +45,7 @@ const otherPrometheusPrometheus_techniquesConfig: ThemeNote = defineNoteConfig({
 })
 
 export {
-    otherPrometheusMonitoring_with_prometheusConfig,
-    otherPrometheusPrometheus_monitoring_technology_and_practiceConfig,
-    otherPrometheusPrometheus_techniquesConfig,
+    otherPrometheusMonitoringWithPrometheusConfig,
+    otherPrometheusPrometheusMonitoringPracticeConfig,
+    otherPrometheusPrometheusTechniquesConfig,
 }

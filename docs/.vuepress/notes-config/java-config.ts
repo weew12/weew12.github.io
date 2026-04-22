@@ -2,7 +2,7 @@ import type { ThemeNote } from '../../../vuepress-theme-plume/lib/node'
 import { defineNoteConfig } from '../../../vuepress-theme-plume/lib/node'
 
 // =================== language ===================
-const javaLanguageJava_collectionConfig: ThemeNote = defineNoteConfig({
+const javaLanguageJavaCollectionConfig: ThemeNote = defineNoteConfig({
     dir: 'java/language/java_collection',
     link: '/java/language/java_collection/',
     sidebar: [
@@ -16,7 +16,7 @@ const javaLanguageJava_collectionConfig: ThemeNote = defineNoteConfig({
     ],
 })
 
-const javaLanguageShk_javaConfig: ThemeNote = defineNoteConfig({
+const javaLanguageShkConfig: ThemeNote = defineNoteConfig({
     dir: 'java/language/shk_java',
     link: '/java/language/shk_java/',
     sidebar: [
@@ -31,7 +31,7 @@ const javaLanguageShk_javaConfig: ThemeNote = defineNoteConfig({
 })
 
 // =================== ssm ===================
-const javaSsmHeima_ssm_bookConfig: ThemeNote = defineNoteConfig({
+const javaSsmHeimaConfig: ThemeNote = defineNoteConfig({
     dir: 'java/ssm/heima_ssm_book',
     link: '/java/ssm/heima_ssm_book/',
     sidebar: [
@@ -46,7 +46,7 @@ const javaSsmHeima_ssm_bookConfig: ThemeNote = defineNoteConfig({
 })
 
 export {
-    javaLanguageJava_collectionConfig,
-    javaLanguageShk_javaConfig,
-    javaSsmHeima_ssm_bookConfig,
+    javaLanguageJavaCollectionConfig,
+    javaLanguageShkConfig,
+    javaSsmHeimaConfig,
 }
