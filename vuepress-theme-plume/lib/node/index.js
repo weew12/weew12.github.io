@@ -214,8 +214,8 @@ function getThemePackage() {
 
 //#endregion
 //#region src/node/utils/resolveContent.ts
-function resolveContent(app, {name, content, before, after}) {
-  content = `${before ? `${before}\n` : ""}export const ${name} = ${JSON.stringify(content)}${after ? `\n${after}` : ""}`;
+function resolveContent(app, {name, content, before, after, raw = false}) {
+  content = `${before ? `${before}\n` : ""}export const ${name} = ${raw ? content : JSON.stringify(content)}${after ? `\n${after}` : ""}`;
   if (app.env.isDev) {
     const func = `update${name[0].toUpperCase()}${name.slice(1)}`;
     content += `\n
@@ -1158,8 +1158,9 @@ function resolveThemeData(app, options) {
 
 //#endregion
 //#region src/node/config/setupAlias.ts
-function setupAlias() {
+function setupAlias(app) {
   return {
+    "@source": app.dir.source(),
     ...Object.fromEntries(fs.readdirSync(resolve$1("client/components"), {
       encoding: "utf-8",
       recursive: true
@@ -2397,6 +2398,37 @@ function isEncryptPage(page, encrypt) {
   });
 }
 
+function createBlogCoverResolver(app) {
+  const sourceDir = app.dir.source();
+  const coverImports = new Map();
+  let coverIndex = 0;
+  const resolveCover = (page, cover) => {
+    if (!cover || typeof cover !== "string" || isLinkAbsolute(cover) || isLinkHttp(cover) || isLinkWithProtocol(cover)) return cover;
+    const pageDir = page.filePathRelative ? path$1.dirname(normalizePath(page.filePathRelative)) : "";
+    const resolved = path$1.resolve(sourceDir, pageDir, cover);
+    const relative = normalizePath(path$1.relative(sourceDir, resolved));
+    if (!relative || relative.startsWith("..")) {
+      logger.warn(`cover should stay inside the source directory when using a relative path. (${page.filePathRelative})`);
+      return cover;
+    }
+    if (!fs$1.existsSync(resolved)) {
+      logger.warn(`cover not found: ${cover}. (${page.filePathRelative})`);
+      return cover;
+    }
+    let importName = coverImports.get(relative);
+    if (!importName) {
+      importName = `__blogCover${coverIndex++}`;
+      coverImports.set(relative, importName);
+    }
+    return importName;
+  };
+  const getImports = () => [...coverImports.entries()].map(([relative, importName]) => `import ${importName} from ${JSON.stringify(`@source/${relative}?url`)}`).join("\n");
+  return {
+    resolveCover,
+    getImports
+  };
+}
+
 //#endregion
 //#region src/node/prepare/prepareBlogData.ts
 const HEADING_RE = /<h(\d)[^>]*>.*?<\/h\1>/gi;
@@ -2430,6 +2462,7 @@ async function preparedBlogData(app) {
     ...notesDirList
   ].filter(Boolean), {resolve: false});
   const pages = app.pages.filter((page) => page.filePathRelative && filter(page.filePathRelative) && page.frontmatter.article !== false && (page.frontmatter.draft === true ? !isBuild : true)).sort((prev, next) => getTimestamp(prev.frontmatter.createTime || prev.date) < getTimestamp(next.frontmatter.createTime || next.date) ? 1 : -1);
+  const coverResolver = createBlogCoverResolver(app);
   const blogData = pages.map((page) => {
     const tags = page.frontmatter.tags;
     const data = {
@@ -2445,6 +2478,7 @@ async function preparedBlogData(app) {
       coverStyle: page.data.frontmatter.coverStyle
     };
     if (typeof data.cover === "object") logger.warn(`cover should be a path string, please use string instead. (${page.filePathRelative})`);
+    else data.cover = coverResolver.resolveCover(page, data.cover);
     if (isEncryptPage(page, encrypt)) data.encrypt = true;
     if (page.frontmatter.draft && !isBuild) data.draft = true;
     const fmExcerpt = page.frontmatter.excerpt;
@@ -2459,9 +2493,12 @@ async function preparedBlogData(app) {
     }
     return data;
   });
+  const blogContent = JSON.stringify(blogData).replace(/"(__blogCover\d+)"/g, "$1");
   const content = resolveContent(app, {
     name: "blogPostData",
-    content: blogData
+    content: blogContent,
+    before: coverResolver.getImports(),
+    raw: true
   });
   await writeTemp(app, "internal/blogData.js", content);
   perf.log("prepare:blog-data");
@@ -2977,7 +3014,7 @@ function plumeTheme(options = {}) {
       define: setupProvideData(app, plugins),
       templateBuild: templates("build.html"),
       clientConfigFile: resolve$1("client/config.js"),
-      alias: setupAlias(),
+      alias: setupAlias(app),
       plugins: setupPlugins(app, plugins),
       extendsBundlerOptions,
       templateBuildRenderer,
