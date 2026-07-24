@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type {BlogPostCoverStyle, ThemeBlogPostItem} from '../../../shared'
 import VPLink from '../VPLink.vue'
-import {isMobile as _isMobile} from '@vuepress/helper/client'
+import {isLinkWithProtocol, isMobile as _isMobile} from '@vuepress/helper/client'
 import {computed, onMounted, ref} from 'vue'
 import {withBase} from '@vuepress/client'
 import {useData, useInternalLink, useTagColors} from '../../composables'
@@ -90,6 +90,13 @@ const coverStyles = computed(() => {
 
   return {height: 0, paddingBottom: `${ratio * 100}%`}
 })
+
+const coverSrc = computed(() => {
+  const cover = props.post.cover
+  if (!cover)
+    return ''
+  return isLinkWithProtocol(cover) ? cover : withBase(cover)
+})
 </script>
 
 <template>
@@ -101,7 +108,7 @@ const coverStyles = computed(() => {
         v-if="post.cover" class="post-cover" data-allow-mismatch
         :class="{ compact: coverCompact }" :style="coverStyles"
     >
-      <img :src="withBase(post.cover)" :alt="post.title" loading="lazy">
+      <img :src="coverSrc" :alt="post.title" loading="lazy">
     </div>
     <div class="blog-post-item-content">
       <h3>
