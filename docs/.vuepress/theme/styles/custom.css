@@ -69,6 +69,8 @@
   padding-top: 28px;
   padding-bottom: 28px;
   text-align: center;
+  /* 背景透明：让正文网格背景透出，避免带侧栏时白色块偏移露出（红框问题） */
+  background-color: transparent;
 }
 
 /* 全局：细滚动条（悬停变主题色，呼应终端风） */
