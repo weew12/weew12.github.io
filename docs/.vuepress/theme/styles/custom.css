@@ -45,3 +45,67 @@
   --vp-c-divider: #27272a;
   --vp-c-gutter: #0d0d0d;
 }
+
+/* ============================================================
+   整体风格统一 —— 导航栏 / 页脚 / 正文 微调
+   朴素精美、不花哨；基于主题变量，浅色/深色均适配
+   ============================================================ */
+
+/* 导航栏：纯色背景 + 细分割线，与内容拉开层次（不用毛玻璃，避免内容透出） */
+:root {
+  --vp-nav-bg-color: var(--vp-c-bg);
+}
+.vp-navbar.vp-navbar {
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+/* 首页顶部保持通透，不显边框 */
+.vp-navbar.home.top {
+  border-bottom-color: transparent;
+}
+
+/* 页脚：补回顶部细边框 + 居中留白，形成收尾感 */
+.vp-footer.vp-footer {
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 28px;
+  padding-bottom: 28px;
+  text-align: center;
+}
+
+/* 全局：细滚动条（悬停变主题色，呼应终端风） */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-divider) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand-1);
+}
+/* 文本选中：主题色淡底 */
+::selection {
+  background: var(--vp-c-brand-soft);
+}
+
+/* 正文引用块：加主题色左边框，替代原来单纯的灰底 */
+.vp-doc blockquote {
+  border-left: 3px solid var(--vp-c-brand-1);
+  border-radius: 0 6px 6px 0;
+}
+
+/* 正文表格：外框 + 圆角，边缘更整洁 */
+.vp-doc table {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 行内代码：淡主题色边框，弱化默认块感 */
+.vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
+  border: 1px solid var(--vp-c-divider);
+}
