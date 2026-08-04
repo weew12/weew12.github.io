@@ -22,22 +22,26 @@
 
 /** 深色模式 */
 [data-theme="dark"] {
-  --vp-c-brand-1: rgba(57, 255, 20, 1);
-  /* 链接颜色、强调色 - 荧光绿 #39FF14 */
-  /* --vp-c-brand-2: rgba(0, 255, 159, 1); */
-  --vp-c-brand-2: rgb(71, 194, 49);
-  /* 链接、按钮 hover 颜色 - 荧光绿变体 #00FF9F */
-  --vp-c-brand-3: rgba(64, 255, 0, 1);
-  /* 背景色、边框色 - 荧光绿变体 #40FF00 */
-  --vp-c-brand-soft: rgba(57, 255, 20, 0.314);
-  /* 辅助色 - 半透明荧光绿 */
+  /* 强调色 - 逐值照抄 developer-tools 的 primary #39FF14 荧光绿 */
+  --vp-c-brand-1: #39ff14; /* 链接颜色、强调色 - demo primary */
+  --vp-c-brand-2: #2ed10f; /* 链接、按钮 hover - demo primary-dark */
+  --vp-c-brand-3: #39ff14; /* 背景色、边框色 - primary */
+  --vp-c-brand-soft: rgba(57, 255, 20, 0.16); /* 辅助色 - 半透明绿 */
 
-  --vp-c-bg: #121212;
-  --vp-c-bg-alt: #1a1a1a;
-  --vp-c-bg-elv: #252525;
-  --vp-c-bg-soft: #252525;
+  /* 背景色 - 照抄 demo（黑色终端风） */
+  --vp-c-bg: #0d0d0d; /* 主背景 - demo --bg */
+  --vp-c-bg-alt: #0a0a0a; /* 侧栏/次级背景 - 略深 */
+  --vp-c-bg-elv: #161616; /* 卡片/浮起层 - demo --bg-card */
+  --vp-c-bg-soft: #1e1e1e; /* 柔和面板背景 - demo --bg-lighter */
 
-  --vp-c-text-1: rgba(255, 255, 255, 0.9);
-  --vp-c-text-2: rgba(255, 255, 255, 0.7);
-  --vp-c-text-3: rgba(255, 255, 255, 0.5);
+  /* 文本色 - 照抄 demo */
+  --vp-c-text-1: #e4e4e7; /* 主要文本 - demo --text */
+  --vp-c-text-2: #a1a1aa; /* 次要文本 - text 与 muted 之间（zinc-400） */
+  --vp-c-text-3: #71717a; /* 辅助文本 - demo --text-muted */
+
+  /* 边框/分割线 - 照抄 demo --border #27272A */
+  --vp-c-border: #27272a;
+  --vp-c-border-hard: #3f3f46;
+  --vp-c-divider: #27272a;
+  --vp-c-gutter: #0d0d0d;
 }
