@@ -94,16 +94,16 @@
   background: var(--vp-c-brand-soft);
 }
 
-/* 正文引用块：加主题色左边框，替代原来单纯的灰底 */
+/* 正文引用块：加主题色左边框，替代原来单纯的灰底（方形） */
 .vp-doc blockquote {
   border-left: 3px solid var(--vp-c-brand-1);
-  border-radius: 0 6px 6px 0;
+  border-radius: 0;
 }
 
-/* 正文表格：外框 + 圆角，边缘更整洁 */
+/* 正文表格：外框，边缘整洁（方形） */
 .vp-doc table {
   border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -114,8 +114,9 @@
 
 /* ---------- 左侧导航栏（笔记页 sidebar） ---------- */
 
-/* 条目：平滑过渡，hover 轻微位移增加层次 */
+/* 条目：平滑过渡，方形底纹（去掉主题默认 8px 圆角） */
 .vp-sidebar-item .item {
+  border-radius: 0;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -132,9 +133,10 @@
   color: var(--vp-c-brand-1);
 }
 
-/* 选中项：主题色药丸底纹，文字加重 */
+/* 选中项：主题色底纹（方形），文字加重 */
 .vp-sidebar-item.is-active > .item {
   background-color: var(--vp-c-brand-soft);
+  border-radius: 0;
 }
 
 .vp-sidebar-item.is-active > .item .text {
@@ -142,15 +144,151 @@
   font-weight: 600;
 }
 
-/* 选中指示条：加粗并圆角化，贴合药丸 */
+/* 选中指示条：加粗、方头 */
 .vp-sidebar-item.is-active > .item .indicator {
   width: 3px;
-  border-radius: 3px;
+  border-radius: 0;
   background-color: var(--vp-c-brand-1);
 }
 
 /* 分组标题（level-0）：字距微调，弱化为区块标题 */
 .vp-sidebar-item.level-0 > .item > .text,
 .vp-sidebar-item.level-0 > .item > .link > .text {
+  letter-spacing: 0.01em;
+}
+
+/* ---------- 博客列表 post-meta（分类 / 标签 / 时间） ---------- */
+
+/* meta 图标：与文字基线对齐，略微降低存在感 */
+.blog-post-item-content .post-meta .icon {
+  opacity: 0.85;
+}
+
+/* 分类链接：hover 变主题色 */
+.blog-post-item-content .post-meta .category-list a {
+  transition: color 0.2s ease;
+}
+
+.blog-post-item-content .post-meta .category-list a:hover {
+  color: var(--vp-c-brand-1);
+}
+
+/* 标签 chip：方形 + 淡边框 + hover 微浮起
+   （前置 .vp-blog-post-item 提升权重，压过主题 scoped 样式） */
+.vp-blog-post-item .blog-post-item-content .post-meta .tag-list .tag {
+  padding: 3px 8px;
+  border-radius: 0;
+  border: 1px solid transparent;
+  transition: color 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease, transform 0.2s ease;
+}
+
+.vp-blog-post-item .blog-post-item-content .post-meta .tag-list .tag:hover {
+  border-color: currentColor;
+  transform: translateY(-1px);
+}
+
+/* 时间：等宽数字，避免日期抖动 */
+.blog-post-item-content .post-meta .create-time span:last-child {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- 博客列表卡片（vp-blog-post-item） ---------- */
+
+/* 列表整体：卡片间距略放大 */
+.vp-blog-post-list {
+  gap: 14px;
+}
+
+/* 卡片：用锐利 1px 边框替代模糊阴影，方形风格 */
+@media (min-width: 768px) {
+  .vp-blog-post-list .vp-blog-post-item {
+    padding: 18px 22px;
+    border: 1px solid var(--vp-c-divider);
+    box-shadow: none;
+    transition: border-color 0.2s ease, background-color var(--vp-t-color);
+  }
+
+  .vp-blog-post-list .vp-blog-post-item:hover {
+    border-color: var(--vp-c-brand-1);
+    box-shadow: none;
+  }
+}
+
+/* 内容区：标题与 meta 作为一组，间距收紧 */
+.vp-blog-post-list .blog-post-item-content {
+  gap: 8px;
+}
+
+/* 标题：保持 19px，行高收紧 */
+.vp-blog-post-list .blog-post-item-content h3 {
+  font-size: 19px;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* meta：上调到 16px，更醒目 */
+.vp-blog-post-list .blog-post-item-content .post-meta {
+  gap: 14px;
+  font-size: 16px;
+}
+
+/* meta 内的标签、图标随之放大，保持比例 */
+.vp-blog-post-list .blog-post-item-content .post-meta .tag-list .tag {
+  font-size: 13px;
+}
+
+.vp-blog-post-list .blog-post-item-content .post-meta .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* 摘要：15.5px 正文，放松行高，弱化为次要文本 */
+.vp-blog-post-list .blog-post-item-content .excerpt {
+  margin-top: 8px;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: var(--vp-c-text-2);
+}
+
+/* 封面图：去圆角，与整体方形风格一致 */
+.vp-blog-post-list .post-cover {
+  border-radius: 0;
+}
+
+/* ---------- 文章详情页 meta 栏（vp-doc-meta） ---------- */
+/* 与列表 meta 统一：16px 文字、16px 图标、13px 方形标签
+   （双写类名提升权重，压过主题 scoped 样式） */
+
+.vp-doc-meta.vp-doc-meta {
+  gap: 12px 16px;
+  font-size: 16px;
+}
+
+.vp-doc-meta.vp-doc-meta .icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.85;
+}
+
+/* 标签 chip：方形 + 淡边框 + hover 微浮起，与列表一致 */
+.vp-doc-meta.vp-doc-meta .tag {
+  padding: 3px 8px;
+  font-size: 13px;
+  border-radius: 0;
+  border: 1px solid transparent;
+  transition: color 0.2s ease, background-color 0.2s ease,
+    border-color 0.2s ease, transform 0.2s ease;
+}
+
+.vp-doc-meta.vp-doc-meta .tag:hover {
+  border-color: currentColor;
+  transform: translateY(-1px);
+}
+
+/* 时间：等宽数字 */
+.vp-doc-meta.vp-doc-meta .create-time span:last-child {
+  font-variant-numeric: tabular-nums;
   letter-spacing: 0.01em;
 }
