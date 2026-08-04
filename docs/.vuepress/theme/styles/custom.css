@@ -4,7 +4,7 @@
   --vp-c-brand-1: rgba(22, 119, 255, 1); /* 链接颜色、强调色 */
   --vp-c-brand-2: rgba(45, 132, 255, 1); /* 链接、按钮 hover 颜色 */
   --vp-c-brand-3: rgba(22, 138, 255, 1); /* 背景色、边框色 */
-  --vp-c-brand-soft: rgba(131, 208, 218, 0.314); /* 辅助色 */
+  --vp-c-brand-soft: rgba(22, 119, 255, 0.1); /* 辅助色 - 与蓝色强调色一致 */
 
   /** 背景颜色 */
 
@@ -110,4 +110,47 @@
 /* 行内代码：淡主题色边框，弱化默认块感 */
 .vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
   border: 1px solid var(--vp-c-divider);
+}
+
+/* ---------- 左侧导航栏（笔记页 sidebar） ---------- */
+
+/* 条目：平滑过渡，hover 轻微位移增加层次 */
+.vp-sidebar-item .item {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.vp-sidebar-item .link .text {
+  transition: color 0.2s ease;
+}
+
+/* hover：柔和主题色底纹 */
+.vp-sidebar-item .item:hover {
+  background-color: var(--vp-c-brand-soft);
+}
+
+.vp-sidebar-item .item:hover .text {
+  color: var(--vp-c-brand-1);
+}
+
+/* 选中项：主题色药丸底纹，文字加重 */
+.vp-sidebar-item.is-active > .item {
+  background-color: var(--vp-c-brand-soft);
+}
+
+.vp-sidebar-item.is-active > .item .text {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+}
+
+/* 选中指示条：加粗并圆角化，贴合药丸 */
+.vp-sidebar-item.is-active > .item .indicator {
+  width: 3px;
+  border-radius: 3px;
+  background-color: var(--vp-c-brand-1);
+}
+
+/* 分组标题（level-0）：字距微调，弱化为区块标题 */
+.vp-sidebar-item.level-0 > .item > .text,
+.vp-sidebar-item.level-0 > .item > .link > .text {
+  letter-spacing: 0.01em;
 }
