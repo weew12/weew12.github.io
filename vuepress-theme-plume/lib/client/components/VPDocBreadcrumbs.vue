@@ -94,10 +94,10 @@ function resolveSidebar(
 
 <style scoped>
 .vp-breadcrumb {
-  padding-left: 8px;
-  margin-bottom: 2rem;
-  border-left: solid 2px var(--vp-c-brand-1);
-  transition: border-left var(--vp-t-color);
+  padding: 2px 0 2px 12px;
+  margin-bottom: 1.25rem;
+  border-left: solid 3px var(--vp-c-brand-1);
+  transition: border-left var(--vp-t-color), color var(--vp-t-color);
 }
 
 @media print {
@@ -109,35 +109,53 @@ function resolveSidebar(
 .vp-breadcrumb ol {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 6px 8px;
   align-items: center;
   justify-content: flex-start;
-  font-size: 14px;
-  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  font-size: 15.5px;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
 .vp-breadcrumb ol li {
   display: flex;
   align-items: center;
+  min-width: 0;
 }
 
 .vp-breadcrumb .breadcrumb {
-  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  max-width: 28em;
+  padding: 1px 2px;
+  overflow: hidden;
+  font-weight: 600;
   color: var(--vp-c-brand-2);
-  transition: color var(--vp-t-color);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-radius: 3px;
+  transition: color var(--vp-t-color), background-color var(--vp-t-color);
 }
 
 .vp-breadcrumb .breadcrumb:hover {
+  background-color: var(--vp-c-brand-soft);
   color: var(--vp-c-brand-1);
 }
 
 .vp-breadcrumb .breadcrumb.current {
-  color: var(--vp-c-text-3);
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  cursor: default;
 }
 
 .vp-breadcrumb .vpi-chevron-right {
-  margin-left: 4px;
-  color: var(--vp-c-border);
-  transition: color var(--vp-t-color);
+  width: 1em;
+  height: 1em;
+  margin-left: 2px;
+  color: var(--vp-c-text-3);
+  opacity: 0.78;
+  transition: color var(--vp-t-color), opacity var(--vp-t-color);
 }
 </style>
