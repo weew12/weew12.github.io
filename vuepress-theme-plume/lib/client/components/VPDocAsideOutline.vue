@@ -55,12 +55,14 @@ function handlePrint() {
 
 .content {
   position: relative;
-  padding-left: 16px;
+  padding: 12px 10px 12px 14px;
   font-size: 13px;
   font-weight: 500;
-  /*border-left: 1px solid var(--vp-c-divider);
-  transition: border-left var(--vp-t-color);*/
-  transition: all var(--vp-t-color);
+  background-color: color-mix(in srgb, var(--vp-c-bg) 76%, transparent);
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 72%, transparent);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.035);
+  transition: background-color var(--vp-t-color), border-color var(--vp-t-color), box-shadow var(--vp-t-color);
 }
 
 .outline-marker {
@@ -82,15 +84,26 @@ function handlePrint() {
 .outline-title {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 0 6px 8px;
+  margin-bottom: 6px;
   font-size: 14px;
   font-weight: 600;
-  line-height: 32px;
-  letter-spacing: 0.4px;
+  line-height: 24px;
+  color: var(--vp-c-text-1);
+  border-bottom: 1px solid color-mix(in srgb, var(--vp-c-divider) 68%, transparent);
 }
 
 .outline-title .icon {
-  margin-left: 4px;
+  flex: 0 0 auto;
+  margin-left: 8px;
   font-size: 1.2em;
   cursor: pointer;
+  color: var(--vp-c-text-3);
+  transition: color var(--vp-t-color);
+}
+
+.outline-title .icon:hover {
+  color: var(--vp-c-brand-1);
 }
 </style>

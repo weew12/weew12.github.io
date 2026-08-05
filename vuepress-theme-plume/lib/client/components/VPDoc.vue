@@ -184,6 +184,8 @@ watch(
 }
 
 .aside {
+  --vp-doc-aside-width: 260px;
+
   position: relative;
 
   display: none;
@@ -191,7 +193,7 @@ watch(
   order: 2;
 
   width: 100%;
-  max-width: 256px;
+  max-width: calc(var(--vp-doc-aside-width) + 32px);
   padding-left: 32px;
 }
 
@@ -202,12 +204,10 @@ watch(
 }
 
 .aside-container {
-  position: fixed;
-  top: 0;
-  width: 224px;
-  height: 100vh;
-  padding-top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 44px);
-  padding-bottom: var(--vp-footer-height, 0);
+  position: sticky;
+  top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 32px);
+  width: var(--vp-doc-aside-width);
+  max-height: calc(100vh - (var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 56px));
   overflow: hidden auto;
 
   scrollbar-width: none;
@@ -218,22 +218,14 @@ watch(
 }
 
 .aside-curtain {
-  --vp-aside-curtain-bg: var(--vp-c-bg);
-
-  position: fixed;
-  bottom: 0;
-  z-index: 10;
-  width: 224px;
-  height: 32px;
-  background: linear-gradient(transparent, var(--vp-aside-curtain-bg) 70%);
-  transition: --vp-aside-curtain-bg var(--vp-t-color);
+  display: none;
 }
 
 .aside-content {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - (var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + var(--vp-footer-height, 0px) + 48px));
-  padding-bottom: 32px;
+  min-height: auto;
+  padding-bottom: 24px;
 }
 
 .content {
@@ -247,7 +239,7 @@ watch(
 }
 
 .vp-doc-container.has-aside .content-container {
-  max-width: 788px;
+  max-width: 820px;
 }
 
 @media (min-width: 768px) {
@@ -274,6 +266,8 @@ watch(
 
 @media (min-width: 1280px) {
   .vp-doc-container .aside {
+    --vp-doc-aside-width: clamp(260px, 17vw, 340px);
+
     display: block;
   }
 
@@ -284,6 +278,10 @@ watch(
 }
 
 @media (min-width: 1440px) {
+  .vp-doc-container.has-aside .content-container {
+    max-width: 840px;
+  }
+
   .vp-doc-container:not(.has-sidebar) .content {
     max-width: 884px;
   }

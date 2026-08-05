@@ -33,31 +33,30 @@ function handleClick({ target: el }: Event) {
 }
 
 .nested {
-  padding-left: 13px;
+  padding-left: 10px;
 }
 
 .outline-link {
-  display: block;
+  display: -webkit-box;
+  position: relative;
   overflow: hidden;
   font-size: 14px;
   font-weight: 400;
-  line-height: 32px;
+  line-height: 20px;
   color: var(--vp-c-text-2);
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  /* transition: color var(--vp-t-color); */
-  transition: all var(--vp-t-color);
-  padding: 0 6px;
-  margin: 1px 0;
-  border-radius: 0px;
-  position: relative;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  padding: 6px 8px 6px 12px;
+  margin: 2px 0;
+  border-radius: 6px;
+  transition: color var(--vp-t-color), background-color var(--vp-t-color);
 }
 
 .outline-link:hover,
 .outline-link.active {
   color: var(--vp-c-brand-1);
-  background-color: var(--vp-c-brand-soft);
-  padding-left: 8px;
+  background-color: color-mix(in srgb, var(--vp-c-brand-soft) 72%, transparent);
 }
 
 /* .outline-link.nested {
@@ -72,17 +71,15 @@ function handleClick({ target: el }: Event) {
   top: 50%;
   transform: translateY(-50%);
   width: 3px;
-  height: 18px;
+  height: calc(100% - 14px);
+  min-height: 16px;
   background-color: var(--vp-c-brand-1);
   border-radius: 0 2px 2px 0;
 }
 
 .nested .outline-link {
-  padding: 0 12px 0 25px;
-}
-
-.nested .outline-link:hover,
-.nested .outline-link.active {
-  padding-left: 29px;
+  padding: 5px 8px 5px 18px;
+  font-size: 13px;
+  line-height: 19px;
 }
 </style>
