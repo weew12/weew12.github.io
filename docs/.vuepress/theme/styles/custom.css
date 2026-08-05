@@ -55,14 +55,6 @@
 :root {
   --vp-nav-bg-color: var(--vp-c-bg);
 }
-.vp-navbar.vp-navbar {
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-/* 首页顶部保持通透，不显边框 */
-.vp-navbar.home.top {
-  border-bottom-color: transparent;
-}
-
 /* 页脚：补回顶部细边框 + 居中留白，形成收尾感 */
 .vp-footer.vp-footer {
   border-top: 1px solid var(--vp-c-divider);

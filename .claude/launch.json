@@ -2,8 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "ref-site",
-      "url": "https://ui-ux-pro-max-skill.nextlevelbuilder.io"
+      "name": "blog-dev",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["docs:dev", "--port", "8099"],
+      "port": 8099
     }
   ]
 }
