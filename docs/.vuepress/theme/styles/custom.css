@@ -22,6 +22,11 @@
 
   --vp-c-bg: #fcfcfd;        /* 内容主面 */
   --vp-c-bg-alt: #eef1f6;    /* 侧栏 / 次级画布，冷灰一档 */
+
+  /* 水墨背景蒙版（浅色）：淡白高透，把水墨图压成极淡氛围底 */
+  --vp-bg-scrim: rgba(252, 252, 253, 0.82);
+  /* 正文面半透明底：让背景图透出来，配合 backdrop-blur */
+  --vp-surface: rgba(252, 252, 253, 0.72);
   --vp-c-bg-elv: #ffffff;    /* 浮起层（弹窗/菜单/卡片） */
   --vp-c-bg-soft: #f2f5f9;   /* 柔和面板（表格斑马纹 / soft 底纹） */
 
@@ -57,6 +62,11 @@
   /* 背景色 - 抬离纯黑以压光晕，成一套由深到浅的中性阶 */
   --vp-c-bg: #161616; /* 主背景 - 抬升，减少绿字光晕 */
   --vp-c-bg-alt: #101010; /* 侧栏/次级画布 - 最深，衬托内容面 */
+
+  /* 水墨背景蒙版（深色）：深黑高透，把浅灰水墨图压暗、避免与绿字冲突 */
+  --vp-bg-scrim: rgba(18, 18, 18, 0.86);
+  /* 正文面半透明底 */
+  --vp-surface: rgba(22, 22, 22, 0.76);
   --vp-c-bg-elv: #1e1e1e; /* 卡片/浮起层 */
   --vp-c-bg-soft: #212121; /* 柔和面板背景 */
 
@@ -83,15 +93,50 @@
    仅在页面留白 / 页脚（透明）/ 导航透出处显现，形成"纸铺于坐标纸"观感。
    ============================================================ */
 body {
-  /* 网格线（两组渐变）叠在纯色主背景之上；
-     背景色仍走主题变量，深/浅自动切换。
-     attachment:fixed 让网格钉在视口，滚动时不漂移，更像坐标纸。 */
+  /* 背景分层（从上到下）：
+     1-2) 坐标纸网格线（两组渐变）
+     3) 主题色蒙版：把下面的水墨图压淡（方案 C，深浅都压），走 --vp-bg-scrim 变量自适应
+     4) 水墨烟雨图：铺满视口、cover 居中
+     全部 attachment:fixed，钉在视口，滚动时背景不漂移。 */
   background-image:
     linear-gradient(to right, var(--vp-grid-line) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--vp-grid-line) 1px, transparent 1px);
-  background-size: var(--vp-grid-size, 32px) var(--vp-grid-size, 32px);
-  background-position: -1px -1px;
+    linear-gradient(to bottom, var(--vp-grid-line) 1px, transparent 1px),
+    linear-gradient(var(--vp-bg-scrim), var(--vp-bg-scrim)),
+    url('/bg/ink-rain.png');
+  background-size:
+    var(--vp-grid-size, 32px) var(--vp-grid-size, 32px),
+    var(--vp-grid-size, 32px) var(--vp-grid-size, 32px),
+    cover,
+    auto 145%;
+  /* 图放大到视口高 145% 并锚到偏下(center 72%)：把顶部天空移出视口，让山峦升进内容区 */
+  background-position: -1px -1px, -1px -1px, center, center 72%;
+  background-repeat: repeat, repeat, no-repeat, no-repeat;
   background-attachment: fixed;
+}
+
+/* ============================================================
+   水墨背景透出：让内容面板/卡片半透明，露出 body 的水墨图
+   ============================================================ */
+
+/* 首页外层大面板：原本不透明 --vp-c-bg-alt（#eef1f6）盖住中间内容区。
+   主题是 scoped 样式（带 [data-v-*] 属性权重高），必须 !important 才能覆盖。
+   改全透明，露出 body 水墨图；中间的水墨可读性由各卡片的半透明底保证。 */
+.vp-blog.home-blog {
+  background-color: transparent !important;
+  /* 主题还在这里铺了一层小圆点 background-image，一并去掉免得和水墨/网格打架 */
+  background-image: none !important;
+}
+
+/* 博客卡片 + 侧栏各卡片：半透明底 + 轻模糊，既透出水墨又保证文字可读 */
+.vp-blog-post-item,
+.vp-blog-aside .vp-blog-tags,
+.vp-blog-aside .vp-blog-categories,
+.vp-blog-aside .vp-blog-archives,
+.vp-blog-aside .vp-blog-nav,
+.vp-blog-profile {
+  background-color: var(--vp-surface);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
 }
 
 /* ============================================================
