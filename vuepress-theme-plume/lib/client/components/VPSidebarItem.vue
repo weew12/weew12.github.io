@@ -337,6 +337,13 @@ function onCaretClick() {
   transform: rotate(0);
 }
 
+/* 建立 BFC，使子项纵向 margin 始终包含在内。
+   展开动画中过渡层为 overflow:hidden(BFC)、结束后恢复 visible，
+   若无此规则，首个子项 margin-top 会在动画末尾溢出折叠，导致内容整体上顶一下 */
+.items {
+  display: flow-root;
+}
+
 .vp-sidebar-item.level-1 .items,
 .vp-sidebar-item.level-2 .items,
 .vp-sidebar-item.level-3 .items,

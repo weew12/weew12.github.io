@@ -97,6 +97,8 @@ onMounted(() => {
   overflow-x: hidden;
   /* 始终预留滚动条槽位，展开/收起分组时内容宽度恒定，避免回弹变窄 */
   scrollbar-gutter: stable;
+  /* 展开分组时内容高度骤增，禁用滚动锚定，避免浏览器逐帧回补 scrollTop 造成上下回弹 */
+  overflow-anchor: none;
   background-color: var(--vp-sidebar-bg-color);
   box-shadow: var(--vp-c-shadow-3);
   opacity: 0;
