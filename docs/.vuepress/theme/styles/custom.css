@@ -65,21 +65,54 @@
   background-color: transparent;
 }
 
-/* 全局：细滚动条（悬停变主题色，呼应终端风） */
+/* ============================================================
+   滚动条：方正风格（呼应全站锐角），跨浏览器兼容
+   —— 回退层（Firefox 等仅支持标准属性的引擎）：细滚动条 + 主题色。
+      标准属性无法画方角，这是正常降级。
+   —— 升级层（Chromium / Safari / Edge / Opera，支持 ::-webkit-scrollbar）：
+      画真正的方形滚动条。注意 Chromium 121+ 只要设了非 auto 的
+      scrollbar-width / scrollbar-color 就会忽略 ::-webkit-scrollbar，
+      故在 @supports 内把标准属性重置回 auto，把绘制权交还给 webkit 规则。
+   ============================================================ */
+
+/* 回退层（Firefox 生效）：细、主题色、透明轨道 */
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--vp-c-divider) transparent;
 }
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--vp-c-divider);
-  border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--vp-c-brand-1);
+
+/* 升级层：仅在支持 webkit 滚动条伪元素的引擎生效（Firefox 不进此块） */
+@supports selector(::-webkit-scrollbar) {
+  /* 重置标准属性，重新启用下面的 webkit 规则。
+     !important 用于压过主题内 code.css / normalize.css / VPSidebar 里
+     元素级的 scrollbar-width: thin；而两处主动隐藏滚动条的容器
+     (.aside-container / .vp-sidebar.hide-scrollbar) 各自带更高优先级的
+     ::-webkit-scrollbar 隐藏规则，仍会保持隐藏，不受影响 */
+  * {
+    scrollbar-width: auto !important;
+    scrollbar-color: auto !important;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--vp-c-divider);
+    border: 2px solid transparent;   /* 透明描边留出内缩，thumb 看起来更利落 */
+    background-clip: padding-box;
+    border-radius: 0;                /* 方正 */
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--vp-c-brand-1);
+    background-clip: padding-box;
+  }
+  /* 横竖滚动条交汇处的小方块，去掉默认底色 */
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
 }
 /* 文本选中：主题色淡底 */
 ::selection {
