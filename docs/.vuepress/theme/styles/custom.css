@@ -139,6 +139,14 @@ body {
   -webkit-backdrop-filter: blur(3px);
 }
 
+/* 笔记侧边栏：原本不透明 --vp-c-bg-alt 挡住水墨图。
+   重定义侧栏背景变量为半透明墨面 + 轻模糊，和内容卡片统一，让水墨透出。 */
+.vp-sidebar {
+  --vp-sidebar-bg-color: var(--vp-surface);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
 /* ============================================================
    整体风格统一 —— 导航栏 / 页脚 / 正文 微调
    朴素精美、不花哨；基于主题变量，浅色/深色均适配
