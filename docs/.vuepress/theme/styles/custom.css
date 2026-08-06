@@ -356,7 +356,8 @@ body {
   transform: translate(-50%, -50%);
   width: 26px;
   height: 12px;
-  background: var(--vp-c-bg);
+  /* background: var(--vp-c-bg); */
+  background: transparent;
 }
 /* 旋转 45° 的主题色实心菱形（与线同色，纯 CSS，零字体依赖） */
 .vp-doc hr::after {
