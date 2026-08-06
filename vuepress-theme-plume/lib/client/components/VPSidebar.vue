@@ -95,6 +95,8 @@ onMounted(() => {
   padding: 24px 24px 96px;
   overflow-y: auto;
   overflow-x: hidden;
+  /* 始终预留滚动条槽位，展开/收起分组时内容宽度恒定，避免回弹变窄 */
+  scrollbar-gutter: stable;
   background-color: var(--vp-sidebar-bg-color);
   box-shadow: var(--vp-c-shadow-3);
   opacity: 0;
