@@ -6,12 +6,17 @@
   --vp-c-brand-3: rgba(22, 138, 255, 1); /* 背景色、边框色 */
   --vp-c-brand-soft: rgba(22, 119, 255, 0.1); /* 辅助色 - 与蓝色强调色一致 */
 
-  /** 背景颜色 */
+  /** 背景颜色 —— 冷调中性，与蓝色强调色成一套；内容面为纯白，画布/次级面略带冷灰 */
 
-  --vp-c-bg: #fff;
-  --vp-c-bg-alt: #f6f6f7;
-  --vp-c-bg-elv: #fff;
-  --vp-c-bg-soft: #f6f6f7;
+  --vp-c-bg: #ffffff;        /* 内容主面（正文/卡片/导航），保持纯白最清爽 */
+  --vp-c-bg-alt: #eef1f6;    /* 侧栏 / 次级画布，冷灰一档 */
+  --vp-c-bg-elv: #ffffff;    /* 浮起层（弹窗/菜单） */
+  --vp-c-bg-soft: #f3f5f9;   /* 柔和面板（表格斑马纹 / soft 底纹） */
+
+  /** 背景网格 —— 全站统一的细方格，衬在内容之下 */
+
+  --vp-grid-line: rgba(37, 99, 235, 0.05); /* 极淡的品牌蓝网格线 */
+  --vp-grid-size: 32px;                      /* 方格边长 */
 
   /** 文本颜色 */
 
@@ -28,11 +33,14 @@
   --vp-c-brand-3: #39ff14; /* 背景色、边框色 - primary */
   --vp-c-brand-soft: rgba(57, 255, 20, 0.16); /* 辅助色 - 半透明绿 */
 
-  /* 背景色 - 照抄 demo（黑色终端风） */
+  /* 背景色 - 黑色终端风，成一套由深到浅的中性阶 */
   --vp-c-bg: #0d0d0d; /* 主背景 - demo --bg */
-  --vp-c-bg-alt: #0a0a0a; /* 侧栏/次级背景 - 略深 */
+  --vp-c-bg-alt: #080808; /* 侧栏/次级画布 - 最深，衬托内容面 */
   --vp-c-bg-elv: #161616; /* 卡片/浮起层 - demo --bg-card */
-  --vp-c-bg-soft: #1e1e1e; /* 柔和面板背景 - demo --bg-lighter */
+  --vp-c-bg-soft: #1c1c1c; /* 柔和面板背景 - demo --bg-lighter */
+
+  /* 背景网格 - 极淡的荧光绿网格线，呼应强调色 */
+  --vp-grid-line: rgba(57, 255, 20, 0.045);
 
   /* 文本色 - 照抄 demo */
   --vp-c-text-1: #e4e4e7; /* 主要文本 - demo --text */
@@ -44,6 +52,25 @@
   --vp-c-border-hard: #3f3f46;
   --vp-c-divider: #27272a;
   --vp-c-gutter: #0d0d0d;
+}
+
+/* ============================================================
+   全站背景网格 —— 固定在视口、衬于所有内容之下
+   浅/深色各用一套极淡网格线（品牌蓝 / 荧光绿），方格 32px，
+   呼应全站方正锐角风格。用 body::before 固定层，不随滚动移动，
+   z-index:-1 压到最底，内容面（纯色 --vp-c-bg）自然盖住网格，
+   仅在页面留白 / 页脚（透明）/ 导航透出处显现，形成"纸铺于坐标纸"观感。
+   ============================================================ */
+body {
+  /* 网格线（两组渐变）叠在纯色主背景之上；
+     背景色仍走主题变量，深/浅自动切换。
+     attachment:fixed 让网格钉在视口，滚动时不漂移，更像坐标纸。 */
+  background-image:
+    linear-gradient(to right, var(--vp-grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--vp-grid-line) 1px, transparent 1px);
+  background-size: var(--vp-grid-size, 32px) var(--vp-grid-size, 32px);
+  background-position: -1px -1px;
+  background-attachment: fixed;
 }
 
 /* ============================================================
