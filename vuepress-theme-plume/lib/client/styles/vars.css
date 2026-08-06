@@ -343,7 +343,7 @@
  * Layouts
  * -------------------------------------------------------------------------- */
 :root {
-  --vp-layout-max-width: 1440px;
+  --vp-layout-max-width: 1760px;
   --content-width: var(--vp-layout-max-width);
 }
 
@@ -421,9 +421,9 @@
  * Component: Custom Block
  * -------------------------------------------------------------------------- */
 :root {
-  --vp-custom-block-font-size: 14px;
-  --vp-custom-block-line-height: 24px;
-  --vp-custom-block-code-font-size: 13px;
+  --vp-custom-block-font-size: 15px;
+  --vp-custom-block-line-height: 26px;
+  --vp-custom-block-code-font-size: 14px;
 
   --vp-custom-block-info-border: transparent;
   --vp-custom-block-info-text: var(--vp-c-text-1);
@@ -578,9 +578,9 @@
   --vp-bulletin-bg-color: var(--vp-c-bg);
   --vp-bulletin-text-color: var(--vp-c-text-1);
   --vp-bulletin-title-color: var(--vp-c-text-1);
-  --vp-bulletin-font-size: 16px;
-  --vp-bulletin-title-font-size: 18px;
-  --vp-bulletin-line-height: 24px;
+  --vp-bulletin-font-size: 17px;
+  --vp-bulletin-title-font-size: 19px;
+  --vp-bulletin-line-height: 26px;
   --vp-bulletin-border-width: 2px;
   --vp-bulletin-border: conic-gradient(var(--vp-c-important-3), var(--vp-c-danger-3), var(--vp-c-success-3), var(--vp-c-important-3));
   --vp-bulletin-width: 320px;

@@ -174,7 +174,7 @@ onMounted(() => {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1760px) {
   .vp-sidebar {
     width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 24px);
     padding-left: max(24px,

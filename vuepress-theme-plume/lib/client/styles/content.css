@@ -19,16 +19,16 @@
 }
 
 .vp-doc h1 {
-  font-size: 32px;
-  line-height: 44px;
+  font-size: 36px;
+  line-height: 48px;
   letter-spacing: -0.02em;
 }
 
 .vp-doc h2 {
   padding-top: 24px;
   margin: 48px 0 16px;
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 30px;
+  line-height: 40px;
   letter-spacing: -0.02em;
   border-top: 1px solid var(--vp-c-divider);
   transition: border-top var(--vp-t-color), color var(--vp-t-color);
@@ -42,23 +42,23 @@
 
 .vp-doc h3 {
   margin: 32px 0 16px;
-  font-size: 24px;
-  line-height: 32px;
+  font-size: 25px;
+  line-height: 34px;
   letter-spacing: -0.01em;
 }
 
 .vp-doc h4 {
   margin: 24px 0 16px;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 21px;
+  line-height: 30px;
   letter-spacing: -0.01em;
 }
 
 .vp-doc h5,
 .vp-doc h6 {
   margin: 24px 0 16px;
-  font-size: 18px;
-  line-height: 26px;
+  font-size: 19px;
+  line-height: 28px;
   letter-spacing: -0.01em;
 }
 
@@ -102,8 +102,8 @@
 
 @media (min-width: 768px) {
   .vp-doc h1 {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 36px;
+    line-height: 44px;
     letter-spacing: -0.02em;
   }
 }
@@ -235,7 +235,7 @@
 }
 
 .vp-doc th {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--vp-c-text-2);
   text-align: left;
@@ -245,7 +245,7 @@
 }
 
 .vp-doc td {
-  font-size: 16px;
+  font-size: 17px;
 }
 
 /**

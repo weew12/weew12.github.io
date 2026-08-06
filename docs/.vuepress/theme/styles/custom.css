@@ -464,3 +464,9 @@
   line-height: 1.8;
   text-align: justify;
 }
+
+/* 正文加粗提到 700：楷体下 600 与正文 400 区分偏弱，700 让重点真正跳出 */
+.vp-doc strong {
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+}

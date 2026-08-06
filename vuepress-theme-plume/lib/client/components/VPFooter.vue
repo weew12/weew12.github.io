@@ -88,7 +88,9 @@ onMounted(() => {
   .vp-footer {
     padding: 24px;
   }
+}
 
+@media (min-width: 1760px) {
   .vp-footer.has-sidebar {
     margin-left: calc((100% - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
   }

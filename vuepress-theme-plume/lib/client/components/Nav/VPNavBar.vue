@@ -168,7 +168,7 @@ watchPostEffect(() => {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1760px) {
   .vp-navbar.has-sidebar .title {
     width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
     padding-left: max(32px,
@@ -185,7 +185,7 @@ watchPostEffect(() => {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1760px) {
   .vp-navbar.has-sidebar .content {
     padding-right: calc((100vw - var(--vp-layout-max-width)) / 2 + 32px);
     padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
@@ -259,7 +259,7 @@ watchPostEffect(() => {
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1760px) {
   .vp-navbar.has-sidebar .divider {
     padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
   }

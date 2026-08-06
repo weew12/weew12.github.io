@@ -211,7 +211,7 @@ watch(
   }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1760px) {
   .vp-content.has-sidebar {
     padding-right: calc((100vw - var(--vp-layout-max-width)) / 2);
     padding-left: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width));
