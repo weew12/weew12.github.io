@@ -86,22 +86,148 @@
   background: var(--vp-c-brand-soft);
 }
 
-/* 正文引用块：加主题色左边框，替代原来单纯的灰底（方形） */
+/* 正文引用块（融合档）：主题色左边框 4px + 淡主题色底，方角
+   去掉 Plume 默认的大引号图标，收回为其预留的左内边距 */
 .vp-doc blockquote {
-  border-left: 3px solid var(--vp-c-brand-1);
+  padding: 14px 20px;
+  border-left: 4px solid var(--vp-c-brand-1);
   border-radius: 0;
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-text-2);
 }
 
-/* 正文表格：外框，边缘整洁（方形） */
+/* 隐藏 Plume 引用块左上角的大引号 SVG */
+.vp-doc blockquote::before {
+  display: none;
+}
+
+/* 引用块内段落：继承色、正常字重、不斜体 */
+.vp-doc blockquote > p {
+  color: inherit;
+}
+
+/* 正文表格（融合档）：外框方形 + 主题色表头 + 斑马纹 */
 .vp-doc table {
   border: 1px solid var(--vp-c-divider);
   border-radius: 0;
   overflow: hidden;
 }
 
+/* 表头：淡主题色底、主文本色、加重 */
+.vp-doc th {
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-text-1);
+  font-weight: 700;
+}
+
+/* 偶数行斑马纹 */
+.vp-doc tr:nth-child(even) td {
+  background-color: var(--vp-c-bg-soft);
+}
+
+/* ---------- ⑦ 图片：方形边框 + 内衬底（跟随主题，深色自适应） ---------- */
+.vp-doc img {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0;
+  padding: 6px;
+  background: var(--vp-c-bg);
+}
+
 /* 行内代码：淡主题色边框，弱化默认块感 */
 .vp-doc :not(pre, h1, h2, h3, h4, h5, h6) > code {
   border: 1px solid var(--vp-c-divider);
+}
+
+/* ---------- ④ 列表：无序方形色块 + 有序方形序号徽章 ---------- */
+
+/* 无序列表：去圆点，改主题色方形小色块 */
+.vp-doc ul {
+  list-style: none;
+  padding-left: 1.5em;
+}
+.vp-doc ul > li {
+  position: relative;
+}
+.vp-doc ul > li::before {
+  content: "";
+  position: absolute;
+  left: -1.1em;
+  top: 0.62em;
+  width: 6px;
+  height: 6px;
+  background: var(--vp-c-brand-1);
+}
+
+/* 有序列表：去默认数字，改主题色方形序号徽章（支持嵌套计数） */
+.vp-doc ol {
+  list-style: none;
+  counter-reset: li;
+  padding-left: 1.9em;
+}
+.vp-doc ol > li {
+  position: relative;
+  counter-increment: li;
+}
+.vp-doc ol > li::before {
+  content: counter(li);
+  position: absolute;
+  left: -1.9em;
+  top: 0.2em;
+  width: 1.4em;
+  height: 1.4em;
+  line-height: 1.4em;
+  text-align: center;
+  background: var(--vp-c-brand-1);
+  color: #fff;
+  font-size: 0.8em;
+  font-variant-numeric: tabular-nums;
+}
+/* 深色模式：荧光绿底配白字太刺眼，改黑字提高可读性 */
+[data-theme="dark"] .vp-doc ol > li::before {
+  color: #0d0d0d;
+}
+
+/* ---------- ⑤ 分隔线：两端渐隐主题色线 + 居中菱形 ---------- */
+
+/* 线本体：用主题色渐变，两端淡出到透明，比原来更长(420px) */
+.vp-doc hr {
+  border: none;
+  width: 420px;
+  max-width: 80%;
+  height: 1px;
+  margin: 20px auto;
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--vp-c-brand-1) 30%,
+    var(--vp-c-brand-1) 70%,
+    transparent 100%
+  );
+  /* 关键：盖过全局 overflow:hidden，否则菱形/遮罩会被裁掉 */
+  overflow: visible;
+}
+/* 背景遮罩块：盖住线中间一段，让菱形干净嵌入 */
+.vp-doc hr::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 12px;
+  background: var(--vp-c-bg);
+}
+/* 旋转 45° 的主题色实心菱形（与线同色，纯 CSS，零字体依赖） */
+.vp-doc hr::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--vp-c-brand-1);
 }
 
 /* ---------- 左侧导航栏（笔记页 sidebar） ---------- */
@@ -283,4 +409,58 @@
 .vp-doc-meta.vp-doc-meta .create-time span:last-child {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.01em;
+}
+
+/* ============================================================
+   正文出版物排版（融合档）—— 逐个元素落地
+   基于文楷字体，守方形锐角，浅色/深色适配
+   ============================================================ */
+
+/* ---------- ① 标题：h2 主题色左标线 ---------- */
+
+/* h2：去掉 Plume 默认顶部分隔线，改主题色左标线 */
+.vp-doc h2 {
+  padding-top: 0;
+  padding-left: 16px;
+  margin: 46px 0 18px;
+  border-top: none;
+  border-left: 4px solid var(--vp-c-brand-1);
+}
+
+.vp-doc h2:first-of-type {
+  padding-top: 0;
+  margin-top: 32px;
+}
+
+/* 标题锚点 #：平时全部隐藏，hover 到对应标题时才淡入（更出版物） */
+.vp-doc h1 .header-anchor::before,
+.vp-doc h2 .header-anchor::before,
+.vp-doc h3 .header-anchor::before,
+.vp-doc h4 .header-anchor::before,
+.vp-doc h5 .header-anchor::before,
+.vp-doc h6 .header-anchor::before {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.vp-doc h1:hover .header-anchor::before,
+.vp-doc h2:hover .header-anchor::before,
+.vp-doc h3:hover .header-anchor::before,
+.vp-doc h4:hover .header-anchor::before,
+.vp-doc h5:hover .header-anchor::before,
+.vp-doc h6:hover .header-anchor::before,
+.vp-doc .header-anchor:hover::before {
+  opacity: 1;
+}
+
+/* h2 因有左标线 + padding，锚点单独左移到标线外侧，避免与标线打架 */
+.vp-doc h2 .header-anchor::before {
+  left: calc(-0.75em - 22px);
+}
+
+/* ---------- ② 正文段落：行高与两端对齐 ---------- */
+
+/* 行高收到 1.8，比 Plume 默认 32px(约2.0) 更紧凑工整；两端对齐让中文成块 */
+.vp-doc p {
+  line-height: 1.8;
+  text-align: justify;
 }
