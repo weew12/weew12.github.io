@@ -5,6 +5,7 @@ import { defineClientConfig } from '@vuepress/client'
 // import Swiper from 'vuepress-theme-plume/features/Swiper.vue'
 
 // import CustomComponent from './theme/components/Custom.vue'
+import FooterFlyfish from './theme/components/FooterFlyfish.vue'
 
 import './theme/styles/custom.css'
 
@@ -19,6 +20,8 @@ export default defineClientConfig({
         // your custom components
         // app.component('CustomComponent', CustomComponent)
     },
+    // 全站根级常驻：页脚小鱼游动动画（移植自 FixIt cmpt-flyfish）
+    rootComponents: [FooterFlyfish],
 })
 
 // // mermaid 配置

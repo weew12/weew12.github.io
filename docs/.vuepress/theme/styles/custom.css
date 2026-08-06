@@ -15,6 +15,8 @@
   --vp-c-brand-3: #0e59c9; /* 实心底：blue-7 档，配白字对比达标 */
   --vp-c-brand-soft: rgba(24, 104, 224, 0.08); /* 淡底：低透明，不喧宾夺主 */
 
+  /* 页脚水面 wash：淡品牌蓝，与 flyfish 水色同系 */
+
   /** 背景颜色 —— 冷调中性，与蓝成套；主面用极浅灰白（非纯白）长文护眼，
       卡片/浮层用纯白微抬起 */
 
@@ -49,6 +51,8 @@
   --vp-c-brand-2: #62e895; /* hover：提亮 */
   --vp-c-brand-3: #2bbf6a; /* 实心底：更深，配深色文字 */
   --vp-c-brand-soft: rgba(69, 221, 127, 0.13); /* 辅助淡底 */
+
+  /* 页脚水面 wash：淡磷光绿，与 flyfish 暗色水色同系 */
 
   /* 背景色 - 抬离纯黑以压光晕，成一套由深到浅的中性阶 */
   --vp-c-bg: #161616; /* 主背景 - 抬升，减少绿字光晕 */
@@ -101,12 +105,18 @@ body {
 }
 /* 页脚：补回顶部细边框 + 居中留白，形成收尾感 */
 .vp-footer.vp-footer {
-  border-top: 1px solid var(--vp-c-divider);
   padding-top: 28px;
   padding-bottom: 28px;
   text-align: center;
-  /* 背景透明：让正文网格背景透出，避免带侧栏时白色块偏移露出（红框问题） */
-  background-color: transparent;
+  /* 页脚背景 = 正文主面色，让水线以上的“空气区”与正文无缝衔接（复刻作者）。
+     水面动画只占下半（INIT_HEIGHT_RATE=0.5）的实色淡色，天然形成水/空气两层，无白带。 */
+  background-color: var(--vp-c-bg);
+}
+
+/* 放大页脚版权文字，浮于水面之上 */
+.vp-footer .container {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 /* ============================================================
@@ -546,4 +556,10 @@ body {
 .vp-doc strong {
   font-weight: 700;
   color: var(--vp-c-text-1);
+}
+
+/* 页脚小鱼动画：确保版权文字浮在 canvas 之上 */
+.vp-footer .container {
+  position: relative;
+  z-index: 1;
 }

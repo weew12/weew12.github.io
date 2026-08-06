@@ -6,6 +6,12 @@
       "runtimeExecutable": "yarn",
       "runtimeArgs": ["docs:dev", "--port", "8099"],
       "port": 8099
+    },
+    {
+      "name": "blog-dev-fish",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["docs:dev", "--port", "8097"],
+      "port": 8097
     }
   ]
 }
