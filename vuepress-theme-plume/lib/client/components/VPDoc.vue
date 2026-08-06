@@ -209,6 +209,8 @@ watch(
   width: var(--vp-doc-aside-width);
   max-height: calc(100vh - (var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + var(--vp-doc-top-height, 0px) + 56px));
   overflow: hidden auto;
+  /* 目录滚到边界时不把滚动链传给页面，避免与正文滚动互相干扰 */
+  overscroll-behavior: contain;
 
   scrollbar-width: none;
 }

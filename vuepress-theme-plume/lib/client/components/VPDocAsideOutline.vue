@@ -58,11 +58,11 @@ function handlePrint() {
   padding: 12px 10px 12px 14px;
   font-size: 13px;
   font-weight: 500;
-  background-color: color-mix(in srgb, var(--vp-c-bg) 76%, transparent);
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 72%, transparent);
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.035);
-  transition: background-color var(--vp-t-color), border-color var(--vp-t-color), box-shadow var(--vp-t-color);
+  background-color: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0;
+  box-shadow: none;
+  transition: background-color var(--vp-t-color), border-color var(--vp-t-color);
 }
 
 .outline-marker {
@@ -85,13 +85,15 @@ function handlePrint() {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 6px 8px;
-  margin-bottom: 6px;
+  padding: 0 6px 10px 10px;
+  margin-bottom: 8px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 24px;
+  letter-spacing: 0.01em;
   color: var(--vp-c-text-1);
-  border-bottom: 1px solid color-mix(in srgb, var(--vp-c-divider) 68%, transparent);
+  border-left: 4px solid var(--vp-c-brand-1);
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
 .outline-title .icon {

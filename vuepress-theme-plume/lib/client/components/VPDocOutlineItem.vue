@@ -49,7 +49,7 @@ function handleClick({ target: el }: Event) {
   -webkit-line-clamp: 2;
   padding: 6px 8px 6px 12px;
   margin: 2px 0;
-  border-radius: 6px;
+  border-radius: 0;
   transition: color var(--vp-t-color), background-color var(--vp-t-color);
 }
 
@@ -74,7 +74,7 @@ function handleClick({ target: el }: Event) {
   height: calc(100% - 14px);
   min-height: 16px;
   background-color: var(--vp-c-brand-1);
-  border-radius: 0 2px 2px 0;
+  border-radius: 0;
 }
 
 .nested .outline-link {
