@@ -12,10 +12,10 @@ import { onBeforeUnmount, onMounted } from 'vue'
  *  - 增加 prefers-reduced-motion 与页面隐藏时暂停
  */
 
-// 水面/鱼填充色，贴合本站主题：浅色品牌蓝 / 深色磷光绿（带透明度，让网格背景透出）
-// 学作者：浅色用实色淡蓝（作者是实色淡紫 #e6e5f8），深色用半透明绿（作者深色是半透明白）
-const COLOR_LIGHT = '#dbe7fb' // 浅色：品牌蓝的极淡实色
-const COLOR_DARK = 'rgb(69 221 127 / 12%)' // 深色：磷光绿半透明
+// 水面/鱼填充色：改成山水墨灰，与全站水墨背景图统一、更协调。
+// 半透明，让底下的水墨图/网格透出，水面像淡淡的湖面墨色。
+const COLOR_LIGHT = 'rgb(96 108 120 / 18%)' // 浅色：冷调墨灰半透明（贴合水墨图的灰）
+const COLOR_DARK = 'rgb(190 198 208 / 14%)' // 深色：浅雾灰半透明（深底上仍可见）
 
 let renderer: any = null
 

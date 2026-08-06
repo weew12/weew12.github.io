@@ -153,9 +153,9 @@ body {
   padding-top: 28px;
   padding-bottom: 28px;
   text-align: center;
-  /* 页脚背景 = 正文主面色，让水线以上的“空气区”与正文无缝衔接（复刻作者）。
-     水面动画只占下半（INIT_HEIGHT_RATE=0.5）的实色淡色，天然形成水/空气两层，无白带。 */
-  background-color: var(--vp-c-bg);
+  /* 页脚背景透明：让 body 的水墨图透到页脚，与正文无缝衔接（不再是白洞）。
+     页脚小鱼的蓝色水面(下半)正好叠在水墨图底部的湖面上，主题上更连贯。 */
+  background-color: transparent;
 }
 
 /* 放大页脚版权文字，浮于水面之上 */
