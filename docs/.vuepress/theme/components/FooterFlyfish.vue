@@ -12,10 +12,10 @@ import { onBeforeUnmount, onMounted } from 'vue'
  *  - 增加 prefers-reduced-motion 与页面隐藏时暂停
  */
 
-// 水面/鱼填充色：改成山水墨灰，与全站水墨背景图统一、更协调。
+// 水面/鱼填充色：中性墨灰（无冷蓝），与全站黑白灰水墨调统一。
 // 半透明，让底下的水墨图/网格透出，水面像淡淡的湖面墨色。
-const COLOR_LIGHT = 'rgb(96 108 120 / 18%)' // 浅色：冷调墨灰半透明（贴合水墨图的灰）
-const COLOR_DARK = 'rgb(190 198 208 / 14%)' // 深色：浅雾灰半透明（深底上仍可见）
+const COLOR_LIGHT = 'rgb(108 108 112 / 18%)' // 浅色：中性墨灰半透明
+const COLOR_DARK = 'rgb(198 198 202 / 14%)' // 深色：中性浅雾灰半透明（深底上仍可见）
 
 let renderer: any = null
 

@@ -12,6 +12,13 @@
       "runtimeExecutable": "yarn",
       "runtimeArgs": ["docs:dev", "--port", "8097"],
       "port": 8097
+    },
+    {
+      "name": "ink-demo",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [".claude/static-server.cjs"],
+      "port": 8088,
+      "url": "http://localhost:8088/"
     }
   ]
 }

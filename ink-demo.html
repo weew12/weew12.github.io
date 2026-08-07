@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>水墨 · 朱砂 配色 Demo</title>
+<style>
+/* ============================================================
+   水墨 + 朱砂红 配色方案 Demo（白天模式）
+   主体：暖调宣纸灰 / 浓墨黑；强调：印泥朱砂红 #A6271C
+   ============================================================ */
+:root {
+  /* —— 朱砂红阶（印泥/银朱系）—— */
+  --brand-1: #C0392B;   /* 链接 / 强调文字：鲜朱红，白底可读 */
+  --brand-2: #E23C2E;   /* hover：提亮到"红日"那档，更跳 */
+  --brand-3: #9E241A;   /* 实心按钮底：更深，配白字对比达标 */
+  --brand-hero: #E23C2E;/* 红日 / 大面积装饰：画里那轮红日的鲜朱 */
+  --brand-soft: rgba(226, 60, 46, 0.09);  /* 淡朱底 */
+  --brand-line: rgba(226, 60, 46, 0.05);  /* 网格线 */
+
+  /* —— 中性灰阶（纯黑白灰，无暖黄）—— */
+  --bg:       #f4f4f5;  /* 内容主面：中性浅灰白 */
+  --bg-alt:   #e7e7e8;  /* 侧栏 / 次级画布 */
+  --surface:  rgba(244, 244, 245, 0.78); /* 半透明面，透出水墨 */
+  --bg-elv:   #fcfcfc;  /* 浮起层（卡片/弹窗） */
+  --bg-soft:  #eeeeef;  /* 柔和面板 / 斑马纹 */
+
+  /* —— 墨色文本阶（中性黑灰）—— */
+  --text-1: #1c1c1e;    /* 浓墨主文本 */
+  --text-2: #55555a;    /* 次要文本 */
+  --text-3: #86868b;    /* 辅助文本 */
+
+  /* —— 边框 / 分割（中性灰）—— */
+  --border:  #d4d4d6;
+  --divider: #e2e2e4;
+
+  --grid-size: 32px;
+
+  /* —— 标签专用副色阶：中国传统国画颜料（仅标签可破"墨+朱"单色）——
+     全取自国画矿物/植物颜料，并统一压成低饱和"旧色"，配宣纸底成套、
+     彼此不打架。每色一组：文字色 + 同色淡底。 */
+  --c-zhe:  #9c5a2e;  --c-zhe-s:  rgba(156, 90, 46, 0.12);  /* 赭石 赤褐 */
+  --c-teng: #94781a;  --c-teng-s: rgba(148, 120, 26, 0.14); /* 藤黄 土金 */
+  --c-lv:   #4f7a52;  --c-lv-s:   rgba(79, 122, 82, 0.13);  /* 石绿 */
+  --c-hua:  #35617f;  --c-hua-s:  rgba(53, 97, 127, 0.12);  /* 花青 黛蓝 */
+  --c-lian: #64568a;  --c-lian-s: rgba(100, 86, 138, 0.14); /* 青莲 蓝紫 */
+  --c-yan:  #9c3c55;  --c-yan-s:  rgba(156, 60, 85, 0.13);  /* 胭脂 绛 */
+  --c-dai:  #46525e;  --c-dai-s:  rgba(70, 82, 94, 0.12);   /* 黛 墨青灰 */
+  --c-zhu:  #b5342a;  --c-zhu-s:  rgba(181, 52, 42, 0.12);  /* 朱砂 */
+}
+
+/* ============================================================
+   深色模式：墨底 + 朱砂红（替代原黑客绿），全站统一水墨调
+   底色抬离纯黑压光晕；朱砂提亮到深底可读；传统颜料同步提亮。
+   ============================================================ */
+[data-theme="dark"] {
+  --brand-1: #e35a4c;   /* 链接：提亮朱砂，深底可读 */
+  --brand-2: #f26a5b;   /* hover */
+  --brand-3: #c0392b;   /* 实心底：配浅字 */
+  --brand-hero: #f2695a;/* 红日 / 装饰 */
+  --brand-soft: rgba(242, 105, 90, 0.13);
+  --brand-line: rgba(242, 105, 90, 0.05);
+
+  --bg:       #1a1a1c;  /* 主面：墨底，抬离纯黑 */
+  --bg-alt:   #151517;  /* 侧栏 / 次级 */
+  --surface:  rgba(26, 26, 28, 0.76);
+  --bg-elv:   #242427;  /* 浮起层 */
+  --bg-soft:  #202023;  /* 柔和面板 */
+
+  --text-1: #e7e7ea;    /* 柔白主文本 */
+  --text-2: #a2a2a8;    /* 次要 */
+  --text-3: #6e6e74;    /* 辅助 */
+
+  --border:  #303034;
+  --divider: #29292c;
+
+  /* 传统颜料·深色提亮版（配墨底仍可读、不刺眼） */
+  --c-zhe:  #c47a4a;  --c-zhe-s:  rgba(196, 122, 74, 0.16);
+  --c-teng: #c9a83a;  --c-teng-s: rgba(201, 168, 58, 0.16);
+  --c-lv:   #6fa872;  --c-lv-s:   rgba(111, 168, 114, 0.16);
+  --c-hua:  #5b93b5;  --c-hua-s:  rgba(91, 147, 181, 0.16);
+  --c-lian: #9184c0;  --c-lian-s: rgba(145, 132, 192, 0.16);
+  --c-yan:  #c76384;  --c-yan-s:  rgba(199, 99, 132, 0.16);
+  --c-dai:  #8593a0;  --c-dai-s:  rgba(133, 147, 160, 0.16);
+  --c-zhu:  #e35a4c;  --c-zhu-s:  rgba(227, 90, 76, 0.16);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "LXGW WenKai", "楷体", KaiTi, "PingFang SC", system-ui, sans-serif;
+  color: var(--text-1);
+  line-height: 1.8;
+  /* 坐标纸网格 + 宣纸底（用淡墨渐变模拟水墨氛围，无需外部图） */
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(to right, var(--brand-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--brand-line) 1px, transparent 1px),
+    radial-gradient(120% 80% at 80% 0%, rgba(55,55,58,0.10), transparent 55%),
+    radial-gradient(90% 70% at 10% 100%, rgba(38,38,40,0.12), transparent 50%);
+  background-size: var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size), cover, cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* —— 顶部导航 —— */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 28px;
+  padding: 14px 40px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--divider);
+}
+.nav .logo { font-size: 20px; font-weight: 700; letter-spacing: 0.02em; }
+.nav .logo .seal {
+  display: inline-block; background: var(--brand-3); color: #fff;
+  padding: 2px 8px; margin-right: 8px; font-size: 18px;
+}
+.nav a { color: var(--text-2); text-decoration: none; transition: color .2s; }
+.nav a:hover { color: var(--brand-1); }
+.nav .spacer { flex: 1; }
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 40px; display: grid;
+  grid-template-columns: 1fr 260px; gap: 32px; }
+
+/* —— 红日：呼应参考画里那轮鲜朱红日，浮在标题右上 —— */
+main { position: relative; }
+.sun { position: absolute; top: -6px; right: 8px; width: 84px; height: 84px;
+  border-radius: 50%; background: var(--brand-hero);
+  /* 边缘微微晕开，像宣纸上洇的朱 */
+  box-shadow: 0 0 0 6px rgba(226,60,46,0.10), 0 0 26px 4px rgba(226,60,46,0.18);
+  opacity: 0.92; }
+
+/* —— 标题 —— */
+h1.page-title { font-size: 30px; letter-spacing: 0.01em; margin-bottom: 6px; }
+h1.page-title .accent { color: var(--brand-1); }
+.subtitle { color: var(--text-3); margin-bottom: 28px; }
+
+h2.doc {
+  font-size: 22px; margin: 34px 0 16px;
+  padding-left: 14px; border-left: 4px solid var(--brand-1);
+}
+
+/* —— 文章卡片 —— */
+.card {
+  background: var(--bg-elv); border: 1px solid var(--divider);
+  padding: 20px 24px; margin-bottom: 16px;
+  transition: border-color .2s, transform .2s;
+}
+.card:hover { border-color: var(--brand-1); transform: translateY(-1px); }
+.card h3 { font-size: 19px; line-height: 1.35; margin-bottom: 8px; }
+.card h3 a { color: var(--text-1); text-decoration: none; }
+.card:hover h3 a { color: var(--brand-1); }
+.card .excerpt { color: var(--text-2); font-size: 15.5px; }
+.meta { display: flex; gap: 14px; align-items: center; font-size: 14px;
+  color: var(--text-3); margin: 8px 0; flex-wrap: wrap; }
+.meta .cat { color: var(--brand-1); }
+
+/* —— 标签 chip（方形，多色）——
+   默认朱砂；加 .c-* 类切副色。文字取颜料色，底取同色淡版，
+   hover 描同色边 + 微浮起。用 currentColor 让边框自动跟文字色。 */
+.tag {
+  display: inline-block; padding: 3px 9px; font-size: 13px;
+  color: var(--brand-1); background: var(--brand-soft);
+  border: 1px solid transparent; transition: all .2s;
+}
+.tag:hover { border-color: currentColor; transform: translateY(-1px); }
+.tag.zhe  { color: var(--c-zhe);  background: var(--c-zhe-s); }
+.tag.teng { color: var(--c-teng); background: var(--c-teng-s); }
+.tag.lv   { color: var(--c-lv);   background: var(--c-lv-s); }
+.tag.hua  { color: var(--c-hua);  background: var(--c-hua-s); }
+.tag.lian { color: var(--c-lian); background: var(--c-lian-s); }
+.tag.yan  { color: var(--c-yan);  background: var(--c-yan-s); }
+.tag.dai  { color: var(--c-dai);  background: var(--c-dai-s); }
+.tag.zhu  { color: var(--c-zhu);  background: var(--c-zhu-s); }
+
+/* —— 按钮 —— */
+.btns { display: flex; gap: 12px; margin: 8px 0 4px; }
+.btn { padding: 8px 18px; font-size: 15px; cursor: pointer;
+  font-family: inherit; border: 1px solid var(--brand-3); }
+.btn-solid { background: var(--brand-3); color: #fff; }
+.btn-solid:hover { background: var(--brand-2); border-color: var(--brand-2); }
+.btn-ghost { background: transparent; color: var(--brand-1); }
+.btn-ghost:hover { background: var(--brand-soft); }
+
+/* —— 引用块 —— */
+blockquote {
+  padding: 14px 20px; margin: 18px 0;
+  border-left: 4px solid var(--brand-1); background: var(--brand-soft);
+  color: var(--text-2);
+}
+
+/* —— 行内 & 块代码 —— */
+code { font-family: "LXGW WenKai Mono", Consolas, monospace; font-size: 0.92em; }
+p code { border: 1px solid var(--divider); padding: 1px 5px; color: var(--brand-1); background: var(--bg-soft); }
+/* 代码块：偏墨极简 —— 底用柔面，关键字取朱砂做唯一彩，其余全走墨阶 */
+pre { background: var(--bg-soft); border: 1px solid var(--divider);
+  padding: 16px 18px; margin: 16px 0; overflow-x: auto; font-size: 14px; line-height: 1.6;
+  color: var(--text-1); }
+pre .kw  { color: var(--brand-1); font-weight: 600; }  /* 关键字：朱砂（唯一彩） */
+pre .cm  { color: var(--text-3); font-style: italic; } /* 注释：淡墨 */
+pre .str { color: var(--text-2); }                     /* 字符串：中墨 */
+pre .num { color: var(--text-1); }                     /* 数值：浓墨 */
+
+/* —— 分隔线 + 菱形 —— */
+hr { border: none; height: 1px; width: 100%; margin: 30px 0; position: relative;
+  background: linear-gradient(90deg, transparent, var(--brand-1) 30%, var(--brand-1) 70%, transparent); }
+hr::after { content: ""; position: absolute; left: 50%; top: 50%; width: 10px; height: 10px;
+  transform: translate(-50%,-50%) rotate(45deg); background: var(--brand-1); }
+
+/* —— 列表方块 —— */
+ul.doc { list-style: none; padding-left: 1.5em; }
+ul.doc li { position: relative; margin: 6px 0; color: var(--text-2); }
+ul.doc li::before { content: ""; position: absolute; left: -1.1em; top: .62em;
+  width: 6px; height: 6px; background: var(--brand-1); }
+
+/* —— 侧栏 —— */
+aside { }
+.panel { background: var(--surface); backdrop-filter: blur(3px);
+  border: 1px solid var(--divider); padding: 16px 18px; margin-bottom: 16px; }
+.panel h4 { font-size: 15px; margin-bottom: 12px; color: var(--text-1);
+  padding-bottom: 8px; border-bottom: 1px solid var(--divider); }
+.panel .tag { margin: 0 6px 8px 0; }
+.side-link { display: block; color: var(--text-2); text-decoration: none;
+  padding: 5px 0; transition: color .2s; }
+.side-link:hover { color: var(--brand-1); }
+
+/* —— 色板 —— */
+.swatches { display: flex; gap: 0; margin: 10px 0 26px; border: 1px solid var(--divider); }
+.sw { flex: 1; height: 56px; display: flex; align-items: flex-end;
+  padding: 4px 6px; font-size: 11px; }
+.sw span { background: rgba(255,255,255,.7); padding: 1px 4px; }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="logo"><span class="seal">墨</span>weew12 的博客</div>
+  <div class="spacer"></div>
+  <a href="#">首页</a><a href="#">笔记</a><a href="#">标签</a><a href="#">归档</a><a href="#">关于</a>
+  <button class="btn btn-ghost" style="padding:5px 12px;font-size:14px" onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme==='dark'?'':'dark'">◐ 明 / 暗</button>
+</nav>
+
+<div class="wrap">
+  <main>
+    <div class="sun"></div>
+    <h1 class="page-title">水墨 · <span class="accent">朱砂</span> 配色预览</h1>
+    <p class="subtitle">黑白灰宣纸底 + 一轮鲜朱点睛 —— 白天模式</p>
+
+    <div class="swatches">
+      <div class="sw" style="background:#A6271C;color:#fff"><span style="color:#fff;background:transparent">朱砂 #A6271C</span></div>
+      <div class="sw" style="background:#C0392B;color:#fff"><span style="color:#fff;background:transparent">hover #C0392B</span></div>
+      <div class="sw" style="background:#8E1F16;color:#fff"><span style="color:#fff;background:transparent">深底 #8E1F16</span></div>
+      <div class="sw" style="background:#1f1c1a;color:#fff"><span style="color:#fff;background:transparent">墨 #1F1C1A</span></div>
+      <div class="sw" style="background:#57534d;color:#fff"><span style="color:#fff;background:transparent">次文 #57534D</span></div>
+      <div class="sw" style="background:#f6f4ef"><span>宣纸 #F6F4EF</span></div>
+      <div class="sw" style="background:#ebe8e0"><span>侧栏 #EBE8E0</span></div>
+    </div>
+
+    <p class="subtitle" style="margin-bottom:6px">标签专用 · 国画传统颜料（低饱和旧色，仅标签破单色）</p>
+    <div class="swatches">
+      <div class="sw" style="background:#b5342a;color:#fff"><span style="color:#fff;background:transparent">朱砂</span></div>
+      <div class="sw" style="background:#9c5a2e;color:#fff"><span style="color:#fff;background:transparent">赭石</span></div>
+      <div class="sw" style="background:#94781a;color:#fff"><span style="color:#fff;background:transparent">藤黄</span></div>
+      <div class="sw" style="background:#4f7a52;color:#fff"><span style="color:#fff;background:transparent">石绿</span></div>
+      <div class="sw" style="background:#35617f;color:#fff"><span style="color:#fff;background:transparent">花青</span></div>
+      <div class="sw" style="background:#64568a;color:#fff"><span style="color:#fff;background:transparent">青莲</span></div>
+      <div class="sw" style="background:#9c3c55;color:#fff"><span style="color:#fff;background:transparent">胭脂</span></div>
+      <div class="sw" style="background:#46525e;color:#fff"><span style="color:#fff;background:transparent">黛</span></div>
+    </div>
+
+    <h2 class="doc">文章列表</h2>
+    <article class="card">
+      <h3><a href="#">水墨渲染里的留白哲学</a></h3>
+      <div class="meta"><span class="cat">◆ 随笔</span><span>2026-08-07</span>
+        <span class="tag hua">设计</span><span class="tag lian">美学</span></div>
+      <p class="excerpt">计白当黑，虚实相生。页面的呼吸感往往来自那些什么都没放的地方……</p>
+    </article>
+    <article class="card">
+      <h3><a href="#">用 CSS 变量搭一套可切换的主题</a></h3>
+      <div class="meta"><span class="cat">◆ 前端</span><span>2026-07-29</span>
+        <span class="tag lv">CSS</span><span class="tag teng">工程</span></div>
+      <p class="excerpt">一套 <code>--brand-*</code> 语义变量，浅色深色一键切换，组件零改动……</p>
+    </article>
+
+    <h2 class="doc">正文元素</h2>
+    <blockquote>落笔如漆，惜墨如金。红处一点，满纸生辉。</blockquote>
+    <p>正文里的 <code>行内代码</code> 用朱砂色描边，重点内容用<strong>浓墨加粗</strong>跳出。</p>
+    <ul class="doc">
+      <li>方形色块列表，呼应锐角风格</li>
+      <li>朱砂点，墨字底</li>
+      <li>低对比、耐读、成体系</li>
+    </ul>
+    <pre><span class="cm">// 墨分五色，朱砂点睛</span>
+<span class="kw">const</span> palette = {
+  ink:  <span class="str">'#1c1c1e'</span>,   <span class="cm">// 浓墨</span>
+  zhu:  <span class="str">'#C0392B'</span>,   <span class="cm">// 朱砂（唯一彩）</span>
+  count: <span class="num">5</span>
+}</pre>
+    <div class="btns">
+      <button class="btn btn-solid">实心按钮</button>
+      <button class="btn btn-ghost">描边按钮</button>
+    </div>
+    <hr>
+  </main>
+
+  <aside>
+    <div class="panel">
+      <h4>标签云</h4>
+      <span class="tag hua">设计</span><span class="tag lv">CSS</span><span class="tag teng">工程</span>
+      <span class="tag lian">美学</span><span class="tag zhu">随笔</span><span class="tag dai">水墨</span>
+      <span class="tag zhe">笔记</span><span class="tag yan">杂谈</span>
+    </div>
+    <div class="panel">
+      <h4>最近文章</h4>
+      <a class="side-link" href="#">水墨渲染里的留白哲学</a>
+      <a class="side-link" href="#">用 CSS 变量搭主题</a>
+      <a class="side-link" href="#">朱砂与墨的对话</a>
+    </div>
+    <div class="panel">
+      <h4>分类</h4>
+      <a class="side-link" href="#">◆ 随笔 · 12</a>
+      <a class="side-link" href="#">◆ 前端 · 8</a>
+      <a class="side-link" href="#">◆ 杂谈 · 5</a>
+    </div>
+  </aside>
+</div>
+</body>
+</html>

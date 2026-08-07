@@ -111,9 +111,11 @@ export default defineUserConfig({
          */
         plugins: {
             shiki: {
+                // 偏墨极简：min-light/min-dark 语法色低饱和、近单色，
+                // 底色中性，贴合全站黑白灰水墨 + 朱砂调，不与朱砂强调争彩
                 themes: {
-                    light: "github-light",
-                    dark: "material-theme-ocean",
+                    light: "min-light",
+                    dark: "min-dark",
                 },
                 lineNumbers: false,
             },

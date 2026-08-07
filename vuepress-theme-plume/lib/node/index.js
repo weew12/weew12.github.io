@@ -2176,97 +2176,21 @@ function setupPlugins(app, pluginOptions) {
 
 //#endregion
 //#region src/node/prepare/prepareArticleTagColor.ts
+/* 标签调色板 —— 中国传统国画颜料（8 色，低饱和"旧色"）
+   全站主调是墨+朱砂，标签是唯一允许多色处；取矿物/植物颜料并压成旧色，
+   配宣纸底彼此不打架。每项 6 元组：
+     [浅色文字, 浅色hover, 浅色底, 深色文字, 深色hover, 深色底]
+   浅色用沉稳原色配灰白底；深色提亮并加深底，配墨底仍可读。
+   顺序：赭石 藤黄 石绿 花青 青莲 胭脂 黛 朱砂 */
 const PRESET = [
-  [
-    "#6aa1b7",
-    "#5086a1",
-    "rgba(131, 208, 218, 0.314)"
-  ],
-  [
-    "#299764",
-    "#18794e",
-    "rgba(16, 185, 129, 0.14)"
-  ],
-  [
-    "#946300",
-    "#915930",
-    "rgba(234, 179, 8, 0.14)"
-  ],
-  [
-    "#d5393e",
-    "#b8272c",
-    "rgba(244, 63, 94, 0.14)"
-  ],
-  [
-    "#7e4cc9",
-    "#6f42c1",
-    "rgba(159, 122, 234, 0.14)"
-  ],
-  [
-    "#3a5ccc",
-    "#3451b2",
-    "rgba(100, 108, 255, 0.14)"
-  ],
-  [
-    "#fab10f",
-    "#f39c12",
-    "rgba(255, 213, 0, 0.14)"
-  ],
-  [
-    "#cc6699",
-    "#be3f7f",
-    "rgba(161, 54, 107, 0.14)"
-  ],
-  [
-    "#55aaee",
-    "#2391e9",
-    "rgba(21, 123, 206, 0.1333)"
-  ],
-  [
-    "#9933cc",
-    "#aa56d5",
-    "rgba(179, 102, 217, 0.2)"
-  ],
-  [
-    "#cc3366",
-    "#d55680",
-    "rgba(217, 102, 140, 0.2)"
-  ],
-  [
-    "#cc9933",
-    "#be7f3f",
-    "rgba(161, 107, 54, 0.2)"
-  ],
-  [
-    "#9966cc",
-    "#7171b8",
-    "rgba(83, 83, 167, 0.14)"
-  ],
-  [
-    "#66cccc",
-    "#3fbebe",
-    "rgba(54, 161, 161, 0.14)"
-  ],
-  [
-    "#3366cc",
-    "#5680d5",
-    "rgba(102, 140, 217, 0.14)"
-  ],
-  [
-    "#339999",
-    "#41c0c0",
-    "rgba(83, 198, 198, 0.2)"
-  ],
-  [
-    "#a6623b",
-    "#c17950",
-    "rgba(199, 134, 97, 0.2411)"
-  ],
-  [
-    "#8ecaef",
-    "#55afe7",
-    "rgba(42, 155, 225, 0.147)"
-  ]
+  ["#9c5a2e", "#814820", "rgba(156, 90, 46, 0.12)",   "#c47a4a", "#d38f60", "rgba(196, 122, 74, 0.16)"],  // 赭石 赤褐
+  ["#94781a", "#7a6210", "rgba(148, 120, 26, 0.14)",  "#c9a83a", "#d8b94f", "rgba(201, 168, 58, 0.16)"],  // 藤黄 土金
+  ["#4f7a52", "#3d6540", "rgba(79, 122, 82, 0.13)",   "#6fa872", "#82bc85", "rgba(111, 168, 114, 0.16)"], // 石绿
+  ["#35617f", "#274b64", "rgba(53, 97, 127, 0.12)",   "#5b93b5", "#6fa6c7", "rgba(91, 147, 181, 0.16)"],  // 花青 黛蓝
+  ["#64568a", "#4f4272", "rgba(100, 86, 138, 0.14)",  "#9184c0", "#a396d0", "rgba(145, 132, 192, 0.16)"], // 青莲 蓝紫
+  ["#9c3c55", "#812e44", "rgba(156, 60, 85, 0.13)",   "#c76384", "#d5779a", "rgba(199, 99, 132, 0.16)"],  // 胭脂 绛
+  ["#46525e", "#353f49", "rgba(70, 82, 94, 0.12)",    "#8593a0", "#98a6b2", "rgba(133, 147, 160, 0.16)"], // 黛 墨青灰
+  ["#b5342a", "#9a271e", "rgba(181, 52, 42, 0.12)",   "#e35a4c", "#f26a5b", "rgba(227, 90, 76, 0.16)"]    // 朱砂
 ];
 const cache$1 = {};
 
@@ -2324,12 +2248,17 @@ function genCSS() {
   let css = "";
   for (const [code, className] of Object.entries(cache$1)) {
     const index = Number(code);
-    const [color, hoverColor, backgroundColor] = PRESET[index];
+    const [color, hoverColor, backgroundColor, dColor, dHoverColor, dBackgroundColor] = PRESET[index];
     css += `\
 .vp-tag-${className} {
   --vp-tag-color: ${color};
   --vp-tag-hover-color: ${hoverColor};
   --vp-tag-bg: ${backgroundColor};
+}
+[data-theme="dark"] .vp-tag-${className} {
+  --vp-tag-color: ${dColor};
+  --vp-tag-hover-color: ${dHoverColor};
+  --vp-tag-bg: ${dBackgroundColor};
 }
 `;
   }
