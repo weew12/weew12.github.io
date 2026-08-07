@@ -662,3 +662,31 @@ body {
   font-weight: 600;
   letter-spacing: 0.02em;
 }
+
+/* ============================================================
+   页脚版权印章 —— 朱文方印（红框红字 + 内部透明透出水墨）
+   config 里把名字包成 <span class="seal">weew12</span>，此处成形。
+   风格：方正、朱砂、双框（外粗内细），呼应传统姓名章。
+   ============================================================ */
+.vp-footer .copyright .seal {
+  position: relative;
+  display: inline-block;
+  padding: 6px 14px;
+  color: var(--vp-c-brand-1);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  /* 外框：朱砂粗边，方正 */
+  border: 2px solid var(--vp-c-brand-1);
+  border-radius: 0;
+  background: transparent;
+}
+
+/* 内细框：绝对定位内衬一圈，做出印章双框，无需额外 DOM */
+.vp-footer .copyright .seal::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border: 1px solid var(--vp-c-brand-1);
+  pointer-events: none;
+}

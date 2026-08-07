@@ -70,7 +70,9 @@ export default defineThemeConfig({
         message:
         // 'Power by <a target="_blank" href="https://v2.vuepress.vuejs.org/">VuePress</a> & <a target="_blank" href="https://theme-plume.vuejs.press">vuepress-theme-plume</a>',
             '',
-        copyright: "Copyright © " + new Date().getFullYear() + " weew12",
+        copyright:
+            '<span class="seal">Copyright © ' + new Date().getFullYear() +
+            ' weew12</span>',
     },
 
     /**
