@@ -23,7 +23,8 @@ import {zhNotes } from './notes-config/index.js'
 export default defineThemeConfig({
 
     // 导航栏中的logo
-    logo: "/logo.png",
+    // logo: "/logo.png",
+    logo: "/name.png",
 
     // 是否启用 深色模式
     appearance: true, // 配置 深色模式
