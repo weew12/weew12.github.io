@@ -13,7 +13,7 @@ config:
     hero:
       name: 非淡泊無以明志 非寧靜無以致遠
       tagline: 博客&学习
-      text: 踏实一些不要着急，你想要的岁月都会给你
+      text: 踏实一些不要着急 你想要的岁月都会给你
       actions:
         -
           theme: brand
