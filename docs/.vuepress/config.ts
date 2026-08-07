@@ -190,6 +190,9 @@ export default defineUserConfig({
             mapping: 'pathname',
             reactionsEnabled: true,
             inputPosition: 'top',
+            // 自定义水墨主题（黑白灰 + 朱砂），须为已发布的公开 https URL
+            lightTheme: 'https://weew12.github.io/giscus/ink-light.css',
+            darkTheme: 'https://weew12.github.io/giscus/ink-dark.css',
         },
 
         /**

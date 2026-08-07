@@ -1,0 +1,50 @@
+/* Giscus 水墨浅色主题 —— 黑白灰 + 朱砂红，底透明透出站点水墨图
+   由 config.ts comment.lightTheme 指向本文件的公开 URL 加载。
+   基于 GitHub Primer 变量覆盖；仅改颜色，不动结构。 */
+main {
+  /* 朱砂：链接、强调、主按钮 */
+  --color-accent-fg: #c0392b;
+  --color-accent-emphasis: #c0392b;
+  --color-accent-muted: rgba(192, 57, 43, 0.4);
+  --color-accent-subtle: rgba(192, 57, 43, 0.09);
+
+  /* 主按钮（原绿色登录按钮）→ 朱砂 */
+  --color-btn-primary-bg: #c0392b;
+  --color-btn-primary-hover-bg: #9e241a;
+  --color-btn-primary-selected-bg: #9e241a;
+  --color-btn-primary-disabled-bg: rgba(192, 57, 43, 0.5);
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-hover-border: transparent;
+  --color-btn-primary-shadow: none;
+  --color-btn-primary-icon: #ffffff;
+
+  /* 底色透明，透出站点水墨背景 */
+  --color-canvas-default: transparent;
+  --color-canvas-subtle: rgba(244, 244, 245, 0.4);
+  --color-canvas-inset: rgba(244, 244, 245, 0.4);
+
+  /* 文本墨色 */
+  --color-fg-default: #1c1c1e;
+  --color-fg-muted: #55555a;
+  --color-fg-subtle: #86868b;
+
+  /* 边框中性灰 */
+  --color-border-default: #d4d4d6;
+  --color-border-muted: #e2e2e4;
+
+  /* 次按钮（输入/预览 tab、表情） */
+  --color-btn-bg: rgba(244, 244, 245, 0.6);
+  --color-btn-hover-bg: rgba(226, 60, 46, 0.09);
+  --color-btn-border: #d4d4d6;
+  --color-btn-text: #1c1c1e;
+
+  /* 文本选中：朱砂淡底 */
+  --color-fg-on-emphasis: #ffffff;
+  color-scheme: light;
+}
+
+/* 主按钮方角，呼应全站锐角风格 */
+main .btn-primary {
+  border-radius: 0;
+}
