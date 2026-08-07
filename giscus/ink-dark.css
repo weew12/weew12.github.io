@@ -1,0 +1,47 @@
+/* Giscus 水墨深色主题 —— 墨底 + 朱砂红，底透明透出站点水墨图
+   由 config.ts comment.darkTheme 指向本文件的公开 URL 加载。 */
+main {
+  /* 朱砂（深色下提亮一档，与站点 dark 一致） */
+  --color-accent-fg: #e35a4c;
+  --color-accent-emphasis: #e35a4c;
+  --color-accent-muted: rgba(227, 90, 76, 0.4);
+  --color-accent-subtle: rgba(227, 90, 76, 0.13);
+
+  /* 主按钮 → 朱砂 */
+  --color-btn-primary-bg: #c0392b;
+  --color-btn-primary-hover-bg: #e35a4c;
+  --color-btn-primary-selected-bg: #e35a4c;
+  --color-btn-primary-disabled-bg: rgba(192, 57, 43, 0.5);
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-hover-border: transparent;
+  --color-btn-primary-shadow: none;
+  --color-btn-primary-icon: #ffffff;
+
+  /* 底色透明，透出站点水墨背景 */
+  --color-canvas-default: transparent;
+  --color-canvas-subtle: rgba(26, 26, 28, 0.4);
+  --color-canvas-inset: rgba(26, 26, 28, 0.4);
+
+  /* 文本浅雾灰 */
+  --color-fg-default: #e7e7ea;
+  --color-fg-muted: #a2a2a8;
+  --color-fg-subtle: #6e6e74;
+
+  /* 边框深墨灰 */
+  --color-border-default: #303034;
+  --color-border-muted: #29292c;
+
+  /* 次按钮 */
+  --color-btn-bg: rgba(26, 26, 28, 0.6);
+  --color-btn-hover-bg: rgba(242, 105, 90, 0.13);
+  --color-btn-border: #303034;
+  --color-btn-text: #e7e7ea;
+
+  --color-fg-on-emphasis: #ffffff;
+  color-scheme: dark;
+}
+
+main .btn-primary {
+  border-radius: 0;
+}
