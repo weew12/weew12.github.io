@@ -33,7 +33,8 @@ defineEmits<(e: 'click') => void>()
   height: var(--vp-nav-height);
 }
 
-@media (min-width: 768px) {
+/* 与 VPNavBarMenu 同步：<1280 显示汉堡，≥1280 隐藏（横排菜单接管）。 */
+@media (min-width: 1280px) {
   .vp-navbar-hamburger {
     display: none;
   }

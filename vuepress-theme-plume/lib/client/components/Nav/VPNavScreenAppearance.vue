@@ -35,4 +35,15 @@ const {theme} = useData()
   line-height: 24px;
   color: var(--vp-c-text-2);
 }
+
+/* 蜡烛开关全局被锁 22px/SVG18px 以对齐导航栏图标；抽屉里空间大，这尺寸的窄烛身
+   会缩成一根细竖条、不像蜡烛。仅在抽屉里放大按钮与 SVG，让蜡烛看清楚（不影响导航栏）。 */
+.vp-nav-screen-appearance :deep(.vp-switch-appearance) {
+  width: 40px !important;
+  height: 40px !important;
+}
+.vp-nav-screen-appearance :deep(.candle svg) {
+  width: 34px !important;
+  height: 34px !important;
+}
 </style>

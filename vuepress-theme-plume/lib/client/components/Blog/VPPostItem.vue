@@ -339,6 +339,9 @@ const coverSrc = computed(() => {
 .blog-post-item-content .post-meta .tag-list {
   display: flex;
   align-items: center;
+  /* 窄屏标签放不下时整块换行到下一行，而不是把单个标签逐字拆断 */
+  flex-wrap: wrap;
+  row-gap: 6px;
 }
 
 .blog-post-item-content .post-meta .tag-list .tag {
@@ -347,6 +350,9 @@ const coverSrc = computed(() => {
   margin-right: 6px;
   font-size: 12px;
   line-height: 1;
+  /* 标签整块不换行 + 不被 flex 压缩，保证「计算机基础」不再拆成两行 */
+  white-space: nowrap;
+  flex: 0 0 auto;
   color: var(--vp-tag-color);
   background-color: var(--vp-tag-bg);
   /* border-radius: 3px; */

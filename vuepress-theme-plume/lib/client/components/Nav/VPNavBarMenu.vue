@@ -25,7 +25,9 @@ const navbar = useNavbarData()
   display: none;
 }
 
-@media (min-width: 768px) {
+/* 多语言中文一级菜单较宽，768–1280 塞不下会挤出右侧图标；抬到 1280 才展开横排，
+   之下统一走汉堡抽屉。须与 VPNavBarHamburger / VPNavScreen / VPNavBarExtra 同步。 */
+@media (min-width: 1280px) {
   .vp-navbar-menu {
     display: flex;
   }

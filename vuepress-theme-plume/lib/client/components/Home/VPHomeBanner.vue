@@ -50,6 +50,12 @@ const scrollToNextSection = () => {
         <h2 v-if="name" class="hero-name">
           {{ name }}
         </h2>
+        <!-- 落款：一叶扁舟。船身用 CSS mask 贴 /hero/sail.svg（其伪元素会被 mask 裁掉），
+             故波浪单独作兄弟元素放在场景容器里，画在船下。颜色/动画见 custom.css -->
+        <div v-if="name" class="hero-sail-scene" aria-hidden="true">
+          <span class="hero-seal" />
+          <span class="hero-wave" />
+        </div>
         <p v-if="tagline" class="hero-tagline">
           <span class="line" /> <span>{{ tagline }}</span>
         </p>

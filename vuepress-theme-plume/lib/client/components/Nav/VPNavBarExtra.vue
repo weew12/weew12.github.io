@@ -75,7 +75,9 @@ const hasExtraContent = computed(
   margin-right: -12px;
 }
 
-@media (min-width: 768px) {
+/* 原本 768–1280 用这个“⋮”折叠下拉装开关/社交/翻译；现在 <1280 统一走汉堡抽屉，
+   该中间态多余：把显示断点也提到 1280，与下面的隐藏规则同点层叠 → 实际永不显示。 */
+@media (min-width: 1280px) {
   .vp-navbar-extra {
     display: block;
   }

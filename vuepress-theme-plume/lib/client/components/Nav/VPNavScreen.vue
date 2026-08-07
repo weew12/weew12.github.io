@@ -56,7 +56,9 @@ const isLocked = useScrollLock(inBrowser ? document.body : null)
 }
 
 .container {
-  max-width: 288px;
+  /* 原写死 288px 是给手机窄列的；折叠断点抬到 1280 后平板也走抽屉，288 太窄没铺满。
+     改自适应：铺满左右 32px padding 内区，仅宽屏封顶 680 居中，避免菜单行拉太长。 */
+  max-width: min(680px, 100%);
   padding: 24px 0 96px;
   margin: 0 auto;
 }
@@ -81,7 +83,8 @@ const isLocked = useScrollLock(inBrowser ? document.body : null)
   transform: translateY(-8px);
 }
 
-@media (min-width: 768px) {
+/* 与汉堡同步：抽屉在 <1280 可用，≥1280 隐藏。 */
+@media (min-width: 1280px) {
   .vp-nav-screen {
     display: none;
   }

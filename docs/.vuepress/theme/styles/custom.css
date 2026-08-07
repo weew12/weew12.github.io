@@ -88,6 +88,14 @@
    z-index:-1 压到最底，内容面（纯色 --vp-c-bg）自然盖住网格，
    仅在页面留白 / 页脚（透明）/ 导航透出处显现，形成"纸铺于坐标纸"观感。
    ============================================================ */
+/* 根级横向裁切：消除缩放时因视差/雾霭/满宽元素偶发撑出的横向滚动条。
+   用 clip 而非 hidden —— 不新建滚动容器，不影响侧栏 sticky 定位。 */
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 body {
   /* 背景分层（从上到下）：
      1-2) 坐标纸网格线（两组渐变）
@@ -103,8 +111,9 @@ body {
     var(--vp-grid-size, 32px) var(--vp-grid-size, 32px),
     var(--vp-grid-size, 32px) var(--vp-grid-size, 32px),
     cover,
-    auto 145%;
-  /* 图放大到视口高 145% 并锚到偏下(center 72%)：把顶部天空移出视口，让山峦升进内容区 */
+    auto max(145vh, 57vw);
+  /* 水墨图(16:9)取“视口高145%”与“铺满宽度所需高度(100vw÷1.777≈56.3vw,取57vw留余)”的较大者：
+     矮视口(如开控制台)自动切成按宽铺满，永不露白；正常高视口仍是145%，把天空移出、群山升进内容区。 */
   background-position: -1px -1px, -1px -1px, center, center 72%;
   background-repeat: repeat, repeat, no-repeat, no-repeat;
   background-attachment: fixed;
@@ -113,6 +122,25 @@ body {
 /* ============================================================
    水墨背景透出：让内容面板/卡片半透明，露出 body 的水墨图
    ============================================================ */
+
+/* 首页 banner：原本铺一张照片(background-image 内联)+ cover，和全站固定水墨图割裂。
+   置透明，让下方 body 那张 attachment:fixed 的水墨图直接透上来，
+   首屏与博客区成为同一张连续水墨底，滚动无缝。内联样式须用 !important 压过。 */
+.vp-home-banner {
+  background-image: none !important;
+  background-color: transparent !important;
+  /* 关键：把放大漂移的云雾层(::after)裁在框内，否则会撑出横向滚动条(那道红条) */
+  overflow: hidden;
+}
+
+/* 首页各区块外层包裹 .layout：主题按奇偶铺了不透明底
+   (odd=--vp-c-bg-alt / even=--vp-c-bg)，把博客区盖成一块白，
+   水墨图透不上来、列表卡片半透也就失效。两者都置透明。
+   scoped 样式权重高，必须 !important。 */
+.vp-home .layout:nth-child(odd),
+.vp-home .layout:nth-child(even) {
+  background-color: transparent !important;
+}
 
 /* 首页外层大面板：原本不透明 --vp-c-bg-alt 盖住中间内容区。
    主题是 scoped 样式（带 [data-v-*] 属性权重高），必须 !important 才能覆盖。
@@ -144,6 +172,15 @@ body {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
 }
+/* 移动端(<960px)侧栏是滑出、盖在正文上的抽屉：半透明会让背景水墨+下层正文透上来，
+   目录看不清、发乱。抽屉态改回不透明实底，去掉模糊，保证可读。桌面内嵌态仍半透明透水墨。 */
+@media (max-width: 959px) {
+  .vp-sidebar {
+    --vp-sidebar-bg-color: var(--vp-c-bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
 
 /* ============================================================
    整体风格统一 —— 导航栏 / 页脚 / 正文 微调
@@ -153,6 +190,17 @@ body {
 /* 导航栏：纯色背景 + 细分割线，与内容拉开层次（不用毛玻璃，避免内容透出） */
 :root {
   --vp-nav-bg-color: var(--vp-c-bg);
+}
+/* 右侧图标区（蜡烛/GitHub/铃铛）临界拥挤时错位修复：
+   navbar 社交图标容器默认 flex-wrap:wrap + 可压缩，页面缩放或菜单挤压时会把
+   GitHub/铃铛折成两行。仅在 navbar 内锁 nowrap 且不压缩，让它们始终一排整齐
+   （.vp-navbar-social-links / .appearance 是 navbar 专属类，不影响页脚与个人卡片）。 */
+.vp-navbar .content-body .vp-navbar-social-links {
+  flex-wrap: nowrap !important;
+  flex-shrink: 0;
+}
+.vp-navbar .content-body .appearance {
+  flex-shrink: 0;
 }
 /* 页脚：补回顶部细边框 + 居中留白，形成收尾感 */
 .vp-footer.vp-footer {
@@ -689,4 +737,350 @@ body {
   inset: 2px;
   border: 1px solid var(--vp-c-brand-1);
   pointer-events: none;
+}
+
+/* ============================================================
+   首页 Banner —— 中国风「立轴题款」重构（banner 已透明，透出全站水墨图）
+   只用 custom.css 覆盖 VPHomeBanner 的 scoped 样式，不改组件、不动 blog 逻辑。
+   布局：整体居中 → 文楷题字 + 朱砂闲章 → 对称晕染笔触 + 题名 → 题跋 → 锐角按钮。
+   主题把 hero 文字/箭头写死浅色(--vp-c-text-dark-*)，透明后浅色模式看不见，一并根治。
+   ============================================================ */
+
+/* ① 文字色随明暗自适应（浅=墨黑 / 深=雾白），题字·题跋·箭头都跟着走 */
+:root {
+  --vp-c-text-hero-name: var(--vp-c-text-1);
+  --vp-c-text-hero-tagline: var(--vp-c-text-2);
+  --vp-c-text-hero-text: var(--vp-c-text-2);
+}
+
+/* ② 容器改「垂直+水平居中」立轴：清掉主题把内容顶偏的 padding-top，
+   内容整体居中，宽度收拢，上下留白呼吸。 */
+.vp-home-banner .container {
+  justify-content: center !important;
+  align-items: center !important;
+  /* 放宽到近满屏：原 900px 卡住长标题，右侧被 overflow:hidden 裁掉。
+     用 vw 让长标题能完整展开，仍留左右各 3vw 边距。 */
+  max-width: 94vw !important;
+  padding-top: 0 !important;
+}
+.vp-home-banner .content {
+  text-align: center !important;
+}
+
+/* 注：移动端 @media(max-width:640px) 块统一放在本 banner 各基础规则之后（文件末尾），
+   否则同 !important 同特异性时会被后面的基础规则按源码顺序反超（曾致左笔被强制回 100px）。 */
+
+/* ③ 题字（WEEW12）：文楷 + 居中 + 舒朗字距 + 与背景同色柔光晕。
+   打字机：用 clip-path 分段(steps)从左到右揭示，如逐字书写；
+   按元素宽度百分比切，不受文楷拉丁字宽不均影响。 */
+.vp-home-banner .content .hero-name {
+  font-family: var(--vp-font-family-base);
+  display: inline-block;
+  text-align: center;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  /* 强制一行：用 vw 字号让固定字数始终占屏宽同一比例，不论长短都一行不溢出；
+     clamp 上限防超宽屏过大、下限防过小。!important 压过主题写死的 72/100px 及其媒体查询。 */
+  white-space: nowrap;
+  font-size: clamp(1.1rem, 4.5vw, 3.6rem) !important;
+  line-height: 1.25 !important;
+  max-width: 100%;
+  /* 大屏高光扫字：墨字为底，一条淡墨灰高光带从左往右循环流过（水墨调，非朱砂）。
+     用 background-clip:text 把渐变裁进字形；文字填充透明由渐变透出。 */
+  background: linear-gradient(
+    100deg,
+    var(--vp-c-text-1) 0%,
+    var(--vp-c-text-1) 42%,
+    var(--vp-c-text-3) 50%,
+    var(--vp-c-text-1) 58%,
+    var(--vp-c-text-1) 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  /* 透明字用 drop-shadow 代替 text-shadow 做柔光晕（跟随字形轮廓） */
+  filter: drop-shadow(0 2px 20px var(--vp-bg-scrim));
+  animation: hero-sweep 4s linear infinite;
+}
+/* 高光带从左往右循环流过（背景位置右→左移动，使亮带表现为左→右扫过） */
+@keyframes hero-sweep {
+  from { background-position: 160% 0; }
+  to   { background-position: -60% 0; }
+}
+
+/* ④ 落款：一叶扁舟（写意帆船，取自 game-icons，自托管 /hero/sail.svg）+ 船下墨波。
+   场景居中；船身随浪荡漾行舟，波纹缓缓横流。 */
+.vp-home-banner .content .hero-sail-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin: 20px auto 0;
+}
+/* 船身：mask 贴帆船，墨色帆影。其伪元素会被 mask 裁，波浪另作兄弟元素。 */
+.vp-home-banner .content .hero-seal {
+  width: 44px;
+  height: 40px;
+  background-color: var(--vp-c-text-1);
+  -webkit-mask: url('/hero/sail.svg') center / contain no-repeat;
+  mask: url('/hero/sail.svg') center / contain no-repeat;
+  opacity: 0;
+  transform-origin: 50% 100%;            /* 以船底为轴，随浪起伏 */
+  filter: drop-shadow(0 3px 10px var(--vp-bg-scrim));
+  /* 两条动画分工，互不抢 transform：入场只动 opacity；随后 hero-sail 常驻做“行舟” */
+  animation:
+    hero-seal-in 0.7s ease 1.5s forwards,
+    hero-sail 4.5s ease-in-out 2.2s infinite;
+}
+/* 船下墨波：两道写意水波（内联 SVG 作 mask），墨色、两端淡出，缓缓横流。 */
+.vp-home-banner .content .hero-wave {
+  width: 72px;
+  height: 14px;
+  background-color: var(--vp-c-text-2);
+  -webkit-mask:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='14' viewBox='0 0 48 14'%3E%3Cpath d='M0 4 Q6 0 12 4 T24 4 T36 4 T48 4' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M0 10 Q6 6 12 10 T24 10 T36 10 T48 10' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center / 48px 14px;
+  mask:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='14' viewBox='0 0 48 14'%3E%3Cpath d='M0 4 Q6 0 12 4 T24 4 T36 4 T48 4' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'/%3E%3Cpath d='M0 10 Q6 6 12 10 T24 10 T36 10 T48 10' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x center / 48px 14px;
+  opacity: 0;
+  animation:
+    hero-seal-in 0.7s ease 1.7s forwards,
+    hero-ripple 5s linear 2.2s infinite;
+}
+/* 入场：淡入（不动 transform，交给 hero-sail / hero-ripple） */
+@keyframes hero-seal-in {
+  from { opacity: 0; }
+  to   { opacity: 0.7; }
+}
+/* 行舟：随波左右轻荡 + 上下起伏 + 微幅摇桨感 */
+@keyframes hero-sail {
+  0%   { transform: translate(-3px, 0)    rotate(-2.5deg); }
+  50%  { transform: translate(3px, -5px)  rotate(2.5deg); }
+  100% { transform: translate(-3px, 0)    rotate(-2.5deg); }
+}
+/* 水波横流：mask 位置平移一个波长，形成连绵流动 */
+@keyframes hero-ripple {
+  from { -webkit-mask-position: 0 center;    mask-position: 0 center; }
+  to   { -webkit-mask-position: -48px center; mask-position: -48px center; }
+}
+
+/* ⑤ tagline（博客&学习）：居中，两侧合成一支横卧毛笔——
+   左＝笔杆(挂绳结+杆身)，右＝笔头(笔箍+收锋笔毫，笔尖蘸朱砂)。
+   入场：题字写到一半时淡入上浮。 */
+.vp-home-banner .content .hero-tagline {
+  justify-content: center !important;
+  gap: 1rem;
+  margin-top: 1.75rem;
+  /* 上调，缩小与大标题落差；!important 压过主题 1440px 的 32px */
+  font-size: clamp(1.2rem, 2.8vw, 2.1rem) !important;
+  text-shadow: 0 1px 12px var(--vp-bg-scrim);
+  opacity: 0;
+  animation: hero-rise 0.8s ease 0.9s both;
+}
+/* 左侧＝笔杆：笔尾挂绳环 + 向文字端渐粗的锥形杆身（写意，非等宽直杆）。 */
+.vp-home-banner .content .hero-tagline .line {
+  display: inline-block;
+  width: 100px !important;
+  /* 主题 scoped 把 .line 设成 height:0 + border-top 画线，故 mask 贴在零高元素上不显。
+     必须 !important 夺回高度、并清掉那条 border。 */
+  height: 18px !important;
+  margin-right: 0;
+  border: none !important;
+  background: var(--vp-c-text-1);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18'%3E%3Ccircle cx='5' cy='9' r='3.2' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3Cpath d='M11 7 Q13 6.4 16 6.4 L94 4.2 Q100 4 100 9 Q100 14 94 13.8 L16 11.6 Q13 11.6 11 11 Q9.5 9 11 7 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18'%3E%3Ccircle cx='5' cy='9' r='3.2' fill='none' stroke='%23000' stroke-width='1.6'/%3E%3Cpath d='M11 7 Q13 6.4 16 6.4 L94 4.2 Q100 4 100 9 Q100 14 94 13.8 L16 11.6 Q13 11.6 11 11 Q9.5 9 11 7 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+}
+/* 右侧＝笔头：笔箍(近文字) + 带肚收尖的飘逸笔毫，笔毫外段蘸朱砂（墨→朱砂渐变，被笔毫形状裁出）。 */
+.vp-home-banner .content .hero-tagline::after {
+  content: "";
+  display: inline-block;
+  width: 100px;
+  height: 18px;
+  background: linear-gradient(90deg,
+    var(--vp-c-text-1) 0%, var(--vp-c-text-1) 34%,
+    var(--vp-c-brand-1) 72%, var(--vp-c-brand-1) 100%);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18'%3E%3Crect x='1' y='3' width='9' height='12' rx='2' fill='%23000'/%3E%3Crect x='11' y='4' width='4' height='10' rx='1.5' fill='%23000'/%3E%3Cpath d='M15 4 Q42 2.4 66 5.6 Q84 7 100 8.8 L100 9.6 Q84 11.4 66 12.8 Q42 16 15 14.4 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 18'%3E%3Crect x='1' y='3' width='9' height='12' rx='2' fill='%23000'/%3E%3Crect x='11' y='4' width='4' height='10' rx='1.5' fill='%23000'/%3E%3Cpath d='M15 4 Q42 2.4 66 5.6 Q84 7 100 8.8 L100 9.6 Q84 11.4 66 12.8 Q42 16 15 14.4 Z' fill='%23000'/%3E%3C/svg%3E") no-repeat center / 100% 100%;
+}
+
+/* ⑥ 题跋（那句话）：居中题记。淡墨字 + 两端「引」符 + 细墨线收束，
+   不再是一行光秃的句子。入场：随后淡入上浮。 */
+.vp-home-banner .content .hero-text {
+  display: block;
+  width: fit-content;
+  max-width: 90vw;
+  margin: 1.35rem auto 0;
+  padding: 0 0 0.5rem;
+  text-align: center !important;
+  letter-spacing: 0.1em;
+  /* !important 压过主题 scoped 的 16px（此前 clamp 一直被覆盖，故一直是 16px 没变大）。
+     相对原 16px 翻倍到约 28~32px，与 tagline 接近但仍略小。 */
+  font-size: clamp(1.5rem, 2.4vw, 2rem) !important;
+  font-style: italic;
+  color: var(--vp-c-text-2);
+  text-shadow: 0 1px 12px var(--vp-bg-scrim);
+  opacity: 0;
+  animation: hero-rise 0.8s ease 1.15s both;
+}
+/* 两端古籍式「引」符：朱砂淡角，点睛不抢戏 */
+.vp-home-banner .content .hero-text::before,
+.vp-home-banner .content .hero-text::after {
+  color: var(--vp-c-brand-1);
+  font-style: normal;
+  opacity: 0.75;
+}
+.vp-home-banner .content .hero-text::before { content: "「"; margin-right: 0.15em; }
+.vp-home-banner .content .hero-text::after  { content: "」"; margin-left: 0.15em; }
+
+/* 移动端/小屏：主题 .content 默认 padding:0 2rem 会吃掉 4rem 宽，一行大标题在窄屏易顶边。
+   本块必须放在上面各 banner 基础规则之后——同 !important 同特异性时靠后者胜，
+   否则左笔 .line 会被后面的基础规则(100px)反超，导致左右毛笔不等长、整组偏移不居中。 */
+@media (max-width: 640px) {
+  .vp-home-banner .content {
+    padding: 0 1rem !important;
+  }
+  .vp-home-banner .content .hero-tagline {
+    justify-content: center !important;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+    /* 锁不换行：否则窄屏 flex 会压缩中间文字节点，把「博客&学习」拆成两行。 */
+    flex-wrap: nowrap !important;
+    white-space: nowrap;
+  }
+  .vp-home-banner .content .hero-tagline .line,
+  .vp-home-banner .content .hero-tagline::after {
+    width: 40px !important;
+    height: 10px !important;
+    /* 毛笔固定宽不参与压缩，把空间让给中间文字，且左右等长保证对称居中 */
+    flex: 0 0 auto !important;
+  }
+  /* 题跋小屏：降字号 + 收字距，让整句按「，」自然分两行，不再逐字挤断、末字落单 */
+  .vp-home-banner .content .hero-text {
+    max-width: 92vw;
+    font-size: clamp(1.05rem, 4.6vw, 1.4rem) !important;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+  }
+  .vp-home-banner .content .hero-sail-scene {
+    margin-top: 14px;
+  }
+  .vp-home-banner .content .hero-seal {
+    width: 36px;
+    height: 32px;
+  }
+  .vp-home-banner .content .hero-wave {
+    width: 60px;
+  }
+}
+
+/* ⑦ 按钮：居中 + 锐角（守全站方形风），brand=朱砂实心 / alt=墨线描边。
+   入场：最后淡入上浮。 */
+.vp-home-banner .content .actions {
+  justify-content: center !important;
+  padding-top: 2rem;
+  opacity: 0;
+  animation: hero-rise 0.8s ease 1.4s both;
+}
+.vp-home-banner .vp-button {
+  border-radius: 0 !important;
+  padding: 0 26px;
+  line-height: 42px;
+  letter-spacing: 0.04em;
+}
+.vp-home-banner .vp-button.alt {
+  background-color: transparent;
+  border-color: var(--vp-c-text-2);
+  color: var(--vp-c-text-1);
+}
+.vp-home-banner .vp-button.alt:hover {
+  border-color: var(--vp-c-brand-1);
+  color: var(--vp-c-brand-1);
+  background-color: transparent;
+}
+
+/* ⑧ 向下指引箭头：朱砂色，浅深模式都醒目（修浅色下消失）；hover 提亮 */
+.vp-home-banner .scroll-down-arrow {
+  color: var(--vp-c-brand-1);
+  transition: color 0.2s ease;
+}
+.vp-home-banner .scroll-down-arrow:hover {
+  color: var(--vp-c-brand-2);
+}
+
+/* ⑨ 云雾层：banner 内一层极淡的横向浮动雾霭（径向柔光），
+   缓慢左右漂移，给静止水墨图添“云气流动”的活气。压在内容之下、山图之上。 */
+.vp-home-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 40% at 20% 70%, var(--vp-c-text-3) 0%, transparent 60%),
+    radial-gradient(50% 35% at 75% 60%, var(--vp-c-text-3) 0%, transparent 55%);
+  opacity: 0.22;
+  /* 灰雾用常规混合（screen 会把灰提亮成白，失去灰调）；深浅各调透明度 */
+  mix-blend-mode: normal;
+  animation: hero-mist 18s ease-in-out infinite alternate;
+}
+[data-theme="dark"] .vp-home-banner::after {
+  mix-blend-mode: normal;
+  opacity: 0.18;
+}
+.vp-home-banner .container { z-index: 1; } /* 内容压在云雾之上 */
+
+@keyframes hero-mist {
+  from { transform: translate3d(-4%, 0, 0) scale(1.05); }
+  to   { transform: translate3d(4%, -2%, 0) scale(1.1); }
+}
+
+/* 共享入场：淡入 + 上浮 */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ⑩ 差分滚动（视差）：滚动时内容层上移并淡出，速率与背景(固定)、
+   云雾(按时间飘)各不相同，形成分层纵深。
+   纯 CSS 滚动驱动动画：Chrome/Edge 原生生效；不支持的浏览器整段忽略、保持静态，不报错。 */
+@supports (animation-timeline: scroll()) {
+  /* 内容层：滚动时上移较多 + 淡出（快层） */
+  .vp-home-banner .content {
+    animation: hero-parallax-content linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 100vh;
+  }
+  @keyframes hero-parallax-content {
+    to { transform: translateY(120px); opacity: 0; }
+  }
+
+  /* 云雾层不挂滚动视差：它已有时间漂移动画(hero-mist)，
+     同一元素 animation 会被整条覆盖、且都动 transform 无法叠加。
+     差速纵深由三层不同行为天然形成：内容随滚动上移淡出、背景 attachment:fixed 固定、
+     云雾按时间横向漂移——三者速率各异即为差分。 */
+}
+
+/* ⑪ 无障碍：用户开启“减少动态效果”时，关掉所有 hero 动画，直接呈现终态 */
+@media (prefers-reduced-motion: reduce) {
+  .vp-home-banner .content .hero-name,
+  .vp-home-banner .content .hero-sail-scene,
+  .vp-home-banner .content .hero-seal,
+  .vp-home-banner .content .hero-wave,
+  .vp-home-banner .content .hero-tagline,
+  .vp-home-banner .content .hero-text,
+  .vp-home-banner .content .actions,
+  .vp-home-banner::after,
+  .vp-home-banner .content {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  /* 关掉高光扫字动画后，题字恢复实色，避免透明填充留下“空字” */
+  .vp-home-banner .content .hero-name {
+    background: none !important;
+    -webkit-text-fill-color: var(--vp-c-text-1) !important;
+    color: var(--vp-c-text-1) !important;
+  }
 }
